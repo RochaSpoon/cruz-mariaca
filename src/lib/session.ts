@@ -16,11 +16,13 @@ export async function init() {
   const session = await currentSession();
   if (!session) return;
   const profile = await myProfile(session.user.id);
-  const list = document.querySelector('#nav-list');
+  const list = document.querySelector('.side-nav');
   if (profile?.is_admin && list && !list.querySelector('[data-admin]')) {
-    const li = document.createElement('li');
-    li.innerHTML = '<a data-admin href="/admin/">Members</a>';
-    list.appendChild(li);
+    const a = document.createElement('a');
+    a.setAttribute('data-admin', '');
+    a.href = '/admin/';
+    a.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24v5H4zm0 8h24v5H4zm0 8h24v4H4z" fill="currentColor"/></svg><span>Members</span>';
+    list.appendChild(a);
   }
   // Record a visit at most once an hour.
   try {

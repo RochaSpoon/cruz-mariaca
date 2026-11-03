@@ -30,7 +30,7 @@ const checks = cards.filter((c) => c.kind === 'check').length;
               <>
                 <p class="label">{c.unit}</p>
                 <h1 class="title">{c.title}</h1>
-                <p class="meta-line">About {c.minutes} minutes. Swipe up or press Continue.</p>
+                <p class="meta-line">About {c.minutes} minutes. Press Continue to start.</p>
                 {c.heavy && <p class="note-box"><b>A hard topic.</b> This lesson is about something serious. Read it when you are ready, or leave it for another day.</p>}
                 {c.crisis && <p class="note-box"><b>If you are in crisis right now,</b> call or text 988 in the United States to reach the Suicide and Crisis Lifeline.</p>}
                 <p class="meta-line unrev">{c.verify > 0 ? `Not yet reviewed. ${c.verify} fact${c.verify === 1 ? ' is' : 's are'} still marked unchecked.` : 'Sources checked against the original texts. Not yet reviewed by a priest or catechist.'}</p>
@@ -94,6 +94,7 @@ const checks = cards.filter((c) => c.kind === 'check').length;
     </main>
 
     <footer class="p-bottom">
+      <div class="msg" id="msg" aria-live="polite"><i id="msg-i" aria-hidden="true"></i><div><b id="msg-t"></b><span id="msg-s"></span></div></div>
       <button type="button" class="btn ghost" id="prev" hidden>Back</button>
       <button type="button" class="btn big" id="next">Continue</button>
     </footer>
@@ -116,6 +117,8 @@ const checks = cards.filter((c) => c.kind === 'check').length;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let cur = 0, finished = false, correct = 0, pick = '';
     const resolved = new WeakSet<HTMLElement>();
+    const selected = new Map<HTMLElement, HTMLButtonElement>();
+    const bottom = document.querySelector<HTMLElement>('.p-bottom')!;
 
     const h = () => deck.clientHeight;
     const go = (i: number) => deck.scrollTo({ top: Math.max(0, Math.min(total - 1, i)) * h(), behavior: reduce ? 'auto' : 'smooth' });
@@ -125,10 +128,13 @@ const checks = cards.filter((c) => c.kind === 'check').length;
       bar.style.width = pct + '%'; at.textContent = String(cur + 1); barEl.setAttribute('aria-valuenow', String(cur + 1));
       prev.hidden = cur === 0 || finished;
       const slide = slides[cur];
-      const gate = slide.querySelector('.check') && !resolved.has(slide);
+      const isCheck = !!slide.querySelector('.check');
+      const gate = isCheck && !resolved.has(slide);
       const last = cur === total - 1;
+      if (!(isCheck && resolved.has(slide))) { bottom.className = 'p-bottom'; }
       if (finished) { next.textContent = 'Back to the path'; next.disabled = false; }
-      else { next.textContent = last ? 'Finish' : 'Continue'; next.disabled = !!gate; }
+      else if (gate) { next.textContent = 'Check'; next.disabled = !selected.has(slide); }
+      else { next.textContent = last ? 'Finish' : 'Continue'; next.disabled = false; }
       slides.forEach((s, i) => s.toggleAttribute('inert', Math.abs(i - cur) > 0 && false));
     }
 
@@ -137,6 +143,8 @@ const checks = cards.filter((c) => c.kind === 'check').length;
 
     next.addEventListener('click', () => {
       if (finished) { location.href = '/'; return; }
+      const sl = slides[cur];
+      if (sl.querySelector('.check') && !resolved.has(sl)) return check(sl);
       if (cur === total - 1) return finish();
       go(cur + 1);
     });
@@ -148,20 +156,31 @@ const checks = cards.filter((c) => c.kind === 'check').length;
       if (e.key === 'Escape') location.href = '/';
     });
 
-    // Quick checks
+    // Quick checks: pick an answer, press Check, then see the result in the bottom bar.
     deck.querySelectorAll<HTMLElement>('.check').forEach((box) => {
-      const fb = box.querySelector<HTMLElement>('.feedback')!;
       box.querySelectorAll<HTMLButtonElement>('.opt').forEach((b) => b.addEventListener('click', () => {
         const slide = box.closest<HTMLElement>('.slide')!;
         if (resolved.has(slide)) return;
-        resolved.add(slide);
-        const ok = b.dataset.ok === '1';
-        box.querySelectorAll<HTMLButtonElement>('.opt').forEach((o) => { o.disabled = true; if (o.dataset.ok === '1') o.classList.add('ok'); });
-        if (ok) { correct++; fb.textContent = 'Correct. Plus ' + box.dataset.xp + ' XP.'; fb.className = 'feedback good'; }
-        else { b.classList.add('no'); fb.textContent = 'Not quite. The right answer is marked. ' + (fb.dataset.hint ?? ''); fb.className = 'feedback bad'; }
-        paint();
+        box.querySelectorAll('.opt').forEach((o) => o.classList.remove('sel'));
+        b.classList.add('sel'); selected.set(slide, b); paint();
       }));
     });
+    function check(slide: HTMLElement) {
+      const b = selected.get(slide); if (!b) return;
+      const box = slide.querySelector<HTMLElement>('.check')!;
+      resolved.add(slide);
+      const ok = b.dataset.ok === '1';
+      box.querySelectorAll<HTMLButtonElement>('.opt').forEach((o) => { o.disabled = true; o.classList.remove('sel'); if (o.dataset.ok === '1') o.classList.add('ok'); });
+      const t = document.getElementById('msg-t')!, sub = document.getElementById('msg-s')!, ic = document.getElementById('msg-i')!;
+      if (ok) { correct++; t.textContent = 'Nicely done!'; sub.textContent = '+' + box.dataset.xp + ' XP'; ic.textContent = '✓'; bottom.className = 'p-bottom good'; }
+      else {
+        b.classList.add('no');
+        const right = box.querySelector<HTMLElement>('.opt.ok')?.textContent ?? '';
+        const hint = box.querySelector<HTMLElement>('.feedback')?.dataset.hint ?? '';
+        t.textContent = 'Not quite'; sub.textContent = 'Right answer: ' + right + (hint ? ' ' + hint : ''); ic.textContent = '✕'; bottom.className = 'p-bottom bad';
+      }
+      paint();
+    }
 
     // "Pick one to try today"
     deck.querySelectorAll<HTMLButtonElement>('.move').forEach((b) => b.addEventListener('click', () => {
