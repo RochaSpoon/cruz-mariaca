@@ -5,6 +5,7 @@ export type Lesson = CollectionEntry<'lessons'>;
 
 // Units in teaching order. Units with no written lessons yet are not shown on the path.
 export const UNITS: { name: string; blurb: string }[] = [
+  { name: 'The Sacraments and the Mass', blurb: 'What Catholics do, and why: the seven sacraments and the Mass.' },
   { name: 'Foundations of Sin and Grace', blurb: 'What sin is, what grace does, and why hope is the point.' },
   { name: 'The Seven Deadly Sins', blurb: 'Seven habits the tradition names as the roots of the rest.' },
   { name: 'The Tongue', blurb: 'Words, truth, and the harm a sentence can do.' },

@@ -8,7 +8,7 @@ Douay-Rheims passages were compared with drbo.org. vatican.va, usccb.org and new
 
 ## Lessons
 
-356 lessons in `src/content/lessons`: 31 written in full, 325 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. Quotes and figures still flagged [VERIFY]:
+356 lessons in `src/content/lessons`: 51 written in full, 305 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. Quotes and figures still flagged [VERIFY]:
 
 - Modesty: Guarding the Mystery of the Person: St. Francis de Sales told his readers to dress neatly and suitably to their state in life, not carelessly and not vainly, in a way that does
 - Pornography: How to Get Free: - **Kids see it early.** A 2023 Common Sense Media survey found most U.S. teens have seen pornography, with an average first exposure around
@@ -19,6 +19,44 @@ Douay-Rheims passages were compared with drbo.org. vatican.va, usccb.org and new
 - Abortion: Since *Dobbs* (2022) overturned *Roe v. Wade*, abortion law in the U.S. is decided state by state. In California, abortion is legal and prot
 - Euthanasia and Assisted Suicide: Assisted suicide is legal in California (since 2016) and a growing number of states and countries. Canada's "Medical Assistance in Dying" pr
 - Male and Female He Created Them: *Dignitas Infinita* (2024) says that wanting to decide your own sex apart from the reality you received is giving in to the old temptation t
+- Anointing of the Sick: Only a priest or a bishop can give it (CCC 1516). It can forgive sins when the person cannot go to Confession (CCC 1520). [VERIFY]
+- Anointing of the Sick: **Viaticum** is Communion given to someone who is dying. Together with Confession and the Anointing, it is what people mean by the last rite
+- Baptism: The Church teaches that baptism is the door to the other sacraments and to life in Christ (CCC 1213). Without it, the rest of the sacramenta
+- Baptism: - Justin Martyr, First Apology 61, on baptism in the second century [VERIFY]
+- Confirmation: The ordinary minister is the bishop (CCC 1312). In the Latin Church, a priest may confirm in certain cases, such as at the Easter Vigil for 
+- Eastern Catholic Churches: The Catholic Church is one Church with many rites. The Latin or Roman rite is the largest, and there are about twenty-three Eastern Catholic
+- Eastern Catholic Churches: Vatican II's decree on Eastern Catholic Churches, Orientalium Ecclesiarum (1964), says these traditions are to be kept and fostered. [VERIFY
+- Eastern Catholic Churches: - Second Vatican Council, Orientalium Ecclesiarum (1964) [VERIFY]
+- Holy Orders: There are three degrees. Bishops lead a diocese and hand on the apostles' work. Priests help the bishop and celebrate Mass and the sacrament
+- Holy Orders: The Church calls the line of bishops from the apostles apostolic succession. Ignatius of Antioch, early in the second century, already treat
+- Holy Orders: - Ignatius of Antioch, Letter to the Smyrnaeans 8 [VERIFY]
+- Infant Baptism: The Church says the practice goes back to the apostles and that the Fathers were firm about it (CCC 1252). Origen is often cited for this. [
+- Infant Baptism: - Origen, Commentary on Romans, on infant baptism [VERIFY]
+- Liturgical Colors: The color of the priest's vestments tells you where you are in the Church year. Green is ordinary time, violet is Advent and Lent, white is 
+- Liturgical Colors: - General Instruction of the Roman Missal 346 [VERIFY]
+- Matrimony: In the Latin Church, the spouses are the ministers of the sacrament, and the priest is the Church's witness (CCC 1623). [VERIFY] A valid mar
+- Matrimony: Divorce does not end a valid marriage in the eyes of the Church (CCC 1649-1651). [VERIFY] An annulment is not Catholic divorce. It is a find
+- Matrimony: For those who live it, marriage is a main way to become holy. For those who skip the vows, or live together first, the Church says something
+- OCIA: How to Become Catholic: The stages are: inquiry, where you ask questions with no commitment; the catechumenate, where you learn the faith over months; the Lent stag
+- Priestly Celibacy: Peter was married. The Gospel mentions his wife's mother (Matthew 8:14). The Church has never said priests cannot be married as a matter of 
+- The Liturgical Year: Easter moves because it is set by the moon. The rule is the first Sunday after the first full moon on or after March 21. [VERIFY] The Counci
+- The Liturgical Year: - **Abstain from meat on Fridays in Lent,** and on Ash Wednesday and Good Friday. In the US, other Fridays of the year can be kept with anot
+- The Parts of the Mass: Today it runs like this: Introductory Rites, Liturgy of the Word, Liturgy of the Eucharist, Communion Rite, Concluding Rites. The details ar
+- The Real Presence: The Church has believed this from the start. Ignatius of Antioch, writing in the early second century, calls the Eucharist the flesh of our 
+- The Real Presence: A well-known survey claimed that most Catholics do not believe in the Real Presence. Whatever the number is, many Catholics sit in the pew w
+- The Real Presence: Paul says whoever eats and drinks unworthily eats judgment on himself (1 Corinthians 11:27-29). That is why the Church asks Catholics to be 
+- The Real Presence: - Ignatius of Antioch, Letter to the Smyrnaeans 7 [VERIFY]
+- The Traditional Latin Mass: Pope Benedict XVI, in Summorum Pontificum (2007), made it easier for priests to celebrate it. [VERIFY] Pope Francis, in Traditionis Custodes
+- The Traditional Latin Mass: Norms may have changed since this lesson was written. Check with your diocese for what applies where you live. [VERIFY]
+- The Traditional Latin Mass: - Benedict XVI, Summorum Pontificum (2007) [VERIFY]
+- The Traditional Latin Mass: - Francis, Traditionis Custodes (2021) [VERIFY]
+- Transubstantiation: The Council of Trent, in 1551, taught this and used the term (Session XIII). [VERIFY] It did not say the word explains the mystery, only tha
+- Transubstantiation: - Council of Trent, Session XIII [VERIFY]
+- What Is a Sacrament?: Other Christians differ. Most Protestants keep two, Baptism and the Lord's Supper, and many treat them as signs of faith more than as channe
+- What Is a Sacrament?: - Council of Trent, Session VII, on the sacraments [VERIFY]
+- Why Only Men Can Be Priests: In Ordinatio Sacerdotalis (1994), John Paul II wrote that the Church has no authority to confer priestly ordination on women and that this j
+- Why Only Men Can Be Priests: - John Paul II, Ordinatio Sacerdotalis (1994) [VERIFY]
+- Why Priests Are Called "Father": The title is a custom of respect and of spiritual relationship, not a doctrine. It could be dropped without changing any teaching. [VERIFY]
 
 ## Daily Bread
 

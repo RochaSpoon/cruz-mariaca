@@ -5,3 +5,4 @@ dist
 screenshots
 .env
 src/assets/fonts/
+.cache-drbo
