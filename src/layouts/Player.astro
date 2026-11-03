@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import '../styles/extra.css';
+import '../styles/app.css';
+import { seasonFor } from '../lib/liturgical';
+interface Props { title: string }
+const { title } = Astro.props;
+const season = seasonFor(new Date());
+---
+<!doctype html>
+<html lang="en" data-color={season.color}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title} | Cruz-Mariaca</title>
+    <meta name="theme-color" content="#f2ead7" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="player">
+    <slot />
+  </body>
+</html>

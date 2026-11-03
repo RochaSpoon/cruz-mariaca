@@ -6,6 +6,20 @@ Every entry is `reviewed: false`. Set it to `true` only after you have read the 
 
 Douay-Rheims passages were compared with drbo.org. vatican.va, usccb.org and newadvent.org are blocked from the build environment, so Catechism, council and papal citations have not been checked against their texts.
 
+## Lessons
+
+356 lessons in `src/content/lessons`: 31 written in full, 325 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. Quotes and figures still flagged [VERIFY]:
+
+- Modesty: Guarding the Mystery of the Person: St. Francis de Sales told his readers to dress neatly and suitably to their state in life, not carelessly and not vainly, in a way that does
+- Pornography: How to Get Free: - **Kids see it early.** A 2023 Common Sense Media survey found most U.S. teens have seen pornography, with an average first exposure around
+- Greed: Money as Your God: St. Basil the Great preached that the bread you hoard belongs to the hungry, and the cloak in your closet belongs to the naked (*Homily on L
+- Wrath: When Anger Becomes Sin: St. Francis de Sales advises in *Introduction to the Devout Life* (Part III, ch. 8) that it is better to refuse anger entry altogether than 
+- Doomscrolling and the Restless Heart: Pope Leo XIV's 2026 encyclical *Magnifica Humanitas*, on the human person in the time of artificial intelligence, invites people to live in 
+- Hell Is Real: *St. Faustina Kowalska, Diary, 741* [VERIFY]
+- Abortion: Since *Dobbs* (2022) overturned *Roe v. Wade*, abortion law in the U.S. is decided state by state. In California, abortion is legal and prot
+- Euthanasia and Assisted Suicide: Assisted suicide is legal in California (since 2016) and a growing number of states and countries. Canada's "Medical Assistance in Dying" pr
+- Male and Female He Created Them: *Dignitas Infinita* (2024) says that wanting to decide your own sex apart from the reality you received is giving in to the old temptation t
+
 ## Daily Bread
 
 30 readings in `src/content/daily`. The scripture text was copied from drbo.org and its references are marked checked. The thoughts and questions were written for this site and need a read-through. All are reviewed: false.

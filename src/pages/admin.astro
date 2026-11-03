@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-const titles = Object.fromEntries((await getCollection('myths')).map((m) => [m.id, m.data.title]));
+const titles = Object.fromEntries([
+  ...(await getCollection('myths')).map((m) => [m.id, m.data.title]),
+  ...(await getCollection('lessons')).filter((l) => l.data.type === 'full').map((l) => [`lesson-${l.data.slug}`, l.data.title]),
+]);
 ---
 <Base title="Members" description="Members page." noindex>
   <p class="rubric sc">For the site's editor</p>
@@ -28,7 +31,7 @@ const titles = Object.fromEntries((await getCollection('myths')).map((m) => [m.i
     import { supabase } from '../lib/supabase';
     const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
     const titles: Record<string, string> = JSON.parse($('#titles').textContent ?? '{}');
-    const total = Object.keys(titles).length;
+    const total = Object.keys(titles).filter((k) => !k.startsWith('lesson-')).length;
     const isDaily = (s: string) => s.startsWith('daily-');
     const nice = (s: string) => isDaily(s) ? 'Daily Bread, ' + new Date(s.slice(6) + 'T12:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : (titles[s] ?? s);
     const fmt = (iso: string | null) => iso ? new Date(iso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : 'never';
@@ -51,8 +54,9 @@ const titles = Object.fromEntries((await getCollection('myths')).map((m) => [m.i
         const cell = (label: string, text: string) => { const td = document.createElement('td'); td.dataset.label = label; td.textContent = text; tr.append(td); return td; };
         cell('Name', m.full_name); cell('Username', m.username); cell('Joined', fmt(m.created_at));
         cell('Last visit', fmt(lastOf(m) ? new Date(lastOf(m)).toISOString() : null));
-        const nEntries = m.read_slugs.filter((x) => !isDaily(x)).length;
-        const td = cell('Read', `${nEntries} of ${total} entries, ${m.read_slugs.length - nEntries} daily`);
+        const nLessons = m.read_slugs.filter((x) => x.startsWith('lesson-')).length;
+        const nEntries = m.read_slugs.filter((x) => !isDaily(x) && !x.startsWith('lesson-')).length;
+        const td = cell('Read', `${nEntries} of ${total} entries, ${nLessons} lessons, ${m.read_slugs.length - nEntries - nLessons} daily`);
         if (m.read_slugs.length) {
           const ul = document.createElement('ul');
           for (const s of m.read_slugs) { const li = document.createElement('li'); li.textContent = nice(s); ul.append(li); }

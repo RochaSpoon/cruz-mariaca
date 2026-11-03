@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-const titles = Object.fromEntries((await getCollection('myths')).map((m) => [m.id, m.data.title]));
+const titles = Object.fromEntries([
+  ...(await getCollection('myths')).map((m) => [m.id, m.data.title]),
+  ...(await getCollection('lessons')).filter((l) => l.data.type === 'full').map((l) => [`lesson-${l.data.slug}`, l.data.title]),
+]);
 ---
 <Base title="Account" description="Optional account to keep track of what you have read." noindex>
   <p class="rubric sc">Account</p>

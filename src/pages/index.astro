@@ -1,49 +1,89 @@
 ---
 import Base from '../layouts/Base.astro';
 import TodayPanel from '../components/TodayPanel.astro';
-import { getCollection } from 'astro:content';
-const myths = (await getCollection('myths')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+import { getUnits } from '../lib/lessons';
+const units = await getUnits();
+const total = units.reduce((n, u) => n + u.lessons.length, 0);
+const coming = units.reduce((n, u) => n + u.coming.length, 0);
 ---
-<Base title="Cruz-Mariaca">
-  <div class="intro">
-    <p class="rubric sc">For people looking in from outside</p>
-    <h1>What the Catholic Church teaches, and what it does not</h1>
-    <p class="lede">Every page gives sources you can check, states the other side the way its best writers would, and leaves the decision to you. The Church itself teaches that faith has to be free (CCC 160).</p>
-  </div>
-  <div class="home">
-    <TodayPanel />
-    <section class="library" aria-labelledby="lib-h">
-      <h2 id="lib-h">Library</h2>
-      <details open>
-        <summary>Start here</summary>
-        <p class="sub">One question, five paths. Pick the one that sounds most like you.</p>
-        <ul><li><a href="/start/">Where are you coming from?</a></li></ul>
-      </details>
-      <details>
-        <summary>Myths and misconceptions</summary>
-        <p class="sub">Claims people make about the Church, each answered from the sources.</p>
-        <ul>
-          {myths.map((m) => <li><a href={`/myths/${m.id}/`}>{m.data.title}</a></li>)}
-        </ul>
-      </details>
-      <details>
-        <summary>The Mass, step by step</summary>
-        <p class="sub">What happens, why, where it comes from, and when to sit, stand or kneel.</p>
-        <ul><li><a href="/mass/">Walk through the Mass</a></li></ul>
-      </details>
-      <details>
-        <summary>Daily Bread</summary>
-        <p class="sub">One reading, one thought, one question. Then it ends.</p>
-        <ul><li><a href="/daily/">Today's reading</a></li></ul>
-      </details>
-      <details>
-        <summary>Reference</summary>
-        <ul>
-          <li><a href="/glossary/">Glossary</a></li>
-          <li><a href="/about/">How to read this site</a></li>
-          <li><a href="/account/">Account (optional)</a></li>
-        </ul>
-      </details>
+<Base title="Cruz-Mariaca" description="Short Catholic lessons you can finish in a few minutes, one screen at a time.">
+  <div class="app">
+    <aside class="rail" aria-label="Your progress">
+      <div class="stats" data-stats>
+        <div class="stat"><b data-streak>0</b><span>day streak</span></div>
+        <div class="stat"><b data-xp>0</b><span>XP</span></div>
+        <div class="stat"><b><span data-count>0</span>/{total}</b><span>lessons</span></div>
+      </div>
+      <p class="goal" data-goal>Today's goal: finish one lesson.</p>
+      <TodayPanel />
+      <p class="signin-hint" data-signin>Your progress is saved in this browser. <a href="/account/">Make an account</a> to keep it across devices.</p>
+    </aside>
+
+    <section class="path" aria-label="Lessons">
+      <p class="rubric sc path-intro">Short lessons. One idea per screen. Each one ends.</p>
+      {units.map((u) => (
+        <div class="unit" id={u.key}>
+          <div class="unit-banner">
+            <div>
+              <p class="unit-n">Unit {u.n}</p>
+              <h2>{u.name}</h2>
+              <p class="unit-blurb">{u.blurb}</p>
+            </div>
+            <p class="unit-prog"><b data-unit-done={u.key}>0</b> of {u.lessons.length}</p>
+          </div>
+          <ol class="nodes">
+            {u.lessons.map((l) => (
+              <li>
+                <a class="node" href={`/learn/${l.data.slug}/`} data-slug={l.data.slug} data-unit={u.key} aria-label={`${l.data.title}. Lesson ${l.num}.`}>
+                  <span class="n" aria-hidden="true">{l.num}</span>
+                </a>
+                <span class="node-label">{l.data.title}</span>
+              </li>
+            ))}
+          </ol>
+          {u.coming.length > 0 && (
+            <details class="coming">
+              <summary>{u.coming.length} more in this unit are being written</summary>
+              <ul>{u.coming.map((c) => <li>{c.data.title}</li>)}</ul>
+            </details>
+          )}
+        </div>
+      ))}
+      <div class="path-end">
+        <p class="finis">That is the whole path for now.</p>
+        <p>{total} lessons are ready. {coming} more across these units are outlined and on the way, so there is always an end in sight and never a feed.</p>
+        <p><a class="btn" href="/library/">Browse the Library</a></p>
+        <p class="signin-hint after" data-signin2>Your progress is saved in this browser. <a href="/account/">Make an account</a> to keep it across devices.</p>
+      </div>
     </section>
   </div>
+
+  <script>
+    import { load, streak, totalXP, doneToday, syncDown } from '../lib/progress';
+    async function paint() {
+      const s = load();
+      const done = new Set(Object.keys(s.done));
+      const nodes = [...document.querySelectorAll<HTMLAnchorElement>('.node')];
+      let current: HTMLAnchorElement | null = null;
+      const perUnit: Record<string, number> = {};
+      for (const n of nodes) {
+        const slug = n.dataset.slug!;
+        if (done.has(slug)) { n.classList.add('done'); perUnit[n.dataset.unit!] = (perUnit[n.dataset.unit!] ?? 0) + 1; }
+        else if (!current) current = n;
+      }
+      if (current) { current.classList.add('current'); const tag = document.createElement('span'); tag.className = 'start-tag'; tag.textContent = done.size ? 'Next' : 'Start'; current.parentElement!.prepend(tag); }
+      document.querySelectorAll<HTMLElement>('[data-unit-done]').forEach((el) => { el.textContent = String(perUnit[el.dataset.unitDone!] ?? 0); });
+      (document.querySelector('[data-streak]') as HTMLElement).textContent = String(streak(s));
+      (document.querySelector('[data-xp]') as HTMLElement).textContent = String(totalXP(s));
+      (document.querySelector('[data-count]') as HTMLElement).textContent = String(done.size);
+      const goal = document.querySelector<HTMLElement>('[data-goal]')!;
+      goal.textContent = doneToday(s) ? 'Today’s goal is done. Anything more is a bonus.' : 'Today’s goal: finish one lesson.';
+      goal.classList.toggle('met', doneToday(s));
+      try { if (localStorage.getItem('cm-auth')) document.querySelectorAll('[data-signin],[data-signin2]').forEach((e) => e.remove()); } catch {}
+      return current;
+    }
+    let cur = await paint();
+    if (cur && Object.keys(load().done).length) cur.scrollIntoView({ block: 'center' });
+    syncDown().then(async () => { document.querySelectorAll('.start-tag').forEach((t) => t.remove()); document.querySelectorAll('.node').forEach((n) => n.classList.remove('done', 'current')); await paint(); });
+  </script>
 </Base>

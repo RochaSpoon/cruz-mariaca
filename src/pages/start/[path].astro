@@ -14,5 +14,6 @@ const { p } = Astro.props;
   <ul class="readlist">
     {p.picks.map((x) => <li><a href={x.href}>{x.label}</a><p>{x.why}</p></li>)}
   </ul>
+  <p><a class="btn" href="/">Open the lesson path</a></p>
   <p><a href="/start/">Choose a different path</a></p>
 </Base>

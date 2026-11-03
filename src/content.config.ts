@@ -65,4 +65,26 @@ const daily = defineCollection({
   }),
 });
 
-export const collections = { myths, pages, daily };
+// Lessons for the path. Full lessons are written out. Outlines are placeholders and are never shown as playable.
+const lessons = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/lessons' }),
+  schema: z.object({
+    title: z.string().min(1),
+    slug: z.string().min(1),
+    category: z.string().min(1),
+    type: z.enum(['full', 'outline']),
+    summary: z.string().min(1),
+    authority_level: z.string(),
+    sources: z.array(z.string()).min(1, 'sources[] must not be empty'),
+    reviewed: z.boolean(),
+    order: z.number().optional(),
+    verify_flags: z.number().default(0),
+    image: z.object({
+      title: z.string().optional(), artist: z.string().optional(), date: z.coerce.string().optional(),
+      collection: z.string().optional(), alt: z.string().optional(), license: z.string().optional(),
+      file_url: z.string().optional(), credit: z.string().optional(),
+    }).optional(),
+  }),
+});
+
+export const collections = { myths, pages, daily, lessons };

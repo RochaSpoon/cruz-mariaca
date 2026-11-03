@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/extra.css';
+import '../styles/app.css';
 import { getCollection } from 'astro:content';
 import { seasonFor } from '../lib/liturgical';
 interface Props { title: string; description?: string; noindex?: boolean }
@@ -30,6 +31,7 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
         <a class="wordmark" href="/">Cruz-Mariaca</a>
         <nav aria-label="Main" class="menubar">
           <ul id="nav-list">
+            <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Path</a></li>
             <li><a href="/today/" aria-current={cur('/today/')}>Today</a></li>
             <li><a href="/daily/" aria-current={cur('/daily/')}>Daily Bread</a></li>
             <li><a href="/start/" aria-current={cur('/start/')}>Start Here</a></li>
@@ -45,6 +47,10 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
                     </ul>
                   </div>
                   <div>
+                    <p class="menu-h">Library</p>
+                    <ul>
+                      <li><a href="/library/">Everything, in one list</a></li>
+                    </ul>
                     <p class="menu-h">At Mass</p>
                     <ul>
                       <li><a href="/mass/">The Mass, step by step</a></li>
@@ -78,6 +84,12 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
         <p>Nothing here asks you to decide anything.</p>
       </footer>
     </div>
+    <nav class="tabbar" aria-label="App">
+      <a href="/" aria-current={path === '/' || path.startsWith('/learn') ? 'page' : undefined}>Path</a>
+      <a href="/daily/" aria-current={path.startsWith('/daily') || path.startsWith('/today') ? 'page' : undefined}>Daily</a>
+      <a href="/library/" aria-current={path.startsWith('/library') || path.startsWith('/myths') || path.startsWith('/mass') || path.startsWith('/glossary') || path.startsWith('/start') ? 'page' : undefined}>Library</a>
+      <a href="/account/" aria-current={path.startsWith('/account') || path.startsWith('/about') ? 'page' : undefined}>Me</a>
+    </nav>
     <script>
       import { seasonForLocalDate } from '../lib/liturgical';
       const s = seasonForLocalDate(new Date());

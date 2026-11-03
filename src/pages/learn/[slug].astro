@@ -1,0 +1,190 @@
+---
+import { getCollection } from 'astro:content';
+import Player from '../../layouts/Player.astro';
+import { buildCards, type Lesson } from '../../lib/lessons';
+
+export async function getStaticPaths() {
+  const all = await getCollection('lessons');
+  const full = all.filter((l) => l.data.type === 'full');
+  return full.map((lesson) => ({ params: { slug: lesson.data.slug }, props: { lesson, full } }));
+}
+const { lesson, full } = Astro.props as { lesson: Lesson; full: Lesson[] };
+const d = lesson.data;
+const cards = buildCards(lesson, full);
+const total = cards.length + 1; // plus the finish screen
+const checks = cards.filter((c) => c.kind === 'check').length;
+---
+<Player title={d.title}>
+  <div class="p-shell" data-slug={d.slug} data-total={total} data-checks={checks}>
+    <header class="p-top">
+      <a class="p-close" href="/" aria-label="Leave the lesson"><span aria-hidden="true"></span></a>
+      <div class="p-bar" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax={total} aria-valuenow="1"><i></i></div>
+      <span class="p-count"><b data-at>1</b> / {total}</span>
+    </header>
+
+    <main class="deck" id="deck" tabindex="-1">
+      {cards.map((c, i) => (
+        <section class={`slide s-${c.kind}`} data-i={i} aria-label={`Screen ${i + 1} of ${total}`}>
+          <div class="card">
+            {c.kind === 'intro' && (
+              <>
+                <p class="label">{c.unit}</p>
+                <h1 class="title">{c.title}</h1>
+                <p class="meta-line">About {c.minutes} minutes. Swipe up or press Continue.</p>
+                {c.heavy && <p class="note-box"><b>A hard topic.</b> This lesson is about something serious. Read it when you are ready, or leave it for another day.</p>}
+                {c.crisis && <p class="note-box"><b>If you are in crisis right now,</b> call or text 988 in the United States to reach the Suicide and Crisis Lifeline.</p>}
+                <p class="meta-line unrev">Not yet reviewed{c.verify > 0 && `. ${c.verify} fact${c.verify === 1 ? ' is' : 's are'} still marked unchecked`}.</p>
+              </>
+            )}
+            {(c.kind === 'big' || c.kind === 'teach' || c.kind === 'today' || c.kind === 'stakes') && (
+              <>
+                <p class="label">{c.label}</p>
+                <p class={c.kind === 'big' ? 'say big' : 'say'} set:html={c.html} />
+              </>
+            )}
+            {c.kind === 'scripture' && (
+              <>
+                <p class="label">{c.label}</p>
+                <blockquote class="verse"><p set:html={c.html} />{c.cite && <cite>{c.cite}</cite>}</blockquote>
+              </>
+            )}
+            {c.kind === 'list' && (
+              <>
+                <p class="label">{c.label}</p>
+                <ul class="plain-list">{c.items.map((it) => <li set:html={it} />)}</ul>
+              </>
+            )}
+            {c.kind === 'actions' && (
+              <>
+                <p class="label">{c.label}</p>
+                <p class="say small">Pick one to try today.</p>
+                <ul class="moves" role="radiogroup" aria-label="Pick one to try today">
+                  {c.items.map((it) => <li><button type="button" role="radio" aria-checked="false" class="move" set:html={it} /></li>)}
+                </ul>
+              </>
+            )}
+            {c.kind === 'check' && (
+              <div class="check" data-xp={c.xp}>
+                <p class="label">Quick check</p>
+                <p class="say">{c.q}</p>
+                <ul class="opts">
+                  {c.options.map((o) => <li><button type="button" class="opt" data-ok={o.ok ? '1' : '0'}>{o.t}</button></li>)}
+                </ul>
+                <p class="feedback" aria-live="polite" data-hint={c.hint}></p>
+              </div>
+            )}
+            {c.kind === 'sources' && (
+              <>
+                <p class="label">{c.label}</p>
+                <ul class="plain-list srcs">{c.items.map((it) => <li set:html={it} />)}</ul>
+              </>
+            )}
+          </div>
+        </section>
+      ))}
+      <section class="slide s-finish" data-i={cards.length} aria-label="Lesson complete">
+        <div class="card">
+          <p class="label">Lesson complete</p>
+          <h2 class="title done-title">That is it for this one.</h2>
+          <p class="xp-big" data-xpbig hidden></p>
+          <p class="say" data-result>Press Finish to save it.</p>
+          <p class="say small" data-goal></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="p-bottom">
+      <button type="button" class="btn ghost" id="prev" hidden>Back</button>
+      <button type="button" class="btn big" id="next">Continue</button>
+    </footer>
+  </div>
+
+  <noscript><p class="ns">This lesson plays one screen at a time and needs JavaScript. The text above is all here, in order.</p></noscript>
+
+  <script>
+    import { complete, load, streak, doneToday, totalXP } from '../../lib/progress';
+    const shell = document.querySelector<HTMLElement>('.p-shell')!;
+    const deck = document.getElementById('deck')!;
+    const slides = [...deck.querySelectorAll<HTMLElement>('.slide')];
+    const total = slides.length;
+    const slug = shell.dataset.slug!;
+    const bar = shell.querySelector<HTMLElement>('.p-bar i')!;
+    const barEl = shell.querySelector<HTMLElement>('.p-bar')!;
+    const at = shell.querySelector<HTMLElement>('[data-at]')!;
+    const next = document.getElementById('next') as HTMLButtonElement;
+    const prev = document.getElementById('prev') as HTMLButtonElement;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let cur = 0, finished = false, correct = 0, pick = '';
+    const resolved = new WeakSet<HTMLElement>();
+
+    const h = () => deck.clientHeight;
+    const go = (i: number) => deck.scrollTo({ top: Math.max(0, Math.min(total - 1, i)) * h(), behavior: reduce ? 'auto' : 'smooth' });
+
+    function paint() {
+      const pct = ((cur + 1) / total) * 100;
+      bar.style.width = pct + '%'; at.textContent = String(cur + 1); barEl.setAttribute('aria-valuenow', String(cur + 1));
+      prev.hidden = cur === 0 || finished;
+      const slide = slides[cur];
+      const gate = slide.querySelector('.check') && !resolved.has(slide);
+      const last = cur === total - 1;
+      if (finished) { next.textContent = 'Back to the path'; next.disabled = false; }
+      else { next.textContent = last ? 'Finish' : 'Continue'; next.disabled = !!gate; }
+      slides.forEach((s, i) => s.toggleAttribute('inert', Math.abs(i - cur) > 0 && false));
+    }
+
+    let raf = 0;
+    deck.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { const i = Math.round(deck.scrollTop / h()); if (i !== cur) { cur = i; paint(); } }); }, { passive: true });
+
+    next.addEventListener('click', () => {
+      if (finished) { location.href = '/'; return; }
+      if (cur === total - 1) return finish();
+      go(cur + 1);
+    });
+    prev.addEventListener('click', () => go(cur - 1));
+    document.addEventListener('keydown', (e) => {
+      if ((e.target as HTMLElement).closest('button') && (e.key === 'Enter' || e.key === ' ')) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); if (!next.disabled) next.click(); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); if (!prev.hidden) prev.click(); }
+      if (e.key === 'Escape') location.href = '/';
+    });
+
+    // Quick checks
+    deck.querySelectorAll<HTMLElement>('.check').forEach((box) => {
+      const fb = box.querySelector<HTMLElement>('.feedback')!;
+      box.querySelectorAll<HTMLButtonElement>('.opt').forEach((b) => b.addEventListener('click', () => {
+        const slide = box.closest<HTMLElement>('.slide')!;
+        if (resolved.has(slide)) return;
+        resolved.add(slide);
+        const ok = b.dataset.ok === '1';
+        box.querySelectorAll<HTMLButtonElement>('.opt').forEach((o) => { o.disabled = true; if (o.dataset.ok === '1') o.classList.add('ok'); });
+        if (ok) { correct++; fb.textContent = 'Correct. Plus ' + box.dataset.xp + ' XP.'; fb.className = 'feedback good'; }
+        else { b.classList.add('no'); fb.textContent = 'Not quite. The right answer is marked. ' + (fb.dataset.hint ?? ''); fb.className = 'feedback bad'; }
+        paint();
+      }));
+    });
+
+    // "Pick one to try today"
+    deck.querySelectorAll<HTMLButtonElement>('.move').forEach((b) => b.addEventListener('click', () => {
+      deck.querySelectorAll('.move').forEach((o) => { o.setAttribute('aria-checked', 'false'); o.classList.remove('on'); });
+      b.setAttribute('aria-checked', 'true'); b.classList.add('on'); pick = (b.textContent ?? '').trim().slice(0, 140);
+    }));
+
+    function finish() {
+      const xp = 20 + correct * 5;
+      const before = doneToday(load());
+      const s = complete(slug, xp, pick || undefined);
+      finished = true;
+      const res = deck.querySelector<HTMLElement>('[data-result]')!;
+      const big = deck.querySelector<HTMLElement>('[data-xpbig]')!; big.textContent = `+${xp} XP`; big.hidden = false;
+      res.textContent = `${totalXP(s)} XP in all. ${streak(s)} day streak.`;
+      const goal = deck.querySelector<HTMLElement>('[data-goal]')!;
+      goal.textContent = before
+        ? 'You had already done a lesson today. More are on the path whenever you want them, and nothing is lost if you stop here.'
+        : 'Today’s goal is done. More lessons are on the path whenever you want them, and nothing is lost if you stop here.';
+      paint();
+    }
+
+    // Start on the first screen; arrow keys and Continue work from here.
+    deck.focus({ preventScroll: true }); paint();
+  </script>
+</Player>
