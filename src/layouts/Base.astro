@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+import '../styles/extra.css';
+import { getCollection } from 'astro:content';
+import { seasonFor } from '../lib/liturgical';
+interface Props { title: string; description?: string; noindex?: boolean }
+const { title, description = 'What the Catholic Church teaches, with sources, for people exploring the faith.', noindex = false } = Astro.props;
+const season = seasonFor(new Date());
+const path = Astro.url.pathname;
+const myths = (await getCollection('myths')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const full = title === 'Cruz-Mariaca' ? title : `${title} | Cruz-Mariaca`;
+const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined;
+---
+<!doctype html>
+<html lang="en" data-color={season.color}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f2ead7" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the text</a>
+    <div class="page">
+      <header class="masthead">
+        <p class="season"><span id="season">{season.label}</span></p>
+        <a class="wordmark" href="/">Cruz-Mariaca</a>
+        <nav aria-label="Main" class="menubar">
+          <ul id="nav-list">
+            <li><a href="/today/" aria-current={cur('/today/')}>Today</a></li>
+            <li><a href="/daily/" aria-current={cur('/daily/')}>Daily Bread</a></li>
+            <li><a href="/start/" aria-current={cur('/start/')}>Start Here</a></li>
+            <li class="has-menu">
+              <details>
+                <summary>Learn</summary>
+                <div class="menu">
+                  <div>
+                    <p class="menu-h">Myths and Misconceptions</p>
+                    <ul>
+                      {myths.map((m) => <li><a href={`/myths/${m.id}/`}>{m.data.title}</a></li>)}
+                      <li><a href="/myths/"><em>All entries</em></a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="menu-h">At Mass</p>
+                    <ul>
+                      <li><a href="/mass/">The Mass, step by step</a></li>
+                    </ul>
+                    <p class="menu-h">Reference</p>
+                    <ul>
+                      <li><a href="/glossary/">Glossary</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </details>
+            </li>
+            <li class="has-menu">
+              <details>
+                <summary>About</summary>
+                <div class="menu menu-narrow">
+                  <ul>
+                    <li><a href="/about/">How to read this site</a></li>
+                    <li><a href="/account/">Account</a></li>
+                  </ul>
+                </div>
+              </details>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main id="main"><slot /></main>
+      <footer class="colophon">
+        <p class="end">End of page.</p>
+        <p>No ads and no trackers. Accounts are optional.</p>
+        <p>Nothing here asks you to decide anything.</p>
+      </footer>
+    </div>
+    <script>
+      import { seasonForLocalDate } from '../lib/liturgical';
+      const s = seasonForLocalDate(new Date());
+      document.documentElement.dataset.color = s.color;
+      const el = document.getElementById('season');
+      if (el) el.textContent = s.label;
+      // Menus: one open at a time, closed by Escape or a click elsewhere.
+      const menus = [...document.querySelectorAll<HTMLDetailsElement>('.menubar details')];
+      menus.forEach((d) => d.addEventListener('toggle', () => { if (d.open) menus.forEach((o) => { if (o !== d) o.open = false; }); }));
+      document.addEventListener('click', (e) => { menus.forEach((d) => { if (!d.contains(e.target as Node)) d.open = false; }); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') menus.forEach((d) => { if (d.open) { d.open = false; d.querySelector('summary')?.focus(); } }); });
+      try { if (localStorage.getItem('cm-auth')) import('../lib/session').then((m) => m.init()); } catch {}
+    </script>
+  </body>
+</html>

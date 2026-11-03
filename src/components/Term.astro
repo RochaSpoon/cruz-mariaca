@@ -1,0 +1,11 @@
+---
+// A glossary term inside running text: underlined, with the definition on hover, focus or tap.
+import { getEntry } from 'astro:content';
+interface Props { id: string }
+const { id } = Astro.props;
+const g = await getEntry('pages', 'glossary');
+const t = g?.data.terms?.find((x) => x.id === id);
+if (!t) throw new Error(`Glossary term "${id}" not found`);
+const tipId = `tip-${id}-${Math.random().toString(36).slice(2, 7)}`;
+---
+<span class="term"><a href={`/glossary/#${id}`} aria-describedby={tipId}><slot /></a><span class="tip" role="tooltip" id={tipId}><strong>{t.term}.</strong> {t.definition}</span></span>

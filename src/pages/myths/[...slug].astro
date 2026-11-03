@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AuthorityBadge from '../../components/AuthorityBadge.astro';
+import SourceList from '../../components/SourceList.astro';
+import Scripture from '../../components/Scripture.astro';
+import Teaching from '../../components/Teaching.astro';
+import MarkRead from '../../components/MarkRead.astro';
+import Term from '../../components/Term.astro';
+
+export async function getStaticPaths() {
+  const myths = await getCollection('myths');
+  return myths.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const toc = headings.filter((h) => h.depth === 2);
+const d = entry.data;
+const minutes = Math.max(1, Math.round((entry.body ?? '').split(/\s+/).length / 200));
+const anyUnchecked = d.sources.some((s) => !s.verified);
+---
+<Base title={d.title} description={d.summary}>
+  <article>
+    <p class="rubric sc"><a href="/myths/" style="color:inherit">Myths and Misconceptions</a></p>
+    <h1>{d.title}</h1>
+    <p class="meta">
+      <AuthorityBadge level={d.authority_level} />
+      <span>{minutes} minute read</span>
+    </p>
+    {!d.reviewed && (
+      <div class="notice">
+        <p><strong>Not yet reviewed</strong></p>
+        <p>
+          {anyUnchecked
+            ? 'The Bible quotations here have been compared with the Douay-Rheims text. The Catechism, council and papal references have not been checked against their sources yet. Treat them as leads to follow, not as verified quotations.'
+            : 'This entry has its sources checked but has not had a final read-through.'}
+        </p>
+      </div>
+    )}
+    <div class="entry-grid">
+      <nav class="toc" aria-label="On this page">
+        <p class="rubric sc">In this entry</p>
+        <ol>
+          {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+          <li><a href="#sources-h">Sources</a></li>
+        </ol>
+      </nav>
+      <div class="prose drop">
+        <Content components={{ Scripture, Teaching, Term }} />
+      </div>
+    </div>
+    <SourceList sources={d.sources} numeral="VIII" />
+    <MarkRead slug={entry.id} />
+    <div class="prose">
+      <h3>A word on freedom</h3>
+      <p>The Church teaches that no one may be forced to believe, and that faith is a free act (CCC 160, Dignitatis Humanae 10). If this answer did not settle the question for you, that is a fair place to stop.</p>
+    </div>
+  </article>
+</Base>

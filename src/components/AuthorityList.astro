@@ -1,0 +1,11 @@
+---
+import { AUTHORITY_LABELS } from '../lib/authority';
+---
+<dl class="labels">
+  {Object.values(AUTHORITY_LABELS).map((l) => (
+    <>
+      <dt><span class="badge">{l.name}</span></dt>
+      <dd>{l.text}</dd>
+    </>
+  ))}
+</dl>

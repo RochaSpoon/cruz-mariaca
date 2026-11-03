@@ -1,0 +1,32 @@
+---
+interface Source { type: string; ref: string; url?: string; note?: string; verified: boolean }
+interface Props { sources: Source[]; numeral?: string }
+const { sources, numeral } = Astro.props;
+const groups: [string, string][] = [
+  ['scripture', 'Scripture'], ['ccc', 'Catechism of the Catholic Church'], ['council', 'Councils'],
+  ['papal', 'Papal and conciliar documents'], ['father', 'Church Fathers'],
+  ['tradition_doc', 'Other traditions, in their own documents'], ['scholarship', 'Historical scholarship'], ['other', 'Other'],
+];
+const anyUnchecked = sources.some((s) => !s.verified);
+---
+<section class="sources" aria-labelledby="sources-h">
+  <h2 id="sources-h">{numeral && <>{numeral}.&nbsp;</>}Sources</h2>
+  {anyUnchecked && <p class="note">Sources marked "checked" have been compared with the original text. The rest were written from memory and still need checking.</p>}
+  {groups.map(([key, label]) => {
+    const items = sources.filter((s) => s.type === key);
+    return items.length > 0 && (
+      <>
+        <h3>{label}</h3>
+        <ul>
+          {items.map((s) => (
+            <li>
+              {s.url ? <a href={s.url}>{s.ref}</a> : s.ref}
+              {s.note && <span class="note">. {s.note}</span>}
+              {s.verified && <span class="checked sc">checked</span>}
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  })}
+</section>

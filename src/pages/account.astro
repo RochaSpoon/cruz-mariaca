@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const titles = Object.fromEntries((await getCollection('myths')).map((m) => [m.id, m.data.title]));
+---
+<Base title="Account" description="Optional account to keep track of what you have read." noindex>
+  <p class="rubric sc">Account</p>
+  <h1>Keep your place</h1>
+
+  <div id="loading" class="prose"><p>One moment.</p></div>
+
+  <div id="signed-out" hidden>
+    <div class="prose">
+      <p>You do not need an account to read anything here. If you want the site to remember what you have read, make one with a username, your name and a password.</p>
+    </div>
+    <div class="notice">
+      <p><strong>Who can see this</strong></p>
+      <p>The person who runs this site can see your name, your username, which entries you mark as read, and when you last visited. No one else can. There are no ads and no third parties. The site cannot send you email, so a forgotten password has to be reset by hand.</p>
+    </div>
+
+    <form id="signin" class="form" novalidate>
+      <h2>Sign in</h2>
+      <label for="si-user">Username</label>
+      <input id="si-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required />
+      <label for="si-pass">Password</label>
+      <input id="si-pass" name="password" type="password" autocomplete="current-password" required />
+      <p class="form-error" role="alert" data-error></p>
+      <button class="button" type="submit">Sign in</button>
+      <p class="form-switch">New here? <a href="#create" data-show="signup">Create an account</a></p>
+    </form>
+
+    <form id="signup" class="form" hidden novalidate>
+      <h2>Create an account</h2>
+      <label for="su-name">Your name</label>
+      <input id="su-name" name="full_name" autocomplete="name" required maxlength="80" />
+      <label for="su-user">Username</label>
+      <input id="su-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" aria-describedby="su-user-help" />
+      <p id="su-user-help" class="help">3 to 24 letters, numbers or underscores.</p>
+      <label for="su-pass">Password</label>
+      <input id="su-pass" name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="72" aria-describedby="su-pass-help" />
+      <p id="su-pass-help" class="help">At least 8 characters. You stay signed in on this device until you sign out.</p>
+      <div id="code-row" hidden>
+        <label for="su-code">Invitation word</label>
+        <input id="su-code" name="code" autocapitalize="none" spellcheck="false" />
+      </div>
+      <p class="form-error" role="alert" data-error></p>
+      <button class="button" type="submit">Create account</button>
+      <p class="form-switch">Already have one? <a href="#signin" data-show="signin">Sign in</a></p>
+    </form>
+  </div>
+
+  <div id="signed-in" hidden>
+    <div class="prose">
+      <p>Signed in as <strong id="who"></strong>.</p>
+      <h2>What you have read</h2>
+      <ul id="read-list"></ul>
+      <p id="read-empty" hidden>Nothing yet. Each entry has a button at the end to mark it as read.</p>
+    </div>
+    <p><button id="signout" class="button" type="button">Sign out</button> <a id="admin-link" href="/admin/" hidden>Open the members page</a></p>
+  </div>
+  <script id="titles" type="application/json" set:html={JSON.stringify(titles)}></script>
+
+  <script>
+    import { supabase, SIGNUP_URL, API_KEY, emailFor } from '../lib/supabase';
+    const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
+    const titles: Record<string, string> = JSON.parse($('#titles').textContent ?? '{}');
+    const show = (id: 'loading' | 'signed-out' | 'signed-in') => {
+      for (const k of ['loading', 'signed-out', 'signed-in']) $('#' + k).hidden = k !== id;
+    };
+
+    function swap(to: 'signin' | 'signup') {
+      $('#signin').hidden = to !== 'signin';
+      $('#signup').hidden = to !== 'signup';
+      ($(to === 'signin' ? '#si-user' : '#su-name') as HTMLInputElement).focus();
+    }
+    document.querySelectorAll<HTMLElement>('[data-show]').forEach((a) =>
+      a.addEventListener('click', (e) => { e.preventDefault(); swap(a.dataset.show as 'signin' | 'signup'); }));
+
+    async function render() {
+      const { data } = await supabase.auth.getSession();
+      const session = data.session;
+      if (!session) { show('signed-out'); return; }
+      const uid = session.user.id;
+      const [{ data: prof }, { data: rows }] = await Promise.all([
+        supabase.from('profiles').select('username, full_name, is_admin').eq('id', uid).maybeSingle(),
+        supabase.from('progress').select('slug, read_at').eq('user_id', uid).order('read_at'),
+      ]);
+      $('#who').textContent = prof ? `${prof.full_name} (${prof.username})` : session.user.email ?? '';
+      const list = $('#read-list'); list.replaceChildren();
+      for (const r of rows ?? []) {
+        const li = document.createElement('li');
+        const a = document.createElement('a'); a.href = `/myths/${r.slug}/`; a.textContent = titles[r.slug] ?? r.slug;
+        li.append(a); list.append(li);
+      }
+      $('#read-empty').hidden = !!rows?.length;
+      $('#admin-link').hidden = !prof?.is_admin;
+      show('signed-in');
+    }
+
+    function busy(form: HTMLFormElement, on: boolean) {
+      form.querySelector<HTMLButtonElement>('button[type=submit]')!.disabled = on;
+    }
+    const fail = (form: HTMLFormElement, msg: string) => { form.querySelector<HTMLElement>('[data-error]')!.textContent = msg; };
+
+    async function signIn(username: string, password: string) {
+      return supabase.auth.signInWithPassword({ email: emailFor(username), password });
+    }
+
+    $('#signin').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.currentTarget as HTMLFormElement; fail(f, ''); busy(f, true);
+      const fd = new FormData(f);
+      const { error } = await signIn(String(fd.get('username')), String(fd.get('password')));
+      busy(f, false);
+      if (error) return fail(f, 'That username and password do not match.');
+      render();
+    });
+
+    $('#signup').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = e.currentTarget as HTMLFormElement; fail(f, '');
+      if (!f.checkValidity()) { f.reportValidity(); return; }
+      busy(f, true);
+      const fd = new FormData(f);
+      const body = { username: fd.get('username'), full_name: fd.get('full_name'), password: fd.get('password'), code: fd.get('code') };
+      try {
+        const res = await fetch(SIGNUP_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: API_KEY }, body: JSON.stringify(body) });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          if (res.status === 403) $('#code-row').hidden = false;
+          busy(f, false); return fail(f, out.error ?? 'Something went wrong. Try again.');
+        }
+        const { error } = await signIn(String(body.username), String(body.password));
+        busy(f, false);
+        if (error) return fail(f, 'Your account was made, but signing in failed. Try signing in.');
+        render();
+      } catch {
+        busy(f, false); fail(f, 'Could not reach the server. Check your connection and try again.');
+      }
+    });
+
+    $('#signout').addEventListener('click', async () => { await supabase.auth.signOut(); location.href = '/account/'; });
+    if (location.hash === '#create') swap('signup');
+    render().catch(() => show('signed-out'));
+  </script>
+</Base>

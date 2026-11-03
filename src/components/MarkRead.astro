@@ -1,0 +1,45 @@
+---
+interface Props { slug: string; on?: string; off?: string; done?: string }
+const { slug, on = 'Mark as read', off = 'Mark as unread', done = 'Marked as read.' } = Astro.props;
+---
+<div class="markread" data-slug={slug} data-on={on} data-off={off} data-done={done}>
+  <p class="signin-hint">Accounts are optional. <a href="/account/">Sign in</a> if you want to keep track of what you have read.</p>
+  <p class="signed-in" hidden>
+    <button type="button" class="button" data-toggle>{on}</button>
+    <span class="rubric" data-state aria-live="polite"></span>
+  </p>
+</div>
+<script>
+  import { HAS_SESSION_KEY } from '../lib/supabase';
+  import { isoLocal } from '../lib/daily';
+  const box = document.querySelector<HTMLElement>('.markread');
+  let hasSession = false;
+  try { hasSession = !!localStorage.getItem(HAS_SESSION_KEY); } catch {}
+  if (box && hasSession) {
+    const slug = box.dataset.slug === 'daily-today' ? `daily-${isoLocal(new Date())}` : box.dataset.slug!;
+    const { on, off, done } = box.dataset as Record<string, string>;
+    const hint = box.querySelector<HTMLElement>('.signin-hint')!;
+    const row = box.querySelector<HTMLElement>('.signed-in')!;
+    const btn = box.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    const state = box.querySelector<HTMLElement>('[data-state]')!;
+    import('../lib/supabase').then(async ({ supabase }) => {
+      const { data } = await supabase.auth.getSession();
+      const session = data.session;
+      if (!session) return;
+      hint.hidden = true; row.hidden = false;
+      const uid = session.user.id;
+      let read = false;
+      const paint = () => { btn.textContent = read ? off : on; state.textContent = read ? done : ''; };
+      const { data: rows } = await supabase.from('progress').select('slug').eq('user_id', uid).eq('slug', slug);
+      read = !!rows?.length; paint();
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        const { error } = read
+          ? await supabase.from('progress').delete().eq('user_id', uid).eq('slug', slug)
+          : await supabase.from('progress').upsert({ user_id: uid, slug }, { onConflict: 'user_id,slug', ignoreDuplicates: true });
+        if (error) { state.textContent = 'That did not save. Try again.'; } else { read = !read; paint(); }
+        btn.disabled = false;
+      });
+    });
+  }
+</script>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import AuthorityBadge from '../../components/AuthorityBadge.astro';
+import { getCollection } from 'astro:content';
+const myths = (await getCollection('myths')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<Base title="Myths and misconceptions" description="Common claims about the Catholic Church, answered from primary sources.">
+  <p class="rubric sc">Myths and Misconceptions</p>
+  <h1>Things people say about the Church</h1>
+  <p class="lede">Each entry starts with the claim as people actually say it. It ends with the strongest objection that is still standing.</p>
+  <ul class="entry-list">
+    {myths.map((m) => (
+      <li>
+        <h2><a href={`/myths/${m.id}/`}>{m.data.title}</a></h2>
+        <p>{m.data.summary}</p>
+        <p class="meta">
+          <AuthorityBadge level={m.data.authority_level} />
+          {!m.data.reviewed && <span class="rubric">Not yet reviewed</span>}
+        </p>
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,161 @@
+@font-face { font-family: 'EB Garamond'; src: url('../assets/fonts/eb-garamond-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'EB Garamond'; src: url('../assets/fonts/eb-garamond-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'EB Garamond'; src: url('../assets/fonts/eb-garamond-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'EB Garamond'; src: url('../assets/fonts/eb-garamond-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+
+:root {
+  --parchment: #f2ead7;
+  --parchment-deep: #e6dac0;
+  --ink: #1e1a15;
+  --ink-soft: #4a4136;
+  --rubric: #9b1b1b;
+
+  /* Liturgical accent. --accent is for rules and ornament. --accent-text is dark enough for text on parchment. */
+  --accent: #3f6b3a;
+  --accent-text: #2f5a2b;
+
+  --serif: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --measure: 66ch;
+}
+html[data-color='green']  { --accent: #3f6b3a; --accent-text: #2f5a2b; }
+html[data-color='violet'] { --accent: #5b3a78; --accent-text: #4b2d66; }
+html[data-color='white']  { --accent: #b8912f; --accent-text: #7a5c0e; }
+html[data-color='red']    { --accent: #9b1b1b; --accent-text: #9b1b1b; }
+html[data-color='rose']   { --accent: #c98a9a; --accent-text: #8a4256; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.55;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  hyphens: manual;
+  text-rendering: optimizeLegibility;
+}
+.page { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: var(--parchment); padding: .5rem 1rem; z-index: 10; }
+.skip:focus { left: 0; }
+
+a { color: var(--ink); text-decoration-line: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: .18em; }
+a:hover { color: var(--rubric); text-decoration-color: var(--rubric); }
+a:focus-visible, summary:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* Small capitals. The font files carry no smcp feature, so these are reduced, spaced capitals. */
+.sc { text-transform: uppercase; font-size: .78em; letter-spacing: .12em; font-weight: 500; }
+
+/* Masthead, set like a title page. */
+.masthead { text-align: center; padding: 1.75rem 0 0; }
+.season { margin: 0; color: var(--rubric); font-style: italic; font-size: 1rem; }
+.wordmark { display: inline-block; margin: .15rem 0 .6rem; font-size: 1.9rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
+.wordmark:hover { color: var(--ink); }
+.masthead nav { border-top: 4px double var(--accent); border-bottom: 1px solid var(--ink-soft); padding: .5rem 0; }
+.masthead nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: .25rem 1.5rem; }
+.masthead nav a { text-decoration: none; font-size: .95rem; text-transform: uppercase; letter-spacing: .12em; padding: .35rem 0; display: inline-block; }
+.masthead nav a:hover, .masthead nav a[aria-current='page'] { color: var(--rubric); text-decoration: underline; text-decoration-color: var(--rubric); }
+
+main { padding: 2.25rem 0 1rem; }
+h1, h2, h3 { font-weight: 500; text-wrap: balance; }
+h1 { font-size: 2.45rem; line-height: 1.12; margin: .35rem 0 1rem; }
+.rubric { color: var(--rubric); font-style: italic; margin: 0; }
+.rubric.sc { font-style: normal; }
+.lede { font-size: 1.3rem; font-style: italic; color: var(--ink-soft); max-width: var(--measure); }
+
+.prose { max-width: var(--measure); }
+.prose p { margin: 0 0 1em; }
+.prose h2 { counter-increment: section; color: var(--rubric); font-size: .95rem; text-transform: uppercase; letter-spacing: .14em; margin: 2.4em 0 .8em; padding-top: .9em; border-top: 1px solid var(--parchment-deep); }
+.prose { counter-reset: section; }
+.prose h2::before { content: counter(section, upper-roman) '.\00a0'; }
+.prose h3 { font-size: 1.15rem; font-style: italic; margin: 1.6em 0 .4em; }
+.prose ul, .prose ol { padding-left: 1.3em; margin: 0 0 1em; }
+.prose li { margin-bottom: .45em; }
+.prose.drop > p:first-of-type::first-letter { float: left; font-size: 4.1em; line-height: .78; padding: .06em .09em 0 0; color: var(--accent-text); font-weight: 500; }
+
+blockquote { margin: 0 0 1em; padding-left: 1rem; border-left: 2px solid var(--rubric); font-style: italic; }
+blockquote p { margin: 0 0 .4em; }
+
+.scripture { margin: 1.2em 0 1.4em; padding: 0 0 0 1.25rem; border-left: 1px solid var(--accent); }
+.scripture blockquote { border: 0; padding: 0; margin: 0; }
+.scripture figcaption { margin-top: .25rem; color: var(--rubric); font-size: .9rem; }
+.scripture figcaption .sc { letter-spacing: .1em; }
+
+.badge { display: inline-block; border: 1px solid var(--rubric); color: var(--rubric); padding: .05em .5em .0; font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; line-height: 1.5; white-space: nowrap; }
+.teaching { margin: 1.4em 0; padding: .1em 0 .1em 1.25rem; border-left: 4px double var(--accent); }
+.teaching .label { margin: 0 0 .35em; display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: baseline; }
+.teaching .refs { color: var(--ink-soft); font-size: .95rem; font-style: italic; }
+.teaching .text { margin: 0; }
+
+.notice { border: 1px solid var(--rubric); padding: .8rem 1rem; margin: 1.2rem 0 1.6rem; max-width: var(--measure); font-size: 1rem; }
+.notice strong { color: var(--rubric); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; font-size: .85rem; }
+.notice p { margin: 0 0 .4em; } .notice p:last-child { margin: 0; }
+
+.meta { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; align-items: baseline; margin: 0 0 1rem; font-size: 1rem; color: var(--ink-soft); }
+
+.sources { max-width: var(--measure); margin-top: 2.4em; padding-top: .9em; border-top: 1px solid var(--parchment-deep); }
+.sources h2 { color: var(--rubric); font-size: .95rem; text-transform: uppercase; letter-spacing: .14em; margin: 0 0 .8em; font-weight: 500; }
+.sources h3 { font-size: .95rem; font-style: italic; font-weight: 400; margin: 1.1em 0 .3em; color: var(--ink-soft); }
+.sources ul { list-style: none; margin: 0; padding: 0; font-size: 1rem; }
+.sources li { padding: .12em 0; }
+.sources .checked { color: var(--rubric); font-size: .8rem; margin-left: .5rem; }
+.sources .note { color: var(--ink-soft); font-style: italic; }
+
+.entry-list { list-style: none; padding: 0; margin: 1.5rem 0; max-width: var(--measure); }
+.entry-list li { padding: 1.1rem 0; border-top: 1px solid var(--parchment-deep); }
+.entry-list li:last-child { border-bottom: 1px solid var(--parchment-deep); }
+.entry-list h2 { font-size: 1.45rem; margin: 0 0 .25rem; }
+.entry-list p { margin: 0 0 .4rem; }
+
+dl.labels { max-width: var(--measure); }
+dl.labels dt { margin-top: 1.2em; }
+dl.labels dd { margin: .35em 0 0; }
+
+.colophon { margin-top: 3rem; padding: 1.25rem 0 2.5rem; border-top: 4px double var(--accent); text-align: center; color: var(--ink-soft); font-size: 1rem; }
+.colophon .end { color: var(--rubric); font-style: italic; margin: 0 0 .6rem; font-size: 1.05rem; }
+.colophon p { margin: 0 0 .35em; }
+
+@media (min-width: 52rem) {
+  body { font-size: 1.3rem; }
+  h1 { font-size: 3rem; }
+  .wordmark { font-size: 2.3rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a { transition: color .15s ease; }
+}
+@media print {
+  body { background: #fff; } .masthead nav, .skip { display: none; }
+}
+
+.prose.plain h2::before { content: none; }
+
+/* Forms and tables */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.form { max-width: 28rem; margin: 1.5rem 0; }
+.form h2 { font-size: 1.5rem; margin: 0 0 .75rem; }
+.form label { display: block; margin: 1rem 0 .25rem; color: var(--rubric); text-transform: uppercase; letter-spacing: .12em; font-size: .85rem; }
+.form input { width: 100%; font: inherit; font-size: 1.1rem; padding: .55rem .7rem; color: var(--ink); background: #faf5e8; border: 1px solid var(--ink-soft); border-radius: 0; }
+.form .help { margin: .3rem 0 0; color: var(--ink-soft); font-size: .95rem; }
+.form-error { color: var(--rubric); min-height: 1.5em; margin: .75rem 0 .25rem; font-style: italic; }
+.form-switch { margin-top: 1rem; font-size: 1rem; }
+.button { font: inherit; font-size: 1rem; letter-spacing: .1em; text-transform: uppercase; padding: .6rem 1.3rem; color: var(--parchment); background: var(--ink); border: 1px solid var(--ink); border-radius: 0; cursor: pointer; }
+.button:hover { background: var(--rubric); border-color: var(--rubric); }
+.button:disabled { opacity: .55; cursor: default; }
+.markread { max-width: var(--measure); margin: 2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--parchment-deep); font-size: 1rem; }
+.markread p { margin: 0; }
+.markread [hidden] { display: none; }
+.markread .signed-in { display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+.table-wrap { overflow-x: auto; }
+table.members { border-collapse: collapse; width: 100%; font-size: 1rem; margin: 1rem 0; }
+table.members th { text-align: left; color: var(--rubric); text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; font-weight: 500; border-bottom: 2px solid var(--ink-soft); padding: .4rem .6rem .4rem 0; }
+table.members td { vertical-align: top; padding: .6rem .6rem .6rem 0; border-bottom: 1px solid var(--parchment-deep); }
+table.members td ul { margin: .3rem 0 0; padding-left: 1.1rem; font-size: .95rem; color: var(--ink-soft); }
+@media (max-width: 40rem) {
+  table.members thead { position: absolute; left: -9999px; }
+  table.members tr { display: block; padding: .6rem 0; border-bottom: 1px solid var(--ink-soft); }
+  table.members td { display: block; border: 0; padding: .1rem 0; }
+  table.members td::before { content: attr(data-label) ': '; color: var(--rubric); font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
+}

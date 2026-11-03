@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import TodayPanel from '../components/TodayPanel.astro';
+---
+<Base title="Today" description="The season, the color, and one small task for the day.">
+  <p class="rubric sc">Today</p>
+  <h1>One thing for today</h1>
+  <div class="home">
+    <TodayPanel />
+    <div class="prose">
+      <p>The task takes a few minutes. There is nothing to keep up and nothing to lose by skipping a day.</p>
+      <p>If you want the Mass readings for the day as the Church assigns them, the United States bishops post them each morning at <a href="https://bible.usccb.org/daily-bible-reading">bible.usccb.org</a>. The readings here are a separate cycle of thirty, chosen to be short.</p>
+      <p>The season and the color at the top of every page follow the Church's calendar for the Roman Rite.</p>
+    </div>
+  </div>
+</Base>

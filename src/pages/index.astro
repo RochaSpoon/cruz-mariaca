@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import TodayPanel from '../components/TodayPanel.astro';
+import { getCollection } from 'astro:content';
+const myths = (await getCollection('myths')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<Base title="Cruz-Mariaca">
+  <div class="intro">
+    <p class="rubric sc">For people looking in from outside</p>
+    <h1>What the Catholic Church teaches, and what it does not</h1>
+    <p class="lede">Every page gives sources you can check, states the other side the way its best writers would, and leaves the decision to you. The Church itself teaches that faith has to be free (CCC 160).</p>
+  </div>
+  <div class="home">
+    <TodayPanel />
+    <section class="library" aria-labelledby="lib-h">
+      <h2 id="lib-h">Library</h2>
+      <details open>
+        <summary>Start here</summary>
+        <p class="sub">One question, five paths. Pick the one that sounds most like you.</p>
+        <ul><li><a href="/start/">Where are you coming from?</a></li></ul>
+      </details>
+      <details>
+        <summary>Myths and misconceptions</summary>
+        <p class="sub">Claims people make about the Church, each answered from the sources.</p>
+        <ul>
+          {myths.map((m) => <li><a href={`/myths/${m.id}/`}>{m.data.title}</a></li>)}
+        </ul>
+      </details>
+      <details>
+        <summary>The Mass, step by step</summary>
+        <p class="sub">What happens, why, where it comes from, and when to sit, stand or kneel.</p>
+        <ul><li><a href="/mass/">Walk through the Mass</a></li></ul>
+      </details>
+      <details>
+        <summary>Daily Bread</summary>
+        <p class="sub">One reading, one thought, one question. Then it ends.</p>
+        <ul><li><a href="/daily/">Today's reading</a></li></ul>
+      </details>
+      <details>
+        <summary>Reference</summary>
+        <ul>
+          <li><a href="/glossary/">Glossary</a></li>
+          <li><a href="/about/">How to read this site</a></li>
+          <li><a href="/account/">Account (optional)</a></li>
+        </ul>
+      </details>
+    </section>
+  </div>
+</Base>

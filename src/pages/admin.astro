@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const titles = Object.fromEntries((await getCollection('myths')).map((m) => [m.id, m.data.title]));
+---
+<Base title="Members" description="Members page." noindex>
+  <p class="rubric sc">For the site's editor</p>
+  <h1>Members</h1>
+
+  <p id="msg" class="prose">Checking your account.</p>
+
+  <div id="board" hidden>
+    <p id="summary" class="lede"></p>
+    <div class="table-wrap">
+      <table class="members">
+        <caption class="sr-only">Everyone with an account, with the entries each has marked as read</caption>
+        <thead>
+          <tr><th scope="col">Name</th><th scope="col">Username</th><th scope="col">Joined</th><th scope="col">Last visit</th><th scope="col">Read</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="rubric">Passwords are never visible to anyone, including you. To reset one, use the Supabase dashboard under Authentication.</p>
+  </div>
+  <script id="titles" type="application/json" set:html={JSON.stringify(titles)}></script>
+
+  <script>
+    import { supabase } from '../lib/supabase';
+    const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
+    const titles: Record<string, string> = JSON.parse($('#titles').textContent ?? '{}');
+    const total = Object.keys(titles).length;
+    const isDaily = (s: string) => s.startsWith('daily-');
+    const nice = (s: string) => isDaily(s) ? 'Daily Bread, ' + new Date(s.slice(6) + 'T12:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : (titles[s] ?? s);
+    const fmt = (iso: string | null) => iso ? new Date(iso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : 'never';
+
+    (async () => {
+      const { data } = await supabase.auth.getSession();
+      if (!data.session) { $('#msg').innerHTML = 'This page is for the site’s editor. <a href="/account/">Sign in</a> first.'; return; }
+      const { data: rows, error } = await supabase.rpc('admin_members');
+      if (error) { $('#msg').textContent = 'This page is for the site’s editor. Your account does not have access.'; return; }
+
+      const members = rows as { username: string; full_name: string; created_at: string; last_sign_in_at: string | null; last_seen_at: string | null; read_count: number; read_slugs: string[] }[];
+      const week = Date.now() - 7 * 86400000;
+      const lastOf = (m: (typeof members)[number]) => Math.max(Date.parse(m.last_seen_at ?? '') || 0, Date.parse(m.last_sign_in_at ?? '') || 0);
+      const active = members.filter((m) => lastOf(m) > week).length;
+      $('#summary').textContent = `${members.length} ${members.length === 1 ? 'member' : 'members'}. ${active} visited in the last week.`;
+
+      const tbody = $('#rows'); tbody.replaceChildren();
+      for (const m of members) {
+        const tr = document.createElement('tr');
+        const cell = (label: string, text: string) => { const td = document.createElement('td'); td.dataset.label = label; td.textContent = text; tr.append(td); return td; };
+        cell('Name', m.full_name); cell('Username', m.username); cell('Joined', fmt(m.created_at));
+        cell('Last visit', fmt(lastOf(m) ? new Date(lastOf(m)).toISOString() : null));
+        const nEntries = m.read_slugs.filter((x) => !isDaily(x)).length;
+        const td = cell('Read', `${nEntries} of ${total} entries, ${m.read_slugs.length - nEntries} daily`);
+        if (m.read_slugs.length) {
+          const ul = document.createElement('ul');
+          for (const s of m.read_slugs) { const li = document.createElement('li'); li.textContent = nice(s); ul.append(li); }
+          td.append(ul);
+        }
+        tbody.append(tr);
+      }
+      if (!members.length) { const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = 5; td.textContent = 'No one has made an account yet.'; tr.append(td); tbody.append(tr); }
+      $('#msg').hidden = true; $('#board').hidden = false;
+    })();
+  </script>
+</Base>

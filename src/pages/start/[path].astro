@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import { PATHS } from '../../lib/paths';
+export function getStaticPaths() { return PATHS.map((p) => ({ params: { path: p.id }, props: { p } })); }
+const { p } = Astro.props;
+---
+<Base title={p.label} description={p.blurb}>
+  <p class="rubric sc"><a href="/start/" style="color:inherit">Start here</a></p>
+  <h1>{p.label}</h1>
+  <div class="prose">
+    {p.intro.map((t) => <p>{t}</p>)}
+  </div>
+  <h2 class="rubric sc" style="margin-top:1.5rem;font-size:.95rem;letter-spacing:.14em;font-weight:500">Read these first</h2>
+  <ul class="readlist">
+    {p.picks.map((x) => <li><a href={x.href}>{x.label}</a><p>{x.why}</p></li>)}
+  </ul>
+  <p><a href="/start/">Choose a different path</a></p>
+</Base>

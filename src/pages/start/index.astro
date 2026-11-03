@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import { PATHS } from '../../lib/paths';
+---
+<Base title="Start here" description="Five paths into the site, depending on where you are coming from.">
+  <p class="rubric sc">Start here</p>
+  <h1>Where are you coming from?</h1>
+  <p class="lede">Choose the line that sounds most like you. Each path is a short reading list. You can change your mind at any time.</p>
+  <ul class="choices">
+    {PATHS.map((p) => (
+      <li><a href={`/start/${p.id}/`}><strong>{p.label}</strong><span>{p.blurb}</span></a></li>
+    ))}
+  </ul>
+</Base>

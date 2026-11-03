@@ -1,0 +1,6 @@
+---
+import { AUTHORITY_LABELS, type AuthorityLevel } from '../lib/authority';
+interface Props { level: AuthorityLevel }
+const { level } = Astro.props;
+---
+<span class="badge" title={AUTHORITY_LABELS[level].text}>{AUTHORITY_LABELS[level].name}</span>

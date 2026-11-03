@@ -1,0 +1,9 @@
+---
+// A quoted Bible passage, Douay-Rheims only. Add `checked` once the text has been compared with a source.
+interface Props { cite: string; checked?: boolean }
+const { cite, checked = false } = Astro.props;
+---
+<figure class="scripture" data-checked={checked ? 'true' : 'false'}>
+  <blockquote><slot /></blockquote>
+  <figcaption>{cite} <span class="sc">Douay-Rheims</span></figcaption>
+</figure>

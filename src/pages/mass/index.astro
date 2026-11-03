@@ -1,0 +1,42 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SourceList from '../../components/SourceList.astro';
+const entry = await getEntry('pages', 'mass');
+if (!entry) throw new Error('mass.mdx missing');
+const { Content } = await render(entry);
+const parts = entry.data.parts ?? [];
+---
+<Base title="The Mass, step by step" description={entry.data.summary}>
+  <p class="rubric sc">At Mass</p>
+  <h1>The Mass, step by step</h1>
+  <p class="lede">Open a step to see what happens, why, where it comes from, and what to do with your body.</p>
+  <div class="prose plain"><Content /></div>
+  <div class="steps" id="steps">
+    {parts.map((p, i) => (
+      <details name="mass" id={`step-${i + 1}`}>
+        <summary><span class="n">{String(i + 1).padStart(2, '0')}</span>{p.title}</summary>
+        <dl>
+          <dt>What happens</dt><dd>{p.what}</dd>
+          <dt>Why</dt><dd>{p.why}</dd>
+          <dt>Where it comes from</dt><dd>{p.roots}</dd>
+          {p.early && <><dt>Early evidence</dt><dd>{p.early}</dd></>}
+          {p.posture && <><dt>Posture</dt><dd>{p.posture}</dd></>}
+        </dl>
+        <div class="stepnav">
+          {i > 0 && <button type="button" data-go={i}>Previous</button>}
+          {i < parts.length - 1 && <button type="button" data-go={i + 2}>Next</button>}
+        </div>
+      </details>
+    ))}
+  </div>
+  <SourceList sources={entry.data.sources} />
+  <script>
+    const open = (n: number) => {
+      const el = document.getElementById(`step-${n}`) as HTMLDetailsElement | null;
+      if (el) { el.open = true; el.scrollIntoView({ block: 'start' }); el.querySelector('summary')?.focus({ preventScroll: true }); history.replaceState(null, '', `#step-${n}`); }
+    };
+    document.querySelectorAll<HTMLButtonElement>('[data-go]').forEach((b) => b.addEventListener('click', () => open(Number(b.dataset.go))));
+    const m = location.hash.match(/^#step-(\d+)$/); if (m) open(Number(m[1]));
+  </script>
+</Base>
