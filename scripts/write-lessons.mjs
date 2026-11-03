@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { globSync } from 'node:fs';
 import YAML from 'yaml';
 
-const BOOKS = { Genesis: 1, Exodus: 2, Isaiah: 27, Malachi: 44, Matthew: 47, Mark: 48, Luke: 49, John: 50, Acts: 51, Romans: 52, '1 Corinthians': 53, '2 Corinthians': 54, Galatians: 55, Ephesians: 56, Colossians: 58, '1 Timothy': 61, '2 Timothy': 62, Titus: 63, Hebrews: 65, James: 66, '1 Peter': 67, '1 John': 69, Apocalypse: 73 };
+const BOOKS = { Psalms: 21, Ecclesiasticus: 26, Job: 20, Wisdom: 25, '1 Kings': 9, '3 Kings': 11, '4 Kings': 12, '1 Thessalonians': 59, Genesis: 1, Exodus: 2, Isaiah: 27, Malachi: 44, Matthew: 47, Mark: 48, Luke: 49, John: 50, Acts: 51, Romans: 52, '1 Corinthians': 53, '2 Corinthians': 54, Galatians: 55, Ephesians: 56, Colossians: 58, '1 Timothy': 61, '2 Timothy': 62, Titus: 63, Hebrews: 65, James: 66, '1 Peter': 67, '1 John': 69, Apocalypse: 73 };
 const cache = new URL('../.cache-drbo/', import.meta.url).pathname;
 mkdirSync(cache, { recursive: true });
 

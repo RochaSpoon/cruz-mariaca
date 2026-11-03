@@ -8,7 +8,7 @@ Douay-Rheims passages were compared with drbo.org. vatican.va, usccb.org and new
 
 ## Lessons
 
-356 lessons in `src/content/lessons`: 51 written in full, 305 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. Quotes and figures still flagged [VERIFY]:
+356 lessons in `src/content/lessons`: 73 written in full, 283 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. Quotes and figures still flagged [VERIFY]:
 
 - Modesty: Guarding the Mystery of the Person: St. Francis de Sales told his readers to dress neatly and suitably to their state in life, not carelessly and not vainly, in a way that does
 - Pornography: How to Get Free: - **Kids see it early.** A 2023 Common Sense Media survey found most U.S. teens have seen pornography, with an average first exposure around
@@ -19,6 +19,39 @@ Douay-Rheims passages were compared with drbo.org. vatican.va, usccb.org and new
 - Abortion: Since *Dobbs* (2022) overturned *Roe v. Wade*, abortion law in the U.S. is decided state by state. In California, abortion is legal and prot
 - Euthanasia and Assisted Suicide: Assisted suicide is legal in California (since 2016) and a growing number of states and countries. Canada's "Medical Assistance in Dying" pr
 - Male and Female He Created Them: *Dignitas Infinita* (2024) says that wanting to decide your own sex apart from the reality you received is giving in to the old temptation t
+- Discernment of Spirits: Ignatius noticed two patterns. Consolation is a lift toward God, with peace, hope and love. Desolation is a pull away, with heaviness, doubt
+- Discernment of Spirits: His practical advice: in desolation, do not make big decisions. Do not change what you decided in a time of consolation. Wait. [VERIFY]
+- Dryness in Prayer: The Catechism lists dryness among the main struggles in prayer and says the answer is perseverance and humility (CCC 2731). [VERIFY]
+- Dryness in Prayer: St. John of the Cross wrote about the dark night, a stretch where God seems absent and the soul is being drawn deeper. His book, Dark Night 
+- Dryness in Prayer: - St. John of the Cross, Dark Night of the Soul [VERIFY]
+- Gratitude: - CCC 1328 [VERIFY]
+- How to Start Praying: The Catechism names three kinds of prayer: vocal, meditation and contemplation (CCC 2699). [VERIFY] You can begin with the first and let the
+- Lectio Divina: The four steps are *lectio* (read), *meditatio* (reflect), *oratio* (respond in prayer) and *contemplatio* (rest in God). Monks have used th
+- Lectio Divina: The Second Vatican Council urges all the faithful to read Scripture and to let prayer go with it, so that a conversation takes place between
+- Lectio Divina: - Dei Verbum 25 [VERIFY]
+- Meditation and Contemplation: Contemplation is a gaze of faith fixed on Jesus, "a gift" and not a technique you can force (CCC 2709-2719). [VERIFY]
+- Meditation and Contemplation: The Church has warned that methods borrowed from other religions can confuse prayer with a technique for calming the self. The Vatican lette
+- Novenas: After Jesus ascended, the apostles stayed together in prayer with Mary and the women, waiting for the Spirit (Acts 1:14). Pentecost came on 
+- Novenas: The word novena comes from the Latin for nine. [VERIFY] It became a popular devotion for any pressing need.
+- Offering Up Suffering: Pope John Paul II wrote on this in Salvifici Doloris (1984), saying that suffering, united with Christ, takes on a meaning. [VERIFY]
+- Offering Up Suffering: The Catechism teaches that Christ invites us to take up our cross and follow him (CCC 618). [VERIFY]
+- Offering Up Suffering: - John Paul II, Salvifici Doloris (1984) [VERIFY]
+- Sacramentals: The Church says sacramentals prepare us to receive grace and make different circumstances of life holy (CCC 1667). [VERIFY] They are set up 
+- Spiritual Direction: The Catechism lists spiritual direction among the places where prayer is learned (CCC 2690). [VERIFY]
+- The Daily Examen: Ignatius treated it as so important that he told his Jesuits to keep it even when they dropped other things. [VERIFY]
+- The Divine Mercy Chaplet: Faustina wrote that Jesus taught her the chaplet in 1935 (Diary 474-476). [VERIFY] The prayers are short. You offer the Body, Blood, Soul an
+- The Divine Mercy Chaplet: Pope John Paul II canonized Faustina in 2000 and set the Sunday after Easter as Divine Mercy Sunday. [VERIFY]
+- The Divine Mercy Chaplet: - **Pray it once** at 3 pm, the hour many link to Jesus' death, and see what you think. [VERIFY]
+- The Divine Mercy Chaplet: - St. Faustina Kowalska, Diary 474-476 [VERIFY]
+- The Hail Mary: "Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death" came later. "Mother of God" was affirmed by the Council of
+- The Liturgy of the Hours: Morning Prayer and Evening Prayer are the two main hours (CCC 1175). [VERIFY] The others are the Office of Readings, Daytime Prayer and Nigh
+- The Our Father, Line by Line: The Our Father is the prayer Jesus gave when his disciples asked him how to pray (Luke 11:1). The Catechism calls it the summary of the whol
+- The Our Father, Line by Line: **Give us this day our daily bread.** The Greek word for "daily" is rare, and the Church has understood it as food for the body and as the E
+- The Our Father, Line by Line: Protestants often add "For thine is the kingdom, and the power, and the glory." The Orthodox also use it. Catholics say it after the priest'
+- The Rosary: Pope John Paul II added the Luminous Mysteries in 2002 in Rosarium Virginis Mariae. [VERIFY] The Church suggests Joyful on Monday and Saturd
+- The Rosary: - John Paul II, Rosarium Virginis Mariae (2002) [VERIFY]
+- Why Does God Allow Suffering?: The Catechism says God permits evil and brings a greater good from it, but does not explain each case (CCC 311-312). [VERIFY] That can sound
+- Why Pray?: The Catechism describes prayer as the encounter of God's thirst with ours (CCC 2560). [VERIFY] God goes first. You are answering.
 - Anointing of the Sick: Only a priest or a bishop can give it (CCC 1516). It can forgive sins when the person cannot go to Confession (CCC 1520). [VERIFY]
 - Anointing of the Sick: **Viaticum** is Communion given to someone who is dying. Together with Confession and the Anointing, it is what people mean by the last rite
 - Baptism: The Church teaches that baptism is the door to the other sacraments and to life in Christ (CCC 1213). Without it, the rest of the sacramenta
