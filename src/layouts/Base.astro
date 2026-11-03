@@ -27,7 +27,7 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
     <a class="skip" href="#main">Skip to the content</a>
     <div class="shell">
       <aside class="side" aria-label="Main">
-        <a class="logo" href="/">cruz-mariaca</a>
+        <a class="logo" href="/"><img src="/logo.svg" alt="" width="40" height="40" />cruz-mariaca</a>
         <nav class="side-nav">
           <a href="/" aria-current={path === '/' || path.startsWith('/learn') ? 'page' : undefined}>
             <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 3 14v14h9v-8h8v8h9V14z" fill="currentColor"/></svg><span>Learn</span>
@@ -43,7 +43,7 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
           </a>
         </nav>
       </aside>
-      <main id="main" class="content"><slot /></main>
+      <main id="main" class="content"><a class="mtop" href="/"><img src="/logo.svg" alt="" width="30" height="30" />cruz-mariaca</a><slot /></main>
     </div>
     <nav class="tabbar" aria-label="App">
       <a href="/" aria-label="Learn" aria-current={path === '/' || path.startsWith('/learn') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 3 14v14h9v-8h8v8h9V14z" fill="currentColor"/></svg></a>

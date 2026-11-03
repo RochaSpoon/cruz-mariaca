@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#F2EAD7"/><path d="M14 5h4v9h9v4h-9v9h-4v-9H5v-4h9z" fill="#9B1B1B"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Crucifix">
+  <rect width="120" height="120" rx="28" fill="#4f5bd5"/>
+  <path fill="#fff" d="M48 10h24v24h32v24H72v52H48V58H16V34h32z"/>
+  <g fill="#4f5bd5">
+    <ellipse cx="59" cy="29" rx="6.500" ry="7.500" transform="rotate(10 59 29)"/>
+    <path d="M18 40h84v5L70 55H50L18 45z"/>
+    <path d="M50 54h20l-2 22 1 32h-7.500L60 92l-1.500 16H51l1-32z"/>
+  </g>
+</svg>
