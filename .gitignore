@@ -6,3 +6,4 @@ screenshots
 .env
 src/assets/fonts/
 .cache-drbo
+.cache-src

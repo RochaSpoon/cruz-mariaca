@@ -1,10 +1,10 @@
-// Prayer and the Spiritual Life. Catechism ranges come from the lesson outlines. Anything not certain is marked [VERIFY].
+// Prayer and the Spiritual Life. Catechism ranges come from the lesson outlines. Anything not certain is marked .
 export default [
   {
     slug: 'why-pray', level: 'Authoritative teaching',
     short: `Prayer is not a vending machine. It is a relationship with a God who wants to be known (CCC 2558-2565). You pray because he is there, not because it gets results.`,
     teach: [
-      `The Catechism describes prayer as the encounter of God's thirst with ours (CCC 2560). [VERIFY] God goes first. You are answering.`,
+      `The Catechism describes prayer as the encounter of God's thirst with ours (CCC 2560). God goes first. You are answering.`,
       `Jesus tells his disciples that they ought always to pray and not lose heart (Luke 18:1), and he tells them to ask, seek and knock (Luke 11:9). The point is not that asking always gets the thing you asked for. It is that asking keeps you in the conversation.`,
       `Most Christians agree on this much. Catholics, Orthodox and Protestants all pray, and most of them pray the Our Father. The differences come later, in whether you ask the saints to join you.`,
     ],
@@ -27,7 +27,7 @@ export default [
     slug: 'how-to-start-praying', level: 'Discipline',
     short: `Start small and keep it simple. Ten minutes a day, same time and place, with Scripture, a few honest words, and some silence (CCC 2697-2699).`,
     teach: [
-      `The Catechism names three kinds of prayer: vocal, meditation and contemplation (CCC 2699). [VERIFY] You can begin with the first and let the others grow.`,
+      `The Catechism names three kinds of prayer: vocal, meditation and contemplation (CCC 2699). You can begin with the first and let the others grow.`,
       `Jesus says to go into your room, shut the door and pray to your Father in secret (Matthew 6:5-6). The aim is not to impress anyone.`,
       `One simple pattern: make the Sign of the Cross. Read a short Gospel passage. Think about one line. Tell God what is on your mind. Sit quietly for a minute. End with the Our Father.`,
     ],
@@ -48,14 +48,14 @@ export default [
   },
   {
     slug: 'the-our-father-line-by-line', level: 'Authoritative teaching',
-    short: `The Our Father is the prayer Jesus gave when his disciples asked him how to pray (Luke 11:1). The Catechism calls it the summary of the whole Gospel (CCC 2761). [VERIFY]`,
+    short: `The Our Father is the prayer Jesus gave when his disciples asked him how to pray (Luke 11:1). The Catechism calls it the summary of the whole Gospel (CCC 2761).`,
     teach: [
       `**Our Father, who art in heaven.** You are not alone. You say "our," not "my." God is a Father, and heaven is where his will is done.`,
       `**Hallowed be thy name. Thy kingdom come. Thy will be done.** The first three petitions are about God. You ask that he be honored and that his rule arrive.`,
-      `**Give us this day our daily bread.** The Greek word for "daily" is rare, and the Church has understood it as food for the body and as the Eucharist (CCC 2837). [VERIFY]`,
+      `**Give us this day our daily bread.** The Greek word for "daily" is rare, and the Church has understood it as food for the body and as the Eucharist (CCC 2837).`,
       `**Forgive us our trespasses as we forgive those who trespass against us.** Jesus adds right after the prayer that God will not forgive those who do not forgive (Matthew 6:14-15).`,
       `**Lead us not into temptation, but deliver us from evil.** You ask God to keep you from the trial you cannot handle.`,
-      `Protestants often add "For thine is the kingdom, and the power, and the glory." The Orthodox also use it. Catholics say it after the priest's prayer at Mass. It was not in the earliest manuscripts of Matthew. [VERIFY]`,
+      `Protestants often add "For thine is the kingdom, and the power, and the glory." The Orthodox also use it. Catholics say it at Mass after the priest's prayer. The Catechism says the Lord's Prayer was concluded with a doxology very early in liturgical use, and the Didache has "For yours are the power and the glory for ever" (CCC 2760).`,
     ],
     verses: [['Matthew', 6, 9, 13]],
     today: [
@@ -76,7 +76,7 @@ export default [
     short: `The first half of the Hail Mary is straight from Scripture. The second half is the Church's own addition (CCC 2676-2678). You are asking Mary to pray for you, not worshiping her.`,
     teach: [
       `"Hail, full of grace, the Lord is with thee" is the angel Gabriel's greeting (Luke 1:28). "Blessed art thou among women, and blessed is the fruit of thy womb" is Elizabeth's (Luke 1:42).`,
-      `"Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death" came later. "Mother of God" was affirmed by the Council of Ephesus in 431. The petition took its present form over the Middle Ages (CCC 2677). [VERIFY]`,
+      `"Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death" came later. "Mother of God" was affirmed by the Council of Ephesus in 431. The Catechism explains the petition as asking Mary to pray for us "now and at the hour of our death" (CCC 2677).`,
       `The Catechism says the prayer praises, then petitions (CCC 2676-2677). It is the same pattern you would use with a friend you respect: honor, then ask.`,
       `Many Protestants and Orthodox object to asking the departed to pray. That question is covered in the Myths section on Mary and the saints. The Orthodox honor Mary too, with their own prayers.`,
     ],
@@ -99,7 +99,7 @@ export default [
     short: `The Rosary is a way of praying the Gospel with beads. You say Hail Marys while you think about scenes from the life of Jesus and Mary (CCC 2708).`,
     teach: [
       `A Rosary has five decades. Each decade is an Our Father, ten Hail Marys and a Glory Be, with one event from the Gospels on your mind. The four sets of mysteries are the Joyful, the Luminous, the Sorrowful and the Glorious.`,
-      `Pope John Paul II added the Luminous Mysteries in 2002 in Rosarium Virginis Mariae. [VERIFY] The Church suggests Joyful on Monday and Saturday, Luminous on Thursday, Sorrowful on Tuesday and Friday, Glorious on Wednesday and Sunday. [VERIFY]`,
+      `Pope John Paul II proposed the Luminous Mysteries, or mysteries of light, in Rosarium Virginis Mariae (October 16, 2002). He suggested Joyful on Monday and Saturday, Luminous on Thursday, Sorrowful on Tuesday and Friday, Glorious on Wednesday and Sunday (Rosarium Virginis Mariae 38). He added that this is not meant to limit freedom in personal and community prayer.`,
       `The Catechism puts the Rosary among the ways of meditating on the mysteries of Christ (CCC 2708). The Hail Marys are background, like music while you look at an icon. The center is Christ.`,
       `The devotion is optional. It is not a dogma, and Catholics who never pray it are no less Catholic. Protestants and the Orthodox mostly do not use it, and the Orthodox have their own prayer-rope devotion, the Jesus Prayer.`,
     ],
@@ -114,16 +114,16 @@ export default [
       `**Pray it on a walk or a drive,** if sitting still is hard. Do not pray it while distracted by a screen.`,
       `**Do not use it as a weapon.** You do not need to push it on anyone.`,
     ],
-    deeper: [`CCC 2708`, `John Paul II, Rosarium Virginis Mariae (2002) [VERIFY]`],
+    deeper: [`CCC 2708`, `John Paul II, Rosarium Virginis Mariae (2002) `],
     sources: ['CCC 2708', 'John Paul II, Rosarium Virginis Mariae (2002)'],
   },
   {
     slug: 'the-divine-mercy-chaplet', level: 'Theological opinion',
     short: `The Divine Mercy Chaplet is a devotion based on the visions of St. Faustina Kowalska, a Polish nun who died in 1938. It is prayed on Rosary beads and asks for mercy for you and for the world.`,
     teach: [
-      `Faustina wrote that Jesus taught her the chaplet in 1935 (Diary 474-476). [VERIFY] The prayers are short. You offer the Body, Blood, Soul and Divinity of Christ to the Father for our sins and the whole world's, then repeat a short plea for mercy.`,
+      `Faustina wrote that Jesus taught her the chaplet in September 1935 (Diary 474-476). The prayers are short. You offer the Body, Blood, Soul and Divinity of Christ to the Father for our sins and the whole world's, then repeat a short plea for mercy.`,
       `The Church says private revelations, even approved ones, add nothing to the faith given in Christ and the apostles (CCC 67). You can pray this chaplet and be fully Catholic, and you can skip it and be fully Catholic.`,
-      `Pope John Paul II canonized Faustina in 2000 and set the Sunday after Easter as Divine Mercy Sunday. [VERIFY]`,
+      `Pope John Paul II canonized Faustina on April 30, 2000, and on the same day declared the Second Sunday of Easter Divine Mercy Sunday (homily at her canonization).`,
       `Some Catholics find the devotion deeply helpful. Others find the language of Faustina's diary too dramatic. The Church leaves room for both.`,
     ],
     today: [
@@ -131,19 +131,19 @@ export default [
     ],
     stakes: `The Church wants you to hold private devotions lightly and the Gospel firmly. Mercy is in the Gospel itself, whether or not you ever say the chaplet.`,
     live: [
-      `**Pray it once** at 3 pm, the hour many link to Jesus' death, and see what you think. [VERIFY]`,
+      `**Pray it once** at 3 pm, the hour the Gospels give for Jesus' death (Mark 15:34), and see what you think.`,
       `**Go to Confession** if you are carrying something heavy. Mercy has a concrete form there.`,
       `**Show mercy** to one person this week who does not deserve it.`,
     ],
-    deeper: [`CCC 67`, `St. Faustina Kowalska, Diary 474-476 [VERIFY]`],
+    deeper: [`CCC 67`, `St. Faustina Kowalska, Diary 474-476 `],
     sources: ['CCC 67', 'St. Faustina Kowalska, Diary 474-476'],
   },
   {
     slug: 'lectio-divina', level: 'Discipline',
     short: `Lectio divina means "divine reading." It is a slow way of praying with a short passage of Scripture, in four steps: read, reflect, respond, rest.`,
     teach: [
-      `The four steps are *lectio* (read), *meditatio* (reflect), *oratio* (respond in prayer) and *contemplatio* (rest in God). Monks have used this method for over a thousand years. [VERIFY]`,
-      `The Second Vatican Council urges all the faithful to read Scripture and to let prayer go with it, so that a conversation takes place between God and the reader (Dei Verbum 25). [VERIFY]`,
+      `The four steps are *lectio* (read), *meditatio* (reflect), *oratio* (respond in prayer) and *contemplatio* (rest in God). Monks have used this method for centuries.`,
+      `The Second Vatican Council urges all the faithful to read Scripture and to let prayer go with it, so that a conversation takes place between God and the reader (Dei Verbum 25).`,
       `The Catechism lists reading Scripture among the main ways of meditation (CCC 2708).`,
       `Many Protestants practice something very similar. It is common ground.`,
     ],
@@ -159,14 +159,14 @@ export default [
       `**Talk to God about it.** What does it stir up?`,
       `**Sit in silence** for a minute. Do not fill it.`,
     ],
-    deeper: [`CCC 2708`, `Dei Verbum 25 [VERIFY]`],
+    deeper: [`CCC 2708`, `Dei Verbum 25 `],
     sources: ['CCC 2708', 'Dei Verbum 25'],
   },
   {
     slug: 'the-daily-examen', level: 'Discipline',
     short: `The Examen is a short nightly prayer from St. Ignatius of Loyola. You look back over your day with God, thank him, notice where you fell short, and plan to do better (Spiritual Exercises 43).`,
     teach: [
-      `Ignatius treated it as so important that he told his Jesuits to keep it even when they dropped other things. [VERIFY]`,
+      `Ignatius sets out the general examen in five points in the Spiritual Exercises (no. 43), starting with thanks to God for the gifts received.`,
       `A common pattern has five steps: give thanks, ask for light, review the day, say sorry for what needs it, and look ahead to tomorrow.`,
       `It takes ten or fifteen minutes. It is not an interrogation. The point is to notice where God was at work, and where you turned away.`,
       `Christians of other traditions use the Examen too, and it is often taught in non-Catholic schools. It is not a distinctly Catholic technique.`,
@@ -190,7 +190,7 @@ export default [
     short: `The Liturgy of the Hours is the Church's daily prayer, built mostly from the Psalms, at set times through the day (CCC 1174-1178). Priests and religious must pray it. Anyone can.`,
     teach: [
       `The practice goes back to the early Church and to Jewish prayer. The Psalmist says, "Seven times a day I have given praise to thee" (Psalm 118:164, Douay numbering).`,
-      `Morning Prayer and Evening Prayer are the two main hours (CCC 1175). [VERIFY] The others are the Office of Readings, Daytime Prayer and Night Prayer.`,
+      `Morning Prayer (Lauds) and Evening Prayer (Vespers) are "the two hinges on which the daily office turns" (Sacrosanctum Concilium 89; see CCC 1175). The others are the Office of Readings, Daytime Prayer and Night Prayer.`,
       `The Psalms are spread over a four-week cycle, so you pray the whole Psalter every month.`,
       `Anglicans have a similar practice in the Daily Office, and the Orthodox have their own cycle of daily services. This is shared Christian ground.`,
     ],
@@ -213,9 +213,9 @@ export default [
     short: `Christian meditation is thinking with God about his word. Contemplation is simply being with him, with few words (CCC 2705-2724). Both differ from Eastern techniques of emptying the mind.`,
     teach: [
       `The Catechism says meditation is a quest, engaging thought, imagination, emotion and desire to deepen faith (CCC 2705). It seeks to understand why and how the Lord is asking you to live.`,
-      `Contemplation is a gaze of faith fixed on Jesus, "a gift" and not a technique you can force (CCC 2709-2719). [VERIFY]`,
+      `Contemplation is a gaze of faith fixed on Jesus, "a gift" and not a technique you can force (CCC 2713, 2715).`,
       `Mary is the model. The Gospel says she kept all these things, pondering them in her heart (Luke 2:19).`,
-      `The Church has warned that methods borrowed from other religions can confuse prayer with a technique for calming the self. The Vatican letter on this was issued in 1989. [VERIFY]`,
+      `The Church has warned that methods borrowed from other religions can confuse prayer with a technique for calming the self. The Vatican letter on this, Orationis Formas, was issued by the Congregation for the Doctrine of the Faith in 1989. It says the love of God "cannot be 'mastered' by any method or technique" (no. 31).`,
     ],
     verses: [['Luke', 2, 19, 19]],
     today: [
@@ -235,8 +235,8 @@ export default [
     slug: 'dryness-in-prayer', level: 'Authoritative teaching',
     short: `Dry prayer is when you pray and feel nothing. It happens to nearly everyone, saints included. The Church says keep going (CCC 2731).`,
     teach: [
-      `The Catechism lists dryness among the main struggles in prayer and says the answer is perseverance and humility (CCC 2731). [VERIFY]`,
-      `St. John of the Cross wrote about the dark night, a stretch where God seems absent and the soul is being drawn deeper. His book, Dark Night of the Soul, is the standard reading. [VERIFY]`,
+      `The Catechism lists dryness among the difficulties in prayer. It calls it "the moment of sheer faith clinging faithfully to Jesus in his agony and in his tomb," and says that if dryness is due to lack of roots, "the battle requires conversion" (CCC 2731).`,
+      `St. John of the Cross wrote about the dark night, a stretch where God seems absent and the soul is being drawn deeper. His book, Dark Night of the Soul, is the standard reading. The Vatican letter Orationis Formas adds that these dry spells are not spared anyone who takes prayer seriously, and that he should not immediately take them for the mystical dark night (no. 30).`,
       `Jesus himself asked his disciples to watch and pray with him in Gethsemane, and warned that the spirit is willing but the flesh is weak (Matthew 26:40-41).`,
       `Dryness is not always spiritual. Poor sleep, depression, grief and plain tiredness can all feel the same. If it lasts and affects the rest of life, see a doctor or a counselor as well as a priest.`,
     ],
@@ -252,7 +252,7 @@ export default [
       `**Tell a priest or a spiritual director.**`,
       `**Rule out the body.** Sleep and health matter.`,
     ],
-    deeper: [`CCC 2731`, `St. John of the Cross, Dark Night of the Soul [VERIFY]`],
+    deeper: [`CCC 2731`, `St. John of the Cross, Dark Night of the Soul `],
     sources: ['CCC 2731', 'St. John of the Cross, Dark Night of the Soul'],
   },
   {
@@ -284,7 +284,7 @@ export default [
       `The Bible has long praised wise counsel. "If thou see a man of understanding, go to him early in the morning, and let thy foot wear the steps of his door" (Ecclesiasticus 6:36).`,
       `In Acts, Philip asks the Ethiopian if he understands what he reads. The man answers, "How can I, unless some man show me?" (Acts 8:30-31).`,
       `A director can be a priest, a religious sister or brother, or a trained layperson. You usually meet once a month. They listen, ask questions and help you test what you think you are hearing.`,
-      `The Catechism lists spiritual direction among the places where prayer is learned (CCC 2690). [VERIFY]`,
+      `The Catechism lists spiritual direction among the places where prayer is learned (CCC 2690).`,
     ],
     verses: [['Ecclesiasticus', 6, 36, 36], ['Acts', 8, 30, 31]],
     today: [
@@ -305,8 +305,8 @@ export default [
     short: `Discernment of spirits is the practice of telling which inner movements come from God and which do not. St. Ignatius wrote rules for it (Spiritual Exercises 313-336).`,
     teach: [
       `John says not to believe every spirit, but to test whether they are from God (1 John 4:1).`,
-      `Ignatius noticed two patterns. Consolation is a lift toward God, with peace, hope and love. Desolation is a pull away, with heaviness, doubt and restlessness. [VERIFY]`,
-      `His practical advice: in desolation, do not make big decisions. Do not change what you decided in a time of consolation. Wait. [VERIFY]`,
+      `Ignatius noticed two patterns. Consolation is a lift toward God, with peace, hope and love. Desolation is a pull away, with heaviness, doubt and restlessness (Spiritual Exercises, Rules for the Discernment of Spirits).`,
+      `His practical advice: in desolation, do not make big decisions. Do not change what you decided in a time of consolation. Wait. This is his fifth rule: in desolation never make a change, but stay firm in the decisions made before it.`,
       `A good test is whether the thing agrees with Scripture and the Church's teaching, and whether wise people who know you see it too.`,
     ],
     verses: [['1 John', 4, 1, 1]],
@@ -351,8 +351,8 @@ export default [
     short: `Catholics believe suffering can be joined to Christ's and offered for others. It does not make suffering good. It means it does not have to be wasted.`,
     teach: [
       `Paul writes that he rejoices in his sufferings for the Church, and that he fills up what is lacking in Christ's afflictions (Colossians 1:24). He does not mean Christ's sacrifice was incomplete. He means we can share in it.`,
-      `Pope John Paul II wrote on this in Salvifici Doloris (1984), saying that suffering, united with Christ, takes on a meaning. [VERIFY]`,
-      `The Catechism teaches that Christ invites us to take up our cross and follow him (CCC 618). [VERIFY]`,
+      `Pope John Paul II wrote on this in Salvifici Doloris (1984), saying that suffering, united with Christ, takes on a meaning. He says the Apostle's words in Colossians 1:24 are the final stage of that discovery (Salvifici Doloris 24).`,
+      `The Catechism teaches that Christ invites us to take up our cross and follow him (CCC 618).`,
       `**An important limit.** Offering something up is not a reason to stay in danger. It is wrong to tell someone being abused, or someone with a treatable illness, to just offer it up. Get help first.`,
     ],
     verses: [['Colossians', 1, 24, 24]],
@@ -366,14 +366,14 @@ export default [
       `**Do not fake it.** You can cry and still offer it.`,
       `**Never use it to excuse abuse.** If you or someone you know is unsafe, get help.`,
     ],
-    deeper: [`Colossians 1:24`, `John Paul II, Salvifici Doloris (1984) [VERIFY]`],
+    deeper: [`Colossians 1:24`, `John Paul II, Salvifici Doloris (1984) `],
     sources: ['Colossians 1:24', 'John Paul II, Salvifici Doloris (1984)', 'CCC 618'],
   },
   {
     slug: 'why-does-god-allow-suffering', level: 'Authoritative teaching',
     short: `The Church has no neat answer to why God allows suffering. The Catechism says plainly that no quick answer will satisfy, and that the whole of Christian faith is the response (CCC 309).`,
     teach: [
-      `The Catechism says God permits evil and brings a greater good from it, but does not explain each case (CCC 311-312). [VERIFY] That can sound hollow when a child is dying. The Church knows it.`,
+      `The Catechism says God permits evil and brings a greater good from it, but does not explain each case (CCC 311-312). That can sound hollow when a child is dying. The Church knows it.`,
       `Job lost everything, and God never gave him a reason. He gave him himself (Job 38 to 42). Job also said, "The Lord gave, and the Lord hath taken away" (Job 1:21).`,
       `Paul says that to those who love God, all things work together unto good (Romans 8:28). He does not say all things are good.`,
       `Christians point to the cross: God did not stand outside suffering. He entered it.`,
@@ -411,7 +411,7 @@ export default [
       `**Thank someone in person** this week. Say why.`,
       `**Thank God for the hard thing,** if you can. Or at least for the people around you in it.`,
     ],
-    deeper: [`1 Thessalonians 5:16-18`, `Luke 17:11-19`, `CCC 1328 [VERIFY]`],
+    deeper: [`1 Thessalonians 5:16-18`, `Luke 17:11-19`, `CCC 1328 `],
     sources: ['CCC 1328'],
   },
   {
@@ -440,7 +440,7 @@ export default [
     slug: 'sacramentals', level: 'Discipline',
     short: `Sacramentals are blessed objects and actions, like holy water, medals, rosaries and the Sign of the Cross. They are not sacraments, but they help you turn toward God (CCC 1667-1679).`,
     teach: [
-      `The Church says sacramentals prepare us to receive grace and make different circumstances of life holy (CCC 1667). [VERIFY] They are set up by the Church, not by Christ.`,
+      `The Church says sacramentals prepare us to receive grace and make different circumstances of life holy (CCC 1667). They are set up by the Church, not by Christ.`,
       `They work by the Church's prayer and by your faith. They are not magic. A medal in your pocket does not protect you the way a seatbelt does.`,
       `Acts records that people carried handkerchiefs that had touched Paul to the sick, and they were healed (Acts 19:11-12). Catholics see an early echo of how God can use material things.`,
       `Protestants often worry that this slides into superstition. The worry is fair, and the Church shares it.`,
@@ -463,8 +463,8 @@ export default [
     slug: 'novenas', level: 'Discipline',
     short: `A novena is nine days of prayer, usually for a specific intention. The tradition goes back to the nine days the apostles prayed between the Ascension and Pentecost (Acts 1:14).`,
     teach: [
-      `After Jesus ascended, the apostles stayed together in prayer with Mary and the women, waiting for the Spirit (Acts 1:14). Pentecost came on the tenth day. [VERIFY]`,
-      `The word novena comes from the Latin for nine. [VERIFY] It became a popular devotion for any pressing need.`,
+      `After Jesus ascended, the apostles stayed together in prayer with Mary and the women, waiting for the Spirit (Acts 1:14). The Church looks back on those days of waiting as the model for a novena.`,
+      `The word novena comes from the Latin for nine.  It became a popular devotion for any pressing need.`,
       `A novena is not a way to bargain with God. You are not twisting his arm by praying nine times instead of once. You are making a decision to keep asking.`,
       `The Church encourages novenas but does not require them. They are optional.`,
     ],

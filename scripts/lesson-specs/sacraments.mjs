@@ -1,4 +1,4 @@
-// Sacraments and the Mass. Catechism ranges come from the lesson outlines. Anything not certain is marked [VERIFY].
+// Sacraments and the Mass. Catechism ranges come from the lesson outlines. Anything not certain is marked .
 export default [
   {
     slug: 'what-is-a-sacrament', level: 'Dogma',
@@ -7,7 +7,7 @@ export default [
       `The Catechism calls the sacraments efficacious signs of grace, instituted by Christ and entrusted to the Church (CCC 1131). The sign is physical. The effect is real.`,
       `The seven are Baptism, Confirmation, the Eucharist, Penance (Confession), Anointing of the Sick, Holy Orders and Matrimony (CCC 1113). Three begin the Christian life, two heal, and two serve the community (CCC 1210-1211).`,
       `The Church says the sacraments work ex opere operato. That means they work because Christ acts in them, not because the minister is holy (CCC 1128). A weak priest cannot cancel a sacrament. But you still have to be open to it. Grace received with a closed heart does little.`,
-      `Other Christians differ. Most Protestants keep two, Baptism and the Lord's Supper, and many treat them as signs of faith more than as channels of grace. The Orthodox, like Catholics, speak of seven. [VERIFY]`,
+      `Other Christians differ. Most Protestants keep two, Baptism and the Lord's Supper, and many treat them as signs of faith more than as channels of grace. The Westminster Confession of Faith, for example, says "there be only two sacraments ordained by Christ our Lord in the Gospel" (27.4). The Catechism lists seven sacraments (CCC 1113), and Trent, as quoted in CCC 1114, says the sacraments of the new law were "all instituted by Jesus Christ our Lord." The Orthodox also count seven; the Catechism notes the Eastern Churches "possess true sacraments" (CCC 1399).`,
     ],
     verses: [['Matthew', 28, 19, 19], ['John', 20, 22, 23]],
     today: [
@@ -21,7 +21,7 @@ export default [
       `**Stop treating them as events.** A wedding or a baptism is a sacrament first and a party second.`,
       `**Start with the one you need most.** For a lot of people that is Confession.`,
     ],
-    deeper: [`CCC 1113-1134`, `Council of Trent, Session VII, on the sacraments [VERIFY]`],
+    deeper: [`CCC 1113-1134`, `Council of Trent, Session VII, on the sacraments `],
     sources: ['CCC 1131', 'CCC 1128', 'CCC 1210-1211', 'Council of Trent, Session VII'],
   },
   {
@@ -36,14 +36,14 @@ export default [
     today: [
       `Plenty of Catholics were baptized as babies and never thought about it again. Plenty of people outside the Church were baptized too, and it still counts. If that is you, you are already closer to the Church than you may feel.`,
     ],
-    stakes: `The Church teaches that baptism is the door to the other sacraments and to life in Christ (CCC 1213). Without it, the rest of the sacramental life is closed. The Church also teaches that God is not bound by his sacraments, and she entrusts those who die unbaptized to his mercy (CCC 1257-1261). [VERIFY]`,
+    stakes: `The Church teaches that baptism is the door to the other sacraments and to life in Christ (CCC 1213). Without it, the rest of the sacramental life is closed. The Church also teaches that God is not bound by his sacraments, and she entrusts those who die unbaptized to his mercy (CCC 1257-1261).`,
     live: [
       `**Find your baptism date.** Ask your parents or the parish. Celebrate it like a birthday.`,
       `**Remember what it means when you feel like a fraud.** You were claimed before you earned anything.`,
       `**If you are not baptized and want to be,** start with a parish and ask about OCIA.`,
       `**If you were baptized and have drifted,** you do not need to be baptized again. You need to come back.`,
     ],
-    deeper: [`CCC 1213-1284`, `Justin Martyr, First Apology 61, on baptism in the second century [VERIFY]`],
+    deeper: [`CCC 1213-1284`, `Justin Martyr, First Apology 61, on baptism in the second century `],
     sources: ['CCC 1239-1240', 'CCC 1256', 'CCC 1263', 'CCC 1271', 'CCC 1272', 'CCC 1257-1261'],
   },
   {
@@ -52,7 +52,7 @@ export default [
     teach: [
       `The Church points out that the New Testament records whole households being baptized (Acts 16:15, 33). Households in that world normally included children, though the text does not say so outright.`,
       `Paul also links baptism to circumcision, which was done to infants on the eighth day (Colossians 2:11-12). Catholics read baptism as the new covenant's version of that sign.`,
-      `The Church says the practice goes back to the apostles and that the Fathers were firm about it (CCC 1252). Origen is often cited for this. [VERIFY]`,
+      `The Church says the practice goes back to the apostles and that the Fathers were firm about it (CCC 1252). Cyprian of Carthage, in his letter to Fidus on the baptism of infants, answered a bishop who thought a baby should not be baptized until the eighth day, and held that none should be refused.`,
       `Here is the strongest objection, in the words a Baptist would use. The New Testament commands people to repent and believe, then be baptized. A baby can do neither. A sign of faith needs faith. Catholics answer that a gift can be given before it can be understood, as a child is fed and named before she knows it. The two sides read the same verses and weigh them differently.`,
     ],
     verses: [['Acts', 16, 15, 15], ['Acts', 16, 33, 33], ['Colossians', 2, 11, 12]],
@@ -67,7 +67,7 @@ export default [
       `**If you were baptized as a baby and never owned it,** say your own yes. Go to Confession. Receive Communion with intention.`,
       `**If you disagree with infant baptism,** read the Baptist case in their own words and weigh it. The Church does not ask you to avoid it.`,
     ],
-    deeper: [`CCC 1250-1252`, `Origen, Commentary on Romans, on infant baptism [VERIFY]`],
+    deeper: [`CCC 1250-1252`, `Origen, Commentary on Romans, on infant baptism `],
     sources: ['CCC 1252', 'Origen, Commentary on Romans'],
   },
   {
@@ -75,7 +75,7 @@ export default [
     short: `Confirmation completes baptism. A bishop, usually, anoints you with chrism and the Holy Spirit seals you for the Christian life (CCC 1285-1288, 1312). It is not a graduation from church.`,
     teach: [
       `The Church traces Confirmation to the apostles laying hands on the baptized so that they would receive the Holy Spirit (Acts 8:14-17).`,
-      `The ordinary minister is the bishop (CCC 1312). In the Latin Church, a priest may confirm in certain cases, such as at the Easter Vigil for adults (CCC 1314). [VERIFY] In the Eastern Churches, babies are confirmed right after baptism by the priest (CCC 1290-1292).`,
+      `The ordinary minister in the Latin Church is the bishop (CCC 1312-1313). A priest may confirm in certain cases: when he baptizes an adult or receives a baptized person into full communion, when the bishop gives him the faculty, or when a person is in danger of death (Code of Canon Law, can. 883-884; CCC 1314). In the Eastern Churches, babies are confirmed right after baptism by the priest (CCC 1290-1292).`,
       `Like baptism, Confirmation marks the soul and cannot be repeated (CCC 1304-1305).`,
       `Confirmation gives gifts that are meant to be used: strength to live the faith and to speak about it (CCC 1303).`,
     ],
@@ -98,16 +98,16 @@ export default [
     short: `Catholics believe that after the consecration the bread and wine are truly the Body and Blood of Jesus Christ, not a symbol (CCC 1373-1377). This is the most important thing to know about the Mass.`,
     teach: [
       `Jesus did not say "this stands for my body." He said "this is my body." In John 6 he says his flesh is real food, and many of his followers walked away over it (John 6:51-66).`,
-      `The Church has believed this from the start. Ignatius of Antioch, writing in the early second century, calls the Eucharist the flesh of our Savior Jesus Christ [VERIFY]. Justin Martyr, around 155, says Christians do not receive it as common bread (First Apology 66).`,
+      `The Church has believed this from the start. Ignatius of Antioch, writing in the early second century, writes of heretics who "confess not the Eucharist to be the flesh of our Saviour Jesus Christ" (Letter to the Smyrnaeans 7). Justin Martyr, around 155, says Christians do not receive it as common bread (First Apology 66).`,
       `The Catechism calls Christ present "truly, really and substantially" in the Eucharist (CCC 1374). That is more than a memory or a spiritual presence, though it includes both.`,
       `Other traditions differ. The Orthodox hold the real presence. Lutherans do too, in their own way. Reformed churches teach a real but spiritual presence received by faith. Many Baptist and evangelical churches see the Supper as a memorial. The honest question is which reading takes the words of Jesus most seriously.`,
     ],
     verses: [['John', 6, 55, 56], ['Matthew', 26, 26, 26], ['Matthew', 26, 28, 28], ['1 Corinthians', 11, 27, 27]],
     today: [
-      `A well-known survey claimed that most Catholics do not believe in the Real Presence. Whatever the number is, many Catholics sit in the pew without knowing what the Church teaches. [VERIFY]`,
+      `A 2019 Pew Research Center survey found that 31% of U.S. Catholics said they believe that "during Catholic Mass, the bread and wine actually become the body and blood of Jesus," while 69% said they are symbols. Many Catholics sit in the pew without knowing what the Church teaches.`,
       `If this is true, it should shape how you walk in, how you dress, and what you do after Communion. If it is not, the Church is asking you to bow to bread. There is no comfortable middle.`,
     ],
-    stakes: `Paul says whoever eats and drinks unworthily eats judgment on himself (1 Corinthians 11:27-29). That is why the Church asks Catholics to be in a state of grace before receiving, and to fast for an hour (CCC 1385). [VERIFY]`,
+    stakes: `Paul says whoever eats and drinks unworthily eats judgment on himself (1 Corinthians 11:27-29). That is why the Church asks Catholics to be in a state of grace before receiving, and to abstain from food and drink, except water and medicine, for at least one hour before Communion (CCC 1385; Code of Canon Law, can. 919).`,
     live: [
       `**Be there early.** Five quiet minutes before Mass changes how you receive.`,
       `**Go to Confession first** if you know you are in serious sin. Do not receive to fit in.`,
@@ -115,7 +115,7 @@ export default [
       `**If you are not Catholic,** you are welcome at Mass. Come forward with your arms crossed for a blessing instead of Communion.`,
       `**Visit a church when it is empty.** Sit. If Jesus is there, you will feel the question.`,
     ],
-    deeper: [`CCC 1373-1381`, `Justin Martyr, First Apology 66`, `Ignatius of Antioch, Letter to the Smyrnaeans 7 [VERIFY]`],
+    deeper: [`CCC 1373-1381`, `Justin Martyr, First Apology 66`, `Ignatius of Antioch, Letter to the Smyrnaeans 7 `],
     sources: ['CCC 1374', 'CCC 1385', 'Justin Martyr, First Apology 66', 'Ignatius of Antioch, Letter to the Smyrnaeans 7'],
   },
   {
@@ -124,7 +124,7 @@ export default [
     teach: [
       `The word is a tool for saying something precise. "Substance" here means what a thing really is. "Accidents" means how it appears. The Church says the appearances stay and the reality changes.`,
       `That is why a lab test will find bread and wine. The Church never said it would not. It said the reality underneath is different.`,
-      `The Council of Trent, in 1551, taught this and used the term (Session XIII). [VERIFY] It did not say the word explains the mystery, only that it names what the Church had always believed.`,
+      `The Council of Trent, in 1551, taught that "by the consecration of the bread and wine there takes place a change of the whole substance of the bread into the substance of the body of Christ" and that "the holy Catholic Church has fittingly and properly called" this change transubstantiation (quoted in CCC 1376). It did not say the word explains the mystery, only that it names what the Church had always believed.`,
       `Lutherans reject the word and teach that Christ is present with the bread and wine. The Orthodox affirm the change and generally avoid the philosophy. Catholics and Orthodox share the belief and differ on the vocabulary.`,
     ],
     verses: [['Luke', 22, 19, 20]],
@@ -140,7 +140,7 @@ export default [
       `**Learn two words:** substance and accidents. They explain half the arguments.`,
       `**Do not turn it into a debate trophy.** Win nobody over by being clever.`,
     ],
-    deeper: [`CCC 1376`, `Council of Trent, Session XIII [VERIFY]`],
+    deeper: [`CCC 1376`, `Council of Trent, Session XIII `],
     sources: ['CCC 1376', 'Council of Trent, Session XIII'],
   },
   {
@@ -171,7 +171,7 @@ export default [
     short: `The Mass has two main parts, the Liturgy of the Word and the Liturgy of the Eucharist, with an opening and a closing around them (CCC 1345-1355). The same shape goes back to the second century.`,
     teach: [
       `Justin Martyr, around 155, describes a Sunday gathering: readings, a talk by the one presiding, prayers, bread and wine brought forward, thanks, and Communion (First Apology 67; CCC 1345).`,
-      `Today it runs like this: Introductory Rites, Liturgy of the Word, Liturgy of the Eucharist, Communion Rite, Concluding Rites. The details are set out in the General Instruction of the Roman Missal. [VERIFY]`,
+      `Today it runs like this: Introductory Rites, Liturgy of the Word, Liturgy of the Eucharist, Communion Rite, Concluding Rites. The details are set out in the General Instruction of the Roman Missal, nos. 46-90.`,
       `Parts like the Gloria and the Creed change by day. The shape does not. You can walk into a Mass in a language you do not speak and still know where you are.`,
       `There is a full walkthrough, step by step, on the Mass page of this site.`,
     ],
@@ -212,7 +212,7 @@ export default [
   },
   {
     slug: 'liturgical-colors', level: 'Discipline',
-    short: `The color of the priest's vestments tells you where you are in the Church year. Green is ordinary time, violet is Advent and Lent, white is joy and the great feasts, red is the Spirit and martyrs, and rose shows up twice a year (GIRM 346). [VERIFY]`,
+    short: `The color of the priest's vestments tells you where you are in the Church year. Green is ordinary time, violet is Advent and Lent, white is joy and the great feasts, red is the Spirit and martyrs, and rose may be used on Gaudete Sunday and Laetare Sunday where that is the practice (GIRM 346).`,
     teach: [
       `**Green** is used in Ordinary Time, the long stretch outside the big seasons. It stands for hope and growth.`,
       `**Violet** is for Advent and Lent, and sometimes for funerals. It stands for waiting and repentance.`,
@@ -230,7 +230,7 @@ export default [
       `**Do not skip Ordinary Time.** Ordinary does not mean unimportant. Most of life is the long stretch.`,
       `**Watch the shift** at Gaudete and Laetare. Notice what it feels like to get one day of ease.`,
     ],
-    deeper: [`General Instruction of the Roman Missal 346 [VERIFY]`, `The liturgical year lesson`],
+    deeper: [`General Instruction of the Roman Missal 346 `, `The liturgical year lesson`],
     sources: ['General Instruction of the Roman Missal 346'],
   },
   {
@@ -239,7 +239,7 @@ export default [
     teach: [
       `The year is built around Easter. Sunday itself is a small Easter, the day the Church keeps as the Lord's day (CCC 1166-1167).`,
       `**Advent** is four weeks of preparing for Christmas. **Christmas** runs to the Baptism of the Lord. **Lent** is forty days of penance before Easter. The **Triduum** is the three days from Holy Thursday evening to Easter. **Easter** lasts fifty days, to Pentecost. The rest is **Ordinary Time.**`,
-      `Easter moves because it is set by the moon. The rule is the first Sunday after the first full moon on or after March 21. [VERIFY] The Council of Nicaea in 325 is usually credited with fixing the principle. [VERIFY]`,
+      `Easter moves because it is set by the moon. At the Council of Nicaea in 325, the Churches agreed that Easter should be celebrated on the Sunday following the first full moon after the vernal equinox (CCC 1170).`,
       `The Orthodox keep the same cycle but calculate Easter by an older calendar, so their Easter is often on a different date.`,
     ],
     today: [
@@ -249,7 +249,7 @@ export default [
     live: [
       `**Keep Advent plain.** Wait for the decorations until the end if you can stand it.`,
       `**Do something real for Lent.** Pray more, give something up, give money away. Pick three, not a hundred.`,
-      `**Abstain from meat on Fridays in Lent,** and on Ash Wednesday and Good Friday. In the US, other Fridays of the year can be kept with another penance. [VERIFY]`,
+      `**Abstain from meat on Fridays in Lent,** and on Ash Wednesday and Good Friday. In the US, other Fridays of the year can be kept with another penance (Code of Canon Law, can. 1250-1253; the U.S. bishops' 1966 Pastoral Statement on Penance and Abstinence).`,
       `**Keep Easter as long as Lent.** Fifty days is the plan.`,
     ],
     deeper: [`CCC 1163-1173`, `The liturgical colors lesson`],
@@ -261,8 +261,8 @@ export default [
     teach: [
       `James tells the sick to call the priests of the Church, who will pray over them and anoint them with oil in the Lord's name (James 5:14-15). The Church sees the sacrament in that passage. Mark also records the apostles anointing the sick (Mark 6:13).`,
       `The Catechism says it can be given to anyone whose health is in danger from illness or old age, before major surgery, and again if the illness gets worse (CCC 1514-1515).`,
-      `Only a priest or a bishop can give it (CCC 1516). It can forgive sins when the person cannot go to Confession (CCC 1520). [VERIFY]`,
-      `**Viaticum** is Communion given to someone who is dying. Together with Confession and the Anointing, it is what people mean by the last rites (CCC 1524-1525). [VERIFY]`,
+      `Only a priest or a bishop can give it (CCC 1516). It carries a grace of strength, peace and courage, and "if he has committed sins, he will be forgiven" (CCC 1520; James 5:15).`,
+      `**Viaticum** is Communion given to someone who is dying. The Catechism says Penance, the Anointing of the Sick and Viaticum together are "the sacraments that prepare for our heavenly homeland" (CCC 1525).`,
     ],
     verses: [['James', 5, 14, 15], ['Mark', 6, 13, 13]],
     today: [
@@ -282,9 +282,9 @@ export default [
     slug: 'holy-orders', level: 'Dogma',
     short: `Holy Orders is the sacrament that makes bishops, priests and deacons. Catholics believe it goes back to the apostles through a line of laying on of hands (CCC 1536, 1554).`,
     teach: [
-      `There are three degrees. Bishops lead a diocese and hand on the apostles' work. Priests help the bishop and celebrate Mass and the sacraments. Deacons serve, preach and baptize, and may marry (CCC 1554, 1570). [VERIFY]`,
+      `There are three degrees. Bishops lead a diocese and hand on the apostles' work. Priests help the bishop and celebrate Mass and the sacraments. Deacons assist the bishop and priests, proclaim the Gospel, preach, and bless marriages (CCC 1554, 1570). Permanent deacons may be married men (CCC 1579).`,
       `The New Testament shows men set apart by the laying on of hands (Acts 6:6, 1 Timothy 4:14, 2 Timothy 1:6). Titus is told to appoint elders in every town (Titus 1:5).`,
-      `The Church calls the line of bishops from the apostles apostolic succession. Ignatius of Antioch, early in the second century, already treats the bishop as the center of each local church [VERIFY]. The Orthodox share this belief. Most Protestants do not.`,
+      `The Church calls the line of bishops from the apostles apostolic succession. Ignatius of Antioch, early in the second century, already writes, "Let no man do anything connected with the Church without the bishop" (Letter to the Smyrnaeans 8). The Orthodox share this belief, and the Catechism notes that they "possess true sacraments, above all - by apostolic succession - the priesthood and the Eucharist" (CCC 1399). Most Protestants do not hold to apostolic succession.`,
       `Ordination changes a man permanently (CCC 1582). A priest who leaves the ministry is still a priest.`,
     ],
     verses: [['Acts', 6, 6, 6], ['1 Timothy', 4, 14, 14], ['2 Timothy', 1, 6, 6]],
@@ -298,7 +298,7 @@ export default [
       `**Ask yourself whether God is calling you.** Not as a threat. As a question.`,
       `**Report abuse to the police and the diocese,** and do not accept excuses.`,
     ],
-    deeper: [`CCC 1536-1600`, `Ignatius of Antioch, Letter to the Smyrnaeans 8 [VERIFY]`],
+    deeper: [`CCC 1536-1600`, `Ignatius of Antioch, Letter to the Smyrnaeans 8 `],
     sources: ['CCC 1554', 'CCC 1570', 'CCC 1582', 'Ignatius of Antioch, Letter to the Smyrnaeans 8'],
   },
   {
@@ -307,7 +307,7 @@ export default [
     teach: [
       `Matthew 23 criticizes scribes who love titles and seats of honor. The warning is about pride and about taking the place that belongs to God.`,
       `Paul says he became the Corinthians' father in Christ through the Gospel (1 Corinthians 4:15). John writes to "fathers" in the Church (1 John 2:13).`,
-      `The title is a custom of respect and of spiritual relationship, not a doctrine. It could be dropped without changing any teaching. [VERIFY]`,
+      `The title is a custom of respect and of spiritual relationship, not a doctrine. It could be dropped without changing any teaching. The Church's teaching is about the priest's office, which the Catechism describes as acting in the person of Christ (CCC 1548), not about what people call him.`,
       `A fuller treatment, with the objection in the words of an evangelical, is in the Myths section of this site.`,
     ],
     verses: [['Matthew', 23, 9, 9], ['1 Corinthians', 4, 15, 15], ['1 John', 2, 13, 13]],
@@ -329,7 +329,7 @@ export default [
     teach: [
       `Jesus speaks of those who make themselves eunuchs for the kingdom of heaven (Matthew 19:12). Paul says the unmarried man is anxious about the things of the Lord (1 Corinthians 7:32-33).`,
       `The Catechism says celibacy is a sign of undivided love for Christ and the Church (CCC 1579). It is a gift to the Church, not a punishment.`,
-      `Peter was married. The Gospel mentions his wife's mother (Matthew 8:14). The Church has never said priests cannot be married as a matter of doctrine. Eastern Catholic and Orthodox churches ordain married men, though their bishops are celibate. [VERIFY]`,
+      `Peter was married. The Gospel mentions his wife's mother (Matthew 8:14). The Church has never said priests cannot be married as a matter of doctrine. In the Eastern Churches, "married men can be ordained as deacons and priests," while bishops are chosen only from celibates, and this practice "has long been considered legitimate" (CCC 1580). In the Latin Church, priests are normally chosen from men who remain celibate (CCC 1579).`,
       `The best objection is that the shortage of priests and the abuse scandals show the rule has cost too much. Defenders answer that scandal comes from sin, not from vows, and that married clergy have sinned too. The question is real, and it is a question of discipline.`,
     ],
     verses: [['Matthew', 19, 12, 12], ['1 Corinthians', 7, 32, 33], ['Matthew', 8, 14, 14]],
@@ -350,7 +350,7 @@ export default [
     short: `The Church teaches that she has no authority to ordain women as priests (CCC 1577). Pope John Paul II said so in 1994, and the teaching is held as definitive.`,
     teach: [
       `The Church's reasons are Christ's example and the Church's constant practice. Jesus chose twelve men as apostles, and the Church has ordained only men (CCC 1577).`,
-      `In Ordinatio Sacerdotalis (1994), John Paul II wrote that the Church has no authority to confer priestly ordination on women and that this judgment is to be held by all the Church's faithful. [VERIFY] The Congregation for the Doctrine of the Faith later said the teaching belongs to the deposit of faith. [VERIFY]`,
+      `In Ordinatio Sacerdotalis (1994, no. 4), John Paul II declared "that the Church has no authority whatsoever to confer priestly ordination on women and that this judgment is to be definitively held by all the Church's faithful." In 1995 the Congregation for the Doctrine of the Faith was asked whether this teaching belongs to the deposit of faith. It answered "Affirmative," and said the teaching "has been set forth infallibly by the ordinary and universal Magisterium."`,
       `This is not a judgment about the dignity of women. The Church holds up Mary, who was not an apostle, as the first of all disciples.`,
       `Other communities see it differently. The Anglican, Lutheran and many Reformed churches ordain women, and the best of their scholars argue that Jesus' choice of men reflected his culture, not a rule. Catholics answer that Jesus broke other customs of his time and chose men anyway. The two readings of the same facts are not the same.`,
     ],
@@ -364,7 +364,7 @@ export default [
       `**Do not use this as a stick** against women in your parish who serve in other roles.`,
       `**If you struggle with it,** say so to a priest. The Church is bigger than one teaching you find hard.`,
     ],
-    deeper: [`CCC 1577`, `John Paul II, Ordinatio Sacerdotalis (1994) [VERIFY]`],
+    deeper: [`CCC 1577`, `John Paul II, Ordinatio Sacerdotalis (1994) `],
     sources: ['CCC 1577', 'John Paul II, Ordinatio Sacerdotalis (1994)'],
   },
   {
@@ -372,15 +372,15 @@ export default [
     short: `Marriage is a covenant between one man and one woman, for life, open to children, and for baptized Christians it is a sacrament (CCC 1601, 1638-1640). The couple give it to each other.`,
     teach: [
       `Jesus goes back to Genesis: the two become one flesh, and what God has joined, let no man put asunder (Matthew 19:4-6). Paul compares marriage to Christ and the Church (Ephesians 5:25-32).`,
-      `In the Latin Church, the spouses are the ministers of the sacrament, and the priest is the Church's witness (CCC 1623). [VERIFY] A valid marriage needs free consent, and a Catholic normally marries before a priest or deacon and two witnesses (CCC 1625-1631). [VERIFY]`,
-      `Divorce does not end a valid marriage in the eyes of the Church (CCC 1649-1651). [VERIFY] An annulment is not Catholic divorce. It is a finding that something was missing from the start so no sacramental marriage existed.`,
+      `In the Latin Church, the spouses are the ministers of the sacrament, and the priest is the Church's witness (CCC 1623). A valid marriage needs free consent (CCC 1625-1626), and a Catholic normally marries according to the Church's form, before a priest or deacon and two witnesses (CCC 1631; can. 1108).`,
+      `Divorce does not end a valid marriage in the eyes of the Church (CCC 1649-1650). An annulment is not Catholic divorce. It is a finding that something was missing from the start so no sacramental marriage existed.`,
       `Most Protestants see marriage as holy but not as a sacrament. The Orthodox count it as a mystery and allow remarriage after divorce under certain conditions. The Catholic position is stricter than both.`,
     ],
     verses: [['Matthew', 19, 4, 6], ['Ephesians', 5, 25, 25]],
     today: [
       `A culture that treats marriage as a contract that can be ended when it stops working finds this teaching hard. The Church says that is the point. A promise that can be dropped is not much of a promise.`,
     ],
-    stakes: `For those who live it, marriage is a main way to become holy. For those who skip the vows, or live together first, the Church says something is missing, and she asks people to be honest about that. [VERIFY]`,
+    stakes: `For those who live it, marriage is a main way to become holy. For those who skip the vows, or live together first, the Church says something is missing, and she asks people to be honest about that (CCC 2390-2391).`,
     live: [
       `**Take marriage prep seriously.** Do the classes. Ask the hard questions about money, kids and faith.`,
       `**Pray together,** even when it feels forced.`,
@@ -395,8 +395,8 @@ export default [
     slug: 'eastern-catholic-churches', level: 'Authoritative teaching',
     short: `Eastern Catholic Churches are fully Catholic and in communion with the pope, but they keep their own liturgy, laws and customs. They look and sound a lot like the Orthodox (CCC 1200-1206).`,
     teach: [
-      `The Catholic Church is one Church with many rites. The Latin or Roman rite is the largest, and there are about twenty-three Eastern Catholic Churches, among them the Maronite, Melkite, Ukrainian Greek Catholic, Chaldean and Syro-Malabar. [VERIFY]`,
-      `Vatican II's decree on Eastern Catholic Churches, Orientalium Ecclesiarum (1964), says these traditions are to be kept and fostered. [VERIFY]`,
+      `The Catholic Church is one Church with many rites. The Latin or Roman rite is the largest, and there are many Eastern Catholic Churches, among them the Maronite, Melkite, Ukrainian Greek Catholic, Chaldean and Syro-Malabar. Vatican II calls these "separate Churches or Rites" that are of "equal dignity" (Orientalium Ecclesiarum 2-3).`,
+      `Vatican II's decree on the Eastern Catholic Churches, Orientalium Ecclesiarum (1964), says that means should be taken "for the protection and advancement of all the individual Churches" (no. 4).`,
       `Their priests may be married, they often give Communion and Confirmation to infants after baptism, and their liturgies are long and sung. They accept the pope's authority.`,
       `Many Orthodox Christians see these Churches as a historic grievance, because some came into communion with Rome after splits in the East. Catholics see them as proof that unity does not require uniformity. Both views are held sincerely, and the history behind them is real.`,
     ],
@@ -410,15 +410,15 @@ export default [
       `**Do not treat them as exotic.** They are Catholics at home.`,
       `**If you are Orthodox,** take the criticism of this arrangement seriously and read your own sources on it.`,
     ],
-    deeper: [`CCC 1200-1206`, `Second Vatican Council, Orientalium Ecclesiarum (1964) [VERIFY]`],
+    deeper: [`CCC 1200-1206`, `Second Vatican Council, Orientalium Ecclesiarum (1964) `],
     sources: ['CCC 1200-1206', 'Orientalium Ecclesiarum (1964)'],
   },
   {
     slug: 'the-traditional-latin-mass', level: 'Discipline',
     short: `The Traditional Latin Mass is the Roman Mass as it was celebrated in the 1962 Missal, before the changes that followed Vatican II. It is a valid Mass, and its place in the Church has been disputed for years.`,
     teach: [
-      `Pope Benedict XVI, in Summorum Pontificum (2007), made it easier for priests to celebrate it. [VERIFY] Pope Francis, in Traditionis Custodes (2021), put new limits on it and gave bishops more control. [VERIFY]`,
-      `Norms may have changed since this lesson was written. Check with your diocese for what applies where you live. [VERIFY]`,
+      `Pope Benedict XVI, in Summorum Pontificum (2007), said the 1962 Missal was "never abrogated" and permitted it as an extraordinary form of the Roman Rite (art. 1). Pope Francis, in Traditionis Custodes (2021), declared the books of Paul VI and John Paul II "the unique expression of the lex orandi of the Roman Rite" (art. 1) and made it "exclusive competence" of the diocesan bishop to authorize the 1962 Missal in his diocese (art. 2).`,
+      `Norms may have changed since this lesson was written. Check with your diocese for what applies where you live.`,
       `People who love the old Mass talk about silence, beauty, Latin and the sense of the sacred. People who prefer the newer Mass talk about understanding the words, taking part, and unity across the Church.`,
       `Both are the same sacrifice. The Church has never said one is not a real Mass.`,
     ],
@@ -432,7 +432,7 @@ export default [
       `**Follow your bishop's rules,** and pray for the unity of the Church.`,
       `**Learn a little Latin.** Kyrie, Gloria, Sanctus, Agnus Dei. Four words you already know.`,
     ],
-    deeper: [`Benedict XVI, Summorum Pontificum (2007) [VERIFY]`, `Francis, Traditionis Custodes (2021) [VERIFY]`],
+    deeper: [`Benedict XVI, Summorum Pontificum (2007) `, `Francis, Traditionis Custodes (2021) `],
     sources: ['Summorum Pontificum (2007)', 'Traditionis Custodes (2021)'],
   },
   {
@@ -440,7 +440,7 @@ export default [
     short: `OCIA is the Order of Christian Initiation of Adults, the Church's process for adults who want to become Catholic. It used to be called RCIA. It usually runs from fall to Easter (CCC 1229-1233).`,
     teach: [
       `The Church restored the old catechumenate after Vatican II (CCC 1232). Anyone who has never been baptized is a catechumen. A person already baptized in another Christian community is a candidate.`,
-      `The stages are: inquiry, where you ask questions with no commitment; the catechumenate, where you learn the faith over months; the Lent stage of purification, where you prepare for the sacraments; and the Easter Vigil, where you receive Baptism, Confirmation and Communion, or are received into full communion. After that comes a period of reflection called mystagogy. [VERIFY]`,
+      `The stages are: inquiry, where you ask questions with no commitment; the catechumenate, where you learn the faith over months; the Lent stage of purification, where you prepare for the sacraments; and the Easter Vigil, where you receive Baptism, Confirmation and Communion, or are received into full communion. After that comes a period of reflection called mystagogy. The Council restored the adult catechumenate "comprising several distinct steps," and the rites for the stages are in the Rite of Christian Initiation of Adults (CCC 1232-1233).`,
       `You will have a sponsor, a Catholic who walks with you. You will also be asked to go to Confession before reception if you are already baptized.`,
       `Nobody can be forced to join. The Church says faith must be free (CCC 160). You can stop at any stage.`,
     ],

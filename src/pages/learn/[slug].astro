@@ -33,7 +33,7 @@ const checks = cards.filter((c) => c.kind === 'check').length;
                 <p class="meta-line">About {c.minutes} minutes. Swipe up or press Continue.</p>
                 {c.heavy && <p class="note-box"><b>A hard topic.</b> This lesson is about something serious. Read it when you are ready, or leave it for another day.</p>}
                 {c.crisis && <p class="note-box"><b>If you are in crisis right now,</b> call or text 988 in the United States to reach the Suicide and Crisis Lifeline.</p>}
-                <p class="meta-line unrev">Not yet reviewed{c.verify > 0 && `. ${c.verify} fact${c.verify === 1 ? ' is' : 's are'} still marked unchecked`}.</p>
+                <p class="meta-line unrev">{c.verify > 0 ? `Not yet reviewed. ${c.verify} fact${c.verify === 1 ? ' is' : 's are'} still marked unchecked.` : 'Sources checked against the original texts. Not yet reviewed by a priest or catechist.'}</p>
               </>
             )}
             {(c.kind === 'big' || c.kind === 'teach' || c.kind === 'today' || c.kind === 'stakes') && (
