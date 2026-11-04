@@ -371,7 +371,7 @@ export default [
       `"Discontinuing medical procedures that are burdensome, dangerous, extraordinary, or disproportionate to the expected outcome can be legitimate; it is the refusal of 'over-zealous' treatment. Here one does not will to cause death; one's inability to impede it is merely accepted" (CCC 2278).`,
       `"The decisions should be made by the patient if he is competent and able or, if not, by those legally entitled to act for the patient, whose reasonable will and legitimate interests must always be respected" (CCC 2278).`,
       `"Even if death is thought imminent, the ordinary care owed to a sick person cannot be legitimately interrupted" (CCC 2279).`,
-      `Samaritanus Bonus (2020) speaks of the duty to care for the person to the end and warns against both abandonment and therapeutic obstinacy.`,
+      `Samaritanus Bonus (2020) has a section on "the moral obligation to exclude aggressive medical treatment," and says that renouncing extraordinary or disproportionate means "is not the equivalent of suicide or euthanasia; it rather expresses acceptance of the human condition in the face of death."`,
       `Direct euthanasia, "putting an end to the lives of handicapped, sick, or dying persons," is "morally unacceptable" (CCC 2277).`,
     ],
     verses: [['Ecclesiasticus', 38, 1, 4]],

@@ -29,7 +29,7 @@ for (const file of files) {
   if (!isLesson && fm.authority_level !== undefined && !LEVELS.includes(fm.authority_level)) errors.push(`${rel}: authority_level must be one of ${LEVELS.join(', ')}`);
 
   // Quoted Scripture is not site copy, so it is left out of the style checks.
-  const lint = rel.startsWith('daily/') ? raw.replace(/^reading_text: .*$/m, '') : raw;
+  const lint = (rel.startsWith('daily/') ? raw.replace(/^reading_text: .*$/m, '') : raw).replace(/^> .*$/gm, '');
   if (lint.includes('\u2014')) errors.push(`${rel}: contains an em dash`);
   for (const re of BANNED) { const hit = lint.match(re); if (hit) errors.push(`${rel}: banned phrase "${hit[0]}"`); }
 
