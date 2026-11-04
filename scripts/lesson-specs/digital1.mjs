@@ -265,7 +265,7 @@ export default [
       `Paul says to think about whatever is true, honorable, just, pure, lovable and of good repute (Philippians 4:8).`,
       `The Catechism says users of media "will want to form enlightened and correct consciences the more easily to resist unwholesome influences" (CCC 2496).`,
       `Vatican II said "the narration, description or portrayal of moral evil, even through the media of social communication, can indeed serve to bring about a deeper knowledge and study of humanity" and can be done well, but that it must respect moral norms (Inter Mirifica 7).`,
-      `The Council also asked viewers to "fully favor those presentations that are outstanding for their moral goodness, knowledge and artistry" (Inter Mirifica 9).`,
+      `The Council also asked viewers to "fully favor those presentations that are outstanding for their moral goodness, their knowledge and their artistic or technical merit" (Inter Mirifica 9).`,
       `The Catechism condemns cruelty itself: torture, terrorism and violence against the person are "morally wrong" (CCC 2297).`,
     ],
     verses: [['Philippians', 4, 8, 8]],
