@@ -85,6 +85,32 @@ const coming = units.reduce((n, u) => n + u.coming.length, 0);
       try { if (localStorage.getItem('cm-auth')) document.querySelectorAll('[data-signin],[data-signin2]').forEach((e) => e.remove()); } catch {}
       return current;
     }
+    // Skipping ahead is allowed, but a confirmation screen nudges people back to the order.
+    const dlg = document.createElement('div');
+    dlg.className = 'skip-modal';
+    dlg.hidden = true;
+    dlg.innerHTML = '<div class="skip-card" role="dialog" aria-modal="true" aria-labelledby="skip-h"><h2 id="skip-h">Skip ahead?</h2><p class="skip-body"></p><p class="skip-note">The lessons build on each other. Doing them in order will help the later ones make sense.</p><button class="btn skip-back" type="button"></button><button class="btn ghost skip-go" type="button">Skip anyway</button></div>';
+    document.body.appendChild(dlg);
+    let target = '';
+    const backBtn = dlg.querySelector<HTMLButtonElement>('.skip-back')!;
+    const hide = () => { dlg.hidden = true; };
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) hide(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+    dlg.querySelector('.skip-go')!.addEventListener('click', () => { location.href = target; });
+    document.addEventListener('click', (e) => {
+      const n = (e.target as HTMLElement).closest<HTMLAnchorElement>('.node');
+      if (!n || n.classList.contains('done') || n.classList.contains('current')) return;
+      const curNode = document.querySelector<HTMLAnchorElement>('.node.current');
+      if (!curNode) return;
+      e.preventDefault();
+      target = n.href;
+      const title = curNode.getAttribute('aria-label')?.split('. Lesson')[0] ?? 'your next lesson';
+      dlg.querySelector('.skip-body')!.textContent = 'Your next lesson in order is "' + title + '".';
+      backBtn.textContent = 'Go to my next lesson';
+      backBtn.onclick = () => { location.href = curNode.href; };
+      dlg.hidden = false;
+      backBtn.focus();
+    });
     let cur = await paint();
     if (cur && Object.keys(load().done).length) cur.scrollIntoView({ block: 'center' });
     syncDown().then(async () => { document.querySelectorAll('.start-tag').forEach((t) => t.remove()); document.querySelectorAll('.node').forEach((n) => n.classList.remove('done', 'current')); await paint(); });

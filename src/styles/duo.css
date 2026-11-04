@@ -240,3 +240,13 @@ table.members th { color: var(--muted); font-weight: 800; }
 .p-bottom #prev { flex: 0 0 auto; }
 .p-bottom .btn.big { flex: 1 1 9rem; }
 @media (max-width: 40rem) { .p-bottom:not(.good):not(.bad) .btn.big { flex: 1 1 9rem; max-width: none; } }
+
+/* Skip-ahead confirmation */
+.skip-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;z-index:100}
+.skip-modal[hidden]{display:none}
+.skip-card{background:#fff;width:100%;max-width:440px;border-radius:20px 20px 0 0;padding:24px 20px 28px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.skip-card h2{margin:0;font-size:1.4rem}
+.skip-card p{margin:0}
+.skip-note{color:#6b6b6b;font-size:.95rem}
+.skip-card .btn{width:100%}
+@media(min-width:700px){.skip-modal{align-items:center}.skip-card{border-radius:20px}}
