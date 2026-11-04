@@ -90,7 +90,7 @@ export default [
       `Three further rules apply. Read the text with "the content and unity of the whole Scripture," read within "the living Tradition of the whole Church," and be attentive to the "analogy of faith," the coherence of the truths of faith (CCC 112-114).`,
       `There are two main senses of Scripture, the literal and the spiritual. The spiritual sense has three parts: allegorical, moral and anagogical (CCC 115).`,
       `The literal sense is the foundation: "All other senses of Sacred Scripture are based on the literal" (CCC 116). The spiritual sense recognizes how events point to Christ, such as the crossing of the Red Sea (CCC 117).`,
-      `Finally, all of this is "ultimately subject to the final judgment of the Church" (CCC 119).`,
+      `Finally, all of this is "ultimately subject to the judgement of the Church" (CCC 119).`,
     ],
     verses: [['Luke', 24, 44, 45], ['1 Corinthians', 10, 1, 4]],
     scriptureNote: `Paul says the rock in the desert "was Christ." Catholics call this kind of reading typology. Most Christians read the Old Testament in light of Christ.`,

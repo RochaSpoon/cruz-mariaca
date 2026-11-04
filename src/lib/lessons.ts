@@ -5,17 +5,21 @@ export type Lesson = CollectionEntry<'lessons'>;
 
 // Units in teaching order. Units with no written lessons yet are not shown on the path.
 export const UNITS: { name: string; blurb: string }[] = [
+  { name: 'The Creed and Catholic Teaching', blurb: 'What the Church believes about God, Christ, the Church and Mary, and why.' },
   { name: 'The Sacraments and the Mass', blurb: 'What Catholics do, and why: the seven sacraments and the Mass.' },
   { name: 'Prayer and the Spiritual Life', blurb: 'How to pray, and what to do when it feels like nothing is happening.' },
   { name: 'Foundations of Sin and Grace', blurb: 'What sin is, what grace does, and why hope is the point.' },
+  { name: 'Virtues', blurb: 'The habits that make a good life possible.' },
   { name: 'The Seven Deadly Sins', blurb: 'Seven habits the tradition names as the roots of the rest.' },
   { name: 'The Tongue', blurb: 'Words, truth, and the harm a sentence can do.' },
   { name: 'Neighbor and Relationships', blurb: 'Parents, grudges and forgiveness.' },
+  { name: 'Money and Justice', blurb: 'Work, wages, giving, and what we owe each other.' },
   { name: 'Body and Temperance', blurb: 'Appetite, drink and self-command.' },
   { name: 'Chastity and Sexuality', blurb: 'Desire, the body, and what the Church asks of both.' },
   { name: 'Life and Bioethics', blurb: 'Birth, death, and what the Church says about each.' },
   { name: 'Digital Life', blurb: 'Screens, scrolling and attention.' },
   { name: 'Faith and Worship', blurb: 'What belongs to God, and how to show up at Mass.' },
+  { name: 'Catholic Life and Culture', blurb: 'Feasts, saints, the Church year and everyday Catholic life.' },
 ];
 
 // Lessons on hard subjects get a short note up front, so no one is surprised.
