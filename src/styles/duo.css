@@ -2,17 +2,17 @@
 :root {
   --parchment: #ffffff; --parchment-deep: #f7f7f7;
   --ink: #3c3c3c; --ink-soft: #777777; --rubric: #ea2b2b;
-  --accent: #4f5bd5; --accent-text: #3a44ab;
+  --accent: #7b2038; --accent-text: #561528;
   --serif: 'Nunito', 'Avenir Next Rounded', 'Segoe UI', system-ui, sans-serif;
   --measure: 40rem;
-  --green: #4f5bd5; --green-d: #3a44ab; --green-l: #e4e7ff;
+  --green: #7b2038; --green-d: #561528; --green-l: #f7e6eb;
   --ok: #17a98c; --ok-d: #0f806a; --ok-l: #d5f5ec;
-  --blue: #4f5bd5; --blue-d: #3a44ab; --blue-l: #eceeff;
-  --red: #e5484d; --red-d: #bf2f36; --red-l: #ffe3e4;
+  --blue: #7b2038; --blue-d: #561528; --blue-l: #f8eaee;
+  --red: #f0603a; --red-d: #c9421f; --red-l: #ffe7df;
   --gold: #f5b82e; --gold-d: #d19610;
   --purple: #9b5de5; --purple-d: #7440b8;
   --orange: #f08a24; --orange-d: #c86d12;
-  --pink: #e0527e; --pink-d: #b83a63;
+  --pink: #3f66a8; --pink-d: #2d4c82;
   --line: #e6e4ef; --muted: #afafaf; --text: #4b4b4b; --head: #3c3c3c;
   --unit: var(--green); --unit-d: var(--green-d);
   --side: 16rem;
@@ -59,12 +59,12 @@ h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.15; margin: .2rem 0 .
 
 /* ---- Buttons ---- */
 .btn, .button { display: inline-block; font: inherit; font-weight: 800; font-size: .95rem; letter-spacing: .06em; text-transform: uppercase; padding: .85rem 1.4rem; color: #fff; background: var(--green); border: 0; border-bottom: 4px solid var(--green-d); border-radius: 16px; cursor: pointer; text-align: center; }
-.btn:hover, .button:hover { color: #fff; background: #6270e8; border-color: var(--green-d); }
+.btn:hover, .button:hover { color: #fff; background: #8c2a46; border-color: var(--green-d); }
 .btn:active, .button:active { transform: translateY(4px); border-bottom-width: 0; margin-bottom: 4px; }
 .btn.ghost { background: #fff; color: var(--blue); border: 2px solid var(--line); border-bottom-width: 4px; }
 .btn.ghost:hover { background: #f7f7f7; color: var(--blue-d); }
 .btn.big { background: var(--green); border-color: var(--green-d); min-width: 0; }
-.btn.big:hover { filter: none; background: #6270e8; }
+.btn.big:hover { filter: none; background: #8c2a46; }
 .btn:disabled, .btn.big:disabled, .button:disabled { background: var(--line); color: var(--muted); border-bottom-color: #cfcfcf; opacity: 1; transform: none; margin: 0; cursor: not-allowed; }
 
 /* ---- Home: path + right rail ---- */
