@@ -37,8 +37,15 @@ const specs = (await import(new URL(specFile, 'file://' + process.cwd() + '/').h
 const files = globSync('src/content/lessons/*/*.mdx');
 let written = 0;
 for (const s of specs) {
-  const file = files.find((f) => f.endsWith(`/${s.slug}.mdx`));
-  if (!file) throw new Error('no outline for ' + s.slug);
+  let file = files.find((f) => f.endsWith(`/${s.slug}.mdx`));
+  if (!file && !s.create) throw new Error('no outline for ' + s.slug);
+  if (!file) {
+    // A new lesson: s.create = { dir, title, category, summary, order }.
+    const c = s.create;
+    mkdirSync(`src/content/lessons/${c.dir}`, { recursive: true });
+    file = `src/content/lessons/${c.dir}/${s.slug}.mdx`;
+    writeFileSync(file, `---\n${YAML.stringify({ title: c.title, slug: s.slug, category: c.category, type: 'outline', summary: c.summary, authority_level: 'TBD', sources: ['TBD'], reviewed: false, order: c.order }, { lineWidth: 0 })}---\n`);
+  }
   const raw = readFileSync(file, 'utf8');
   const m = raw.match(/^---\n([\s\S]*?)\n---\n/);
   const fm = YAML.parse(m[1]);
@@ -61,6 +68,7 @@ for (const s of specs) {
   const verify = (text.match(/\[VERIFY/g) ?? []).length;
   const scriptureRefs = (s.verses ?? []).map((v) => quote(v).ref);
   const sources = [...new Set([...(fm.sources ?? []), ...(s.sources ?? []), ...scriptureRefs.map((r) => `${r} (DR)`)])];
+  if (s.category) fm.category = s.category;
   Object.assign(fm, { type: 'full', authority_level: s.level, sources, verify_flags: verify, reviewed: false });
   writeFileSync(file, `---\n${YAML.stringify(fm, { lineWidth: 0 })}---\n\n${text}`);
   written++;

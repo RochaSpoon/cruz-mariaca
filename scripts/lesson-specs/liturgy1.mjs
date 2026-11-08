@@ -1,0 +1,151 @@
+// The Mass in Latin and Tradition. Sources read: Sacrosanctum Concilium, Summorum Pontificum and Traditionis Custodes (vatican.va),
+// Compendium of the Catechism, Appendix A (vatican.va), Catholic Encyclopedia "Liturgy of the Mass" (1910, newadvent.org).
+import { readFileSync } from 'node:fs';
+const P = Object.fromEntries(JSON.parse(readFileSync(new URL('../../src/data/prayers.json', import.meta.url), 'utf8')).map((p) => [p.id, p]));
+const one = (id) => P[id].la.split('\n').join(' ');
+const prayer = (id, name) => `> "${one(id)}"\n> *${name} (Compendium of the Catechism, Appendix A)*`;
+const UNIT = 'The Mass in Latin and Tradition';
+
+export default [
+  {
+    slug: 'latin-in-the-liturgy', level: 'Authoritative teaching',
+    create: { dir: 'latin-mass', title: 'Latin in the Liturgy', category: UNIT, summary: 'What Vatican II said about Latin, the people\'s language and chant.', order: 1 },
+    short: `Vatican II asked that Latin be kept in the Latin rites, made room for the people's own language, and asked that the faithful be able to say the Latin parts of the Mass together (Sacrosanctum Concilium 36, 54).`,
+    teach: [
+      `"Particular law remaining in force, the use of the Latin language is to be preserved in the Latin rites" (Sacrosanctum Concilium 36 §1).`,
+      `The same Council allowed the mother tongue more room. It said this applies "in the first place to the readings and directives, and to some of the prayers and chants" (Sacrosanctum Concilium 36 §2).`,
+      `"Nevertheless steps should be taken so that the faithful may also be able to say or to sing together in Latin those parts of the Ordinary of the Mass which pertain to them" (Sacrosanctum Concilium 54).`,
+      `"The Church acknowledges Gregorian chant as specially suited to the Roman liturgy: therefore, other things being equal, it should be given pride of place in liturgical services" (Sacrosanctum Concilium 116).`,
+      `The Council also wanted the rites to be "within the people's powers of comprehension," so that they "normally should not require much explanation" (Sacrosanctum Concilium 34).`,
+      `The Catholic Encyclopedia notes that in the West "at first the language used was Greek," and that the Roman and Gallican rites developed out of that earliest liturgy, "the language being changed to Latin" (Catholic Encyclopedia, "Liturgy of the Mass").`,
+    ],
+    verses: [['John', 19, 19, 20]],
+    scriptureNote: `John records that the notice on the cross was written in Hebrew, in Greek and in Latin.`,
+    today: [
+      `Many people think Vatican II banned Latin. The text of the Constitution says the opposite: Latin is to be preserved in the Latin rites, with room for the people's own language.`,
+      `Both choices have supporters. People who want Latin point to chant, beauty and a language shared across nations. People who want the local language point to understanding.`,
+    ],
+    stakes: `The question is how the Church worships. The Council gave room for both, and it asked that the faithful not be left out of the Latin parts.`,
+    live: [
+      `**Read** Sacrosanctum Concilium 36, 54 and 116 yourself.`,
+      `**Learn** the Latin responses and the Our Father in Latin.`,
+      `**Ask** your priest how the Mass is offered in your parish and why.`,
+      `**Be** kind to people who prefer the other way.`,
+    ],
+    deeper: [`Sacrosanctum Concilium 34-36, 54, 112-116`, `Catholic Encyclopedia, "Liturgy of the Mass"`, `John 19:16-22`],
+    sources: ['Vatican II, Sacrosanctum Concilium, 34, 36, 54, 116', 'Catholic Encyclopedia (1910), "Liturgy of the Mass" (newadvent.org/cathen/09790b.htm)'],
+  },
+  {
+    slug: 'the-traditional-latin-mass', level: 'Discipline', category: UNIT,
+    short: `The Roman Missal of Saint Pius V, as revised by John XXIII in 1962, is called an "extraordinary expression" of the Roman Rite in Summorum Pontificum (2007). Traditionis Custodes (2021) says the diocesan bishop alone authorizes its use.`,
+    teach: [
+      `"The Roman Missal promulgated by Pope Paul VI is the ordinary expression of the lex orandi (rule of prayer) of the Catholic Church of the Latin rite. The Roman Missal promulgated by Saint Pius V and revised by Blessed John XXIII is nonetheless to be considered an extraordinary expression of the same lex orandi of the Church" (Summorum Pontificum, art. 1).`,
+      `Benedict XVI added that these "two expressions of the Church's lex orandi will in no way lead to a division in the Church's lex credendi (rule of faith); for they are two usages of the one Roman rite" (Summorum Pontificum, art. 1).`,
+      `The same document says the Missal promulgated by John XXIII in 1962 was "never abrogated" (Summorum Pontificum, 2007).`,
+      `Pope Francis wrote that "the liturgical books promulgated by Saint Paul VI and Saint John Paul II, in conformity with the decrees of Vatican Council II, are the unique expression of the lex orandi of the Roman Rite" (Traditionis Custodes, art. 1).`,
+      `Of the diocesan bishop it says: "it is his exclusive competence to authorize the use of the 1962 Roman Missal in his diocese, according to the guidelines of the Apostolic See" (Traditionis Custodes, art. 2).`,
+      `Both documents speak of the Missal of 1962. They do not describe older books. The Catholic Encyclopedia says Pius V published the Missal by the bull "Quo primum" on 14 July 1570 (Catholic Encyclopedia, "Liturgy of the Mass").`,
+    ],
+    verses: [['John', 4, 23, 24]],
+    scriptureNote: `Jesus says the hour is coming, and now is, when true worshippers will worship the Father in spirit and in truth.`,
+    today: [
+      `People who love the older Mass talk about silence, beauty, Latin and the sense of the sacred. People who prefer the newer Mass talk about understanding the words, taking part, and unity across the Church.`,
+      `Both are the same sacrifice. The Church has never said that either is not a real Mass.`,
+      `Norms can change, and they depend on the diocese. Check with your priest and your bishop for what applies where you live.`,
+    ],
+    stakes: `The Church asks Catholics not to make the liturgy a battleground. Division over how to worship is a real wound, and people on both sides say so.`,
+    live: [
+      `**Go once and see.** If there is one near you, attend with an open mind.`,
+      `**Do not sneer at either side.** You can have a preference without contempt.`,
+      `**Follow** your bishop's rules and pray for the unity of the Church.`,
+      `**Learn** a little Latin. The prayers page is a good start.`,
+    ],
+    deeper: [`Benedict XVI, Summorum Pontificum (2007)`, `Francis, Traditionis Custodes (2021)`, `John 4:19-26`],
+    sources: ['Benedict XVI, Summorum Pontificum (2007), art. 1', 'Francis, Traditionis Custodes (2021), art. 1 and 2', 'Catholic Encyclopedia (1910), "Liturgy of the Mass"'],
+  },
+  {
+    slug: 'the-mass-before-1955', level: 'Historical record',
+    create: { dir: 'latin-mass', title: 'The Mass Before 1955', category: UNIT, summary: 'The Missal of Pius V, High and Low Mass, and the Holy Week reform of 1955.', order: 3 },
+    short: `Before 1955 the Roman Mass was the Missal of Pius V (1570) with light revisions. A 1955 decree then reformed Holy Week, and the 1962 Missal followed.`,
+    teach: [
+      `The Catholic Encyclopedia (1910) says Pius V published the Missal by the bull Quo primum on 14 July 1570, and that this "is really the last stage of the history of the Roman Mass."`,
+      `Clement VIII (1604), Urban VIII (1634) and Leo XIII (1884) "revised the book slightly in the rubrics and the texts of Scripture." Pius X revised the chant in 1908. The article says these revisions "leave it still the Missal of Pius V."`,
+      `It says the High Mass with deacon and subdeacon "is the norm," and that Low Mass, said by a priest alone with one server, "is a shortened and simplified form of the same thing."`,
+      `A sung Mass (missa cantata) "is really a low Mass," since "the essence of high Mass is not the music but the deacon and subdeacon."`,
+      `On 16 November 1955 Pius XII's decree Maxima Redemptionis Nostrae Mysteria reformed the Holy Week rites (Acta Apostolicae Sedis 47 (1955) 838-847). I could not read the decree itself. Secondary summaries say it restored the Easter Vigil to the night of Holy Saturday, moved Good Friday's liturgy to the hour of Christ's death, remodeled the blessing of the Easter candle, reduced the number of Vigil readings, and introduced the renewal of baptismal promises in the vernacular.`,
+      `Leo XIII ordered prayers to be said after Low Mass in 1884: three Hail Marys, the Hail Holy Queen and a prayer to Saint Michael. The instruction Inter Oecumenici (26 September 1964) suppressed them. These dates are from secondary sources.`,
+      `The Missal of 1962, revised by John XXIII, is the one named in Summorum Pontificum and Traditionis Custodes.`,
+    ],
+    verses: [['Luke', 22, 19, 20]],
+    scriptureNote: `At the Last Supper Jesus takes bread and the cup and says to do this in memory of Him. Every form of the Roman Mass rests on this.`,
+    today: [
+      `A Mass "before 1955" follows the books in use before the Holy Week decree. The Church's recent documents on the older liturgy name the 1962 Missal, so your pastor and bishop are the people to ask which books your parish uses.`,
+      `The Catholic Encyclopedia article is more than a century old. It is useful for how the Mass was celebrated then, not for later practice.`,
+    ],
+    stakes: `Knowing the history keeps people from arguing about things that never happened. The Mass has changed over time, and the Church has changed it through legitimate authority.`,
+    live: [
+      `**Read** the Catholic Encyclopedia article on the Liturgy of the Mass.`,
+      `**Compare** the structure with the Parts of the Mass lesson.`,
+      `**Ask** your priest how your parish's Mass differs from the Missal of 1962.`,
+      `**Check** the Holy Week decree itself, not only summaries of it.`,
+    ],
+    deeper: [`Catholic Encyclopedia, "Liturgy of the Mass"`, `Maxima Redemptionis Nostrae Mysteria (1955)`, `Luke 22:7-20`],
+    sources: ['Catholic Encyclopedia (1910), "Liturgy of the Mass" (newadvent.org/cathen/09790b.htm)', 'Sacred Congregation of Rites, Maxima Redemptionis Nostrae Mysteria (1955), AAS 47 (1955) 838-847 (known through secondary summaries)', 'Sacred Congregation of Rites, Inter Oecumenici (1964) (known through secondary summaries)'],
+  },
+  {
+    slug: 'following-the-mass-in-latin', level: 'Discipline',
+    create: { dir: 'latin-mass', title: 'Following the Mass in Latin', category: UNIT, summary: 'How to follow along and take part when the Mass is in Latin.', order: 4 },
+    short: `The Council asked for "acclamations, responses, psalmody, antiphons, and songs" and "reverent silence." You can follow a Latin Mass with a bilingual missal and a few responses (Sacrosanctum Concilium 30).`,
+    teach: [
+      `"To promote active participation, the people should be encouraged to take part by means of acclamations, responses, psalmody, antiphons, and songs, as well as by actions, gestures, and bodily attitudes. And at the proper times all should observe a reverent silence" (Sacrosanctum Concilium 30).`,
+      `The Council wanted "fully conscious, and active participation in liturgical celebrations," which it called "their right and duty by reason of their baptism" (Sacrosanctum Concilium 14).`,
+      `In the Mass as the Catholic Encyclopedia describes it, the order runs: prayers at the foot of the altar, the Introit and Kyrie, the Gloria on days when the Te Deum is said in the Office, the collect, the Epistle, the Gradual, the Gospel, the sermon if there is one, and the Creed on Sundays and certain feasts.`,
+      `The priest says "Dominus vobiscum" and the people answer "Et cum spiritu tuo" (Catholic Encyclopedia, "Liturgy of the Mass").`,
+      `The Church prints the Sign of the Cross, the Our Father, the Hail Mary and the Creeds in Latin for everyone. They are in the Compendium of the Catechism, Appendix A, and on this site's prayers page.`,
+    ],
+    verses: [['1 Corinthians', 14, 40, 40]],
+    scriptureNote: `Paul ends his instructions on worship by saying everything should be done with decency and order.`,
+    today: [
+      `A Latin Mass can feel like watching something you do not understand. A hand missal with Latin and a translation side by side fixes most of that.`,
+      `Silence is part of the Mass too. The Council asked for it at the proper times.`,
+    ],
+    stakes: `The aim is to take part with attention. Understanding the words helps. Presence matters more.`,
+    live: [
+      `**Bring** a bilingual hand missal that matches the form of the Mass at your parish.`,
+      `**Learn** "Dominus vobiscum" and "Et cum spiritu tuo."`,
+      `**Watch** the priest and the people near you for postures.`,
+      `**Ask** after Mass. Most regulars like helping newcomers.`,
+    ],
+    deeper: [`Sacrosanctum Concilium 14, 30, 54`, `The prayers page`, `1 Corinthians 14:26-40`],
+    sources: ['Vatican II, Sacrosanctum Concilium, 14, 30', 'Catholic Encyclopedia (1910), "Liturgy of the Mass"', 'Compendium of the Catechism of the Catholic Church (2005), Appendix A'],
+  },
+  {
+    slug: 'latin-prayers-every-catholic-should-know', level: 'Authoritative teaching',
+    create: { dir: 'latin-mass', title: 'Latin Prayers Every Catholic Should Know', category: UNIT, summary: 'The Sign of the Cross, Our Father, Hail Mary, Glory Be and more in Latin.', order: 5 },
+    short: `The Compendium of the Catechism prints common prayers in Latin so that Catholics can pray them in the Church's own language. Here are five.`,
+    teach: [
+      `The Compendium of the Catechism of the Catholic Church (2005) gives these prayers in English and Latin in its Appendix A, "Common Prayers." The Latin texts below are copied from it.`,
+      prayer('sign', 'Signum Crucis'),
+      prayer('pater', 'Pater Noster'),
+      prayer('ave', 'Ave Maria'),
+      prayer('gloria', 'Gloria Patri'),
+      prayer('angel', 'Angele Dei'),
+      `The same Appendix gives the Salve Regina, the Anima Christi, the Creeds and more. All of them are on the prayers page of this site, with English and Spanish beside the Latin.`,
+    ],
+    verses: [['Luke', 11, 1, 4]],
+    scriptureNote: `The disciples ask Jesus to teach them to pray, and He gives them the Our Father.`,
+    today: [
+      `Latin prayers are easy to learn by saying them aloud. Learn one line a day.`,
+      `The accent marks in the Compendium show where the stress falls. They are not part of the old spelling, but they help.`,
+    ],
+    stakes: `A shared set of prayers lets Catholics from any country pray together. The Second Vatican Council asked that the faithful be able to say and sing the Latin parts of the Ordinary together (Sacrosanctum Concilium 54).`,
+    live: [
+      `**Pray** the Sign of the Cross and Our Father in Latin each day for a week.`,
+      `**Say** the Hail Mary in Latin at the end of a Rosary decade.`,
+      `**Print** the prayers page and keep it in your missal.`,
+      `**Ask** a priest or choir director about pronunciation.`,
+    ],
+    deeper: [`Compendium of the Catechism, Appendix A`, `The prayers page`, `Luke 11:1-13`],
+    sources: ['Compendium of the Catechism of the Catholic Church (2005), Appendix A, Common Prayers (vatican.va)', 'Vatican II, Sacrosanctum Concilium, 54'],
+  },
+];

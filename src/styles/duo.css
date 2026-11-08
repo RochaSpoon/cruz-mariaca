@@ -35,8 +35,8 @@ h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.15; margin: .2rem 0 .
 .logo { display: flex; align-items: center; gap: .65rem; font-size: 1.45rem; font-weight: 900; letter-spacing: -.02em; color: var(--green); padding: .2rem .6rem; }
 .logo img { width: 2.4rem; height: 2.4rem; flex: none; }
 .logo:hover { color: var(--green); }
-.mtop { display: none; }
-@media (max-width: 52rem) { .mtop { display: flex; align-items: center; gap: .55rem; margin: -1rem -1rem .5rem; padding: .6rem 1rem; border-bottom: 2px solid var(--line); color: var(--green); font-weight: 900; font-size: 1.15rem; } .mtop img { width: 1.8rem; height: 1.8rem; } }
+.mbar { display: none; }
+@media (max-width: 52rem) { .mbar { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: -1rem -1rem .5rem; padding: .5rem 1rem; border-bottom: 2px solid var(--line); } .mtop { display: flex; align-items: center; gap: .55rem; color: var(--green); font-weight: 900; font-size: 1.15rem; } .mtop img { width: 1.8rem; height: 1.8rem; } .side .lang { display: none; } }
 .side-nav { display: grid; gap: .25rem; }
 .side-nav a { display: flex; align-items: center; gap: 1rem; padding: .7rem .9rem; border: 2px solid transparent; border-radius: 14px; color: var(--text); text-transform: uppercase; letter-spacing: .06em; font-size: .95rem; font-weight: 800; }
 .side-nav a svg { width: 1.9rem; height: 1.9rem; color: var(--muted); flex: none; }
@@ -250,3 +250,39 @@ table.members th { color: var(--muted); font-weight: 800; }
 .skip-note{color:#6b6b6b;font-size:.95rem}
 .skip-card .btn{width:100%}
 @media(min-width:700px){.skip-modal{align-items:center}.skip-card{border-radius:20px}}
+
+/* Language switcher */
+.lang { display: inline-flex; gap: 2px; padding: 3px; border: 2px solid var(--line); border-radius: 12px; background: #fff; }
+.lang button { font: inherit; font-weight: 800; font-size: .8rem; letter-spacing: .04em; padding: .35rem .6rem; border: 0; border-radius: 9px; background: transparent; color: #6b6b6b; cursor: pointer; min-height: 32px; }
+.lang button[aria-pressed="true"] { background: var(--green-l); color: var(--green); }
+.lang button:focus-visible { outline: 3px solid var(--green); outline-offset: 1px; }
+.side .lang { margin: auto 1rem 1rem; align-self: flex-start; }
+.lang-m { flex: none; }
+
+/* Text shown in one language at a time. A block can list several languages, for example data-l="en la". */
+[data-l] { display: none; }
+html[lang="en"] [data-l~="en"], html[lang="es"] [data-l~="es"], html[lang="la"] [data-l~="la"] { display: block; }
+html[lang="en"] span[data-l~="en"], html[lang="es"] span[data-l~="es"], html[lang="la"] span[data-l~="la"] { display: inline; }
+html[lang="en"] li[data-l~="en"], html[lang="es"] li[data-l~="es"], html[lang="la"] li[data-l~="la"] { display: list-item; }
+.guide { max-width: 46rem; }
+.guide h1 { margin: .2rem 0 .6rem; }
+.guide h2 { margin: 2rem 0 .5rem; font-size: 1.35rem; }
+.guide p, .guide li { line-height: 1.6; }
+.guide blockquote.src { margin: .8rem 0; padding: .7rem 1rem; border-left: 4px solid var(--green); background: var(--green-l); border-radius: 0 12px 12px 0; }
+.guide blockquote.src cite { display: block; margin-top: .35rem; font-size: .85rem; font-style: normal; color: #6b6b6b; }
+.guide .callout { border: 2px solid var(--line); border-radius: 16px; padding: .8rem 1rem; margin: 1rem 0; background: #fff; }
+.guide .callout b { color: var(--green); }
+.guide .forms { display: grid; gap: .8rem; margin: 1rem 0; }
+.guide .forms > div { border: 2px solid var(--line); border-radius: 16px; padding: .8rem 1rem; }
+.guide .forms h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
+.guide .small { font-size: .88rem; color: #6b6b6b; }
+.prayer { border: 2px solid var(--line); border-radius: 16px; padding: .9rem 1rem; margin: 1rem 0; background: #fff; }
+.prayer h2 { margin: 0 0 .5rem; font-size: 1.15rem; }
+.prayer .cols { display: grid; gap: .8rem; }
+@media (min-width: 52rem) { .prayer .cols { grid-template-columns: repeat(3, 1fr); } }
+.prayer .col h3 { margin: 0 0 .25rem; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; }
+.prayer .col p { margin: 0; white-space: pre-line; line-height: 1.55; }
+.prayer .col.hi { background: var(--green-l); border-radius: 12px; padding: .5rem .7rem; }
+.toc { display: flex; flex-wrap: wrap; gap: .4rem; margin: .8rem 0; padding: 0; list-style: none; }
+.toc a { display: inline-block; padding: .35rem .7rem; border: 2px solid var(--line); border-radius: 999px; font-weight: 800; font-size: .85rem; text-decoration: none; }
+@media print { .side, .tabbar, .mbar, .lang, .skip { display: none !important; } .shell { display: block; } .guide { max-width: none; } }

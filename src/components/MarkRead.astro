@@ -3,7 +3,7 @@ interface Props { slug: string; on?: string; off?: string; done?: string }
 const { slug, on = 'Mark as read', off = 'Mark as unread', done = 'Marked as read.' } = Astro.props;
 ---
 <div class="markread" data-slug={slug} data-on={on} data-off={off} data-done={done}>
-  <p class="signin-hint">Accounts are optional. <a href="/account/">Sign in</a> if you want to keep track of what you have read.</p>
+  <p class="signin-hint"><span data-t>Accounts are optional.</span> <a href="/account/" data-t>Sign in</a> <span data-t>if you want to keep track of what you have read.</span></p>
   <p class="signed-in" hidden>
     <button type="button" class="button" data-toggle>{on}</button>
     <span class="rubric" data-state aria-live="polite"></span>
@@ -11,6 +11,7 @@ const { slug, on = 'Mark as read', off = 'Mark as unread', done = 'Marked as rea
 </div>
 <script>
   import { HAS_SESSION_KEY } from '../lib/supabase';
+  import { T } from '../lib/lang';
   import { isoLocal } from '../lib/daily';
   const box = document.querySelector<HTMLElement>('.markread');
   let hasSession = false;
@@ -29,7 +30,7 @@ const { slug, on = 'Mark as read', off = 'Mark as unread', done = 'Marked as rea
       hint.hidden = true; row.hidden = false;
       const uid = session.user.id;
       let read = false;
-      const paint = () => { btn.textContent = read ? off : on; state.textContent = read ? done : ''; };
+      const paint = () => { btn.textContent = T(read ? off : on); state.textContent = read ? T(done) : ''; };
       const { data: rows } = await supabase.from('progress').select('slug').eq('user_id', uid).eq('slug', slug);
       read = !!rows?.length; paint();
       btn.addEventListener('click', async () => {
@@ -37,7 +38,7 @@ const { slug, on = 'Mark as read', off = 'Mark as unread', done = 'Marked as rea
         const { error } = read
           ? await supabase.from('progress').delete().eq('user_id', uid).eq('slug', slug)
           : await supabase.from('progress').upsert({ user_id: uid, slug }, { onConflict: 'user_id,slug', ignoreDuplicates: true });
-        if (error) { state.textContent = 'That did not save. Try again.'; } else { read = !read; paint(); }
+        if (error) { state.textContent = T('That did not save. Try again.'); } else { read = !read; paint(); }
         btn.disabled = false;
       });
     });

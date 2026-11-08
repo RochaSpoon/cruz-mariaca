@@ -6,47 +6,57 @@ const myths = (await getCollection('myths')).sort((a, b) => a.data.title.localeC
 ---
 <Base title="Library" description="Everything on the site, in one list.">
   <div class="intro">
-    <p class="rubric sc">For people looking in from outside</p>
-    <h1>The Library</h1>
-    <p class="lede">Every page gives sources you can check, states the other side the way its best writers would, and leaves the decision to you. The Church itself teaches that faith has to be free (CCC 160).</p>
+    <p class="rubric sc" data-t>For people looking in from outside</p>
+    <h1 data-t>The Library</h1>
+    <p class="lede" data-t>Every page gives sources you can check, states the other side the way its best writers would, and leaves the decision to you. The Church itself teaches that faith has to be free (CCC 160).</p>
   </div>
   <div class="home">
     <TodayPanel />
     <section class="library" aria-labelledby="lib-h">
-      <h2 id="lib-h">Library</h2>
+      <h2 id="lib-h" data-t>Library</h2>
       <details open>
-        <summary>Lessons</summary>
-        <p class="sub">Short lessons, one screen at a time, in order.</p>
-        <ul><li><a href="/">Open the lesson path</a></li></ul>
+        <summary data-t>Lessons</summary>
+        <p class="sub" data-t>Short lessons, one screen at a time, in order.</p>
+        <ul><li><a href="/" data-t>Open the lesson path</a></li></ul>
       </details>
       <details>
-        <summary>Start here</summary>
-        <p class="sub">One question, five paths. Pick the one that sounds most like you.</p>
-        <ul><li><a href="/start/">Where are you coming from?</a></li></ul>
+        <summary data-t>Start here</summary>
+        <p class="sub" data-t>One question, five paths. Pick the one that sounds most like you.</p>
+        <ul><li><a href="/start/" data-t>Where are you coming from?</a></li></ul>
       </details>
       <details>
-        <summary>Myths and misconceptions</summary>
-        <p class="sub">Claims people make about the Church, each answered from the sources.</p>
+        <summary data-t>Myths and misconceptions</summary>
+        <p class="sub" data-t>Claims people make about the Church, each answered from the sources.</p>
         <ul>
           {myths.map((m) => <li><a href={`/myths/${m.id}/`}>{m.data.title}</a></li>)}
         </ul>
       </details>
       <details>
-        <summary>The Mass, step by step</summary>
-        <p class="sub">What happens, why, where it comes from, and when to sit, stand or kneel.</p>
-        <ul><li><a href="/mass/">Walk through the Mass</a></li></ul>
+        <summary data-t>The Mass, step by step</summary>
+        <p class="sub" data-t>What happens, why, where it comes from, and when to sit, stand or kneel.</p>
+        <ul><li><a href="/mass/" data-t>Walk through the Mass</a></li></ul>
       </details>
       <details>
-        <summary>Daily Bread</summary>
-        <p class="sub">One reading, one thought, one question. Then it ends.</p>
-        <ul><li><a href="/daily/">Today's reading</a></li></ul>
+        <summary data-t>Daily Bread</summary>
+        <p class="sub" data-t>One reading, one thought, one question. Then it ends.</p>
+        <ul><li><a href="/daily/" data-t>Today's reading</a></li></ul>
       </details>
       <details>
-        <summary>Reference</summary>
+        <summary data-t>Latin Mass and tradition</summary>
+        <p class="sub" data-t>Follow the Mass in Latin, learn the common prayers, and see how the older forms of the Roman Rite relate to today's.</p>
+        <ul><li><a href="/liturgy/" data-t>The Latin Mass guide</a></li></ul>
+      </details>
+      <details>
+        <summary data-t>For clubs and groups</summary>
+        <p class="sub" data-t>A twelve-week plan, discussion questions and ways to use the site in a student club or parish group.</p>
+        <ul><li><a href="/club/" data-t>Club and group guide</a></li></ul>
+      </details>
+      <details>
+        <summary data-t>Reference</summary>
         <ul>
-          <li><a href="/glossary/">Glossary</a></li>
-          <li><a href="/about/">How to read this site</a></li>
-          <li><a href="/account/">Account (optional)</a></li>
+          <li><a href="/glossary/" data-t>Glossary</a></li>
+          <li><a href="/about/" data-t>How to read this site</a></li>
+          <li><a href="/account/" data-t>Account (optional)</a></li>
         </ul>
       </details>
     </section>

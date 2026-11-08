@@ -24,33 +24,39 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" />
   </head>
   <body class="shelled">
-    <a class="skip" href="#main">Skip to the content</a>
+    <a class="skip" href="#main" data-t>Skip to the content</a>
     <div class="shell">
-      <aside class="side" aria-label="Main">
+      <aside class="side" aria-label="Main" data-t-attr="aria-label">
         <a class="logo" href="/"><img src="/logo.svg" alt="" width="40" height="40" />cruz-mariaca</a>
         <nav class="side-nav">
           <a href="/" aria-current={path === '/' || path.startsWith('/learn') ? 'page' : undefined}>
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 3 14v14h9v-8h8v8h9V14z" fill="currentColor"/></svg><span>Learn</span>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 3 14v14h9v-8h8v8h9V14z" fill="currentColor"/></svg><span data-t>Learn</span>
           </a>
           <a href="/daily/" aria-current={path.startsWith('/daily') || path.startsWith('/today') ? 'page' : undefined}>
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h17a3 3 0 0 1 3 3v21H9a3 3 0 0 1-3-3zm4 5v3h12V9zm0 6v3h12v-3z" fill="currentColor"/></svg><span>Daily</span>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h17a3 3 0 0 1 3 3v21H9a3 3 0 0 1-3-3zm4 5v3h12V9zm0 6v3h12v-3z" fill="currentColor"/></svg><span data-t>Daily</span>
           </a>
           <a href="/library/" aria-current={path.startsWith('/library') || path.startsWith('/myths') || path.startsWith('/mass') || path.startsWith('/glossary') || path.startsWith('/start') ? 'page' : undefined}>
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 5h6v22H4zm9 0h6v22h-6zm9 3 6-1 3 20-6 1z" fill="currentColor"/></svg><span>Library</span>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 5h6v22H4zm9 0h6v22h-6zm9 3 6-1 3 20-6 1z" fill="currentColor"/></svg><span data-t>Library</span>
           </a>
           <a href="/account/" aria-current={path.startsWith('/account') || path.startsWith('/about') || path.startsWith('/admin') ? 'page' : undefined}>
-            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="10" r="6" fill="currentColor"/><path d="M4 28c0-7 5-11 12-11s12 4 12 11z" fill="currentColor"/></svg><span>Profile</span>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="10" r="6" fill="currentColor"/><path d="M4 28c0-7 5-11 12-11s12 4 12 11z" fill="currentColor"/></svg><span data-t>Profile</span>
           </a>
         </nav>
+        <div class="lang" role="group" aria-label="Language" data-t-attr="aria-label"><button type="button" data-lang-btn="en" lang="en" aria-pressed="true">EN</button><button type="button" data-lang-btn="es" lang="es" aria-pressed="false">ES</button><button type="button" data-lang-btn="la" lang="la" aria-pressed="false">LA</button></div>
       </aside>
-      <main id="main" class="content"><a class="mtop" href="/"><img src="/logo.svg" alt="" width="30" height="30" />cruz-mariaca</a><slot /></main>
+      <main id="main" class="content"><div class="mbar"><a class="mtop" href="/"><img src="/logo.svg" alt="" width="30" height="30" />cruz-mariaca</a><div class="lang lang-m" role="group" aria-label="Language" data-t-attr="aria-label"><button type="button" data-lang-btn="en" lang="en" aria-pressed="true">EN</button><button type="button" data-lang-btn="es" lang="es" aria-pressed="false">ES</button><button type="button" data-lang-btn="la" lang="la" aria-pressed="false">LA</button></div></div><slot /></main>
     </div>
-    <nav class="tabbar" aria-label="App">
-      <a href="/" aria-label="Learn" aria-current={path === '/' || path.startsWith('/learn') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 3 14v14h9v-8h8v8h9V14z" fill="currentColor"/></svg></a>
-      <a href="/daily/" aria-label="Daily" aria-current={path.startsWith('/daily') || path.startsWith('/today') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h17a3 3 0 0 1 3 3v21H9a3 3 0 0 1-3-3zm4 5v3h12V9zm0 6v3h12v-3z" fill="currentColor"/></svg></a>
-      <a href="/library/" aria-label="Library" aria-current={path.startsWith('/library') || path.startsWith('/myths') || path.startsWith('/mass') || path.startsWith('/glossary') || path.startsWith('/start') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 5h6v22H4zm9 0h6v22h-6zm9 3 6-1 3 20-6 1z" fill="currentColor"/></svg></a>
-      <a href="/account/" aria-label="Profile" aria-current={path.startsWith('/account') || path.startsWith('/about') || path.startsWith('/admin') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="10" r="6" fill="currentColor"/><path d="M4 28c0-7 5-11 12-11s12 4 12 11z" fill="currentColor"/></svg></a>
+    <nav class="tabbar" aria-label="App" data-t-attr="aria-label">
+      <a href="/" aria-label="Learn" data-t-attr="aria-label" aria-current={path === '/' || path.startsWith('/learn') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 3 14v14h9v-8h8v8h9V14z" fill="currentColor"/></svg></a>
+      <a href="/daily/" aria-label="Daily" data-t-attr="aria-label" aria-current={path.startsWith('/daily') || path.startsWith('/today') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h17a3 3 0 0 1 3 3v21H9a3 3 0 0 1-3-3zm4 5v3h12V9zm0 6v3h12v-3z" fill="currentColor"/></svg></a>
+      <a href="/library/" aria-label="Library" data-t-attr="aria-label" aria-current={path.startsWith('/library') || path.startsWith('/myths') || path.startsWith('/mass') || path.startsWith('/glossary') || path.startsWith('/start') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 5h6v22H4zm9 0h6v22h-6zm9 3 6-1 3 20-6 1z" fill="currentColor"/></svg></a>
+      <a href="/account/" aria-label="Profile" data-t-attr="aria-label" aria-current={path.startsWith('/account') || path.startsWith('/about') || path.startsWith('/admin') ? 'page' : undefined}><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="10" r="6" fill="currentColor"/><path d="M4 28c0-7 5-11 12-11s12 4 12 11z" fill="currentColor"/></svg></a>
     </nav>
+    <script>
+      import { applyLang, setLang, getLang, type Lang } from '../lib/lang';
+      document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.langBtn as Lang)));
+      applyLang(getLang());
+    </script>
     <script>
       try { if (localStorage.getItem('cm-auth')) import('../lib/session').then((m) => m.init()); } catch {}
     </script>

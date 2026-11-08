@@ -5,17 +5,17 @@ import { getCollection } from 'astro:content';
 const all = (await getCollection('daily')).sort((a, b) => a.data.day - b.data.day);
 ---
 <Base title="Daily Bread" description="One reading, one short reflection, one question. Then it ends.">
-  <p class="rubric sc">Daily Bread</p>
-  <h1>One reading a day</h1>
-  <p class="lede">A short passage, a few lines of thought, and a question. There is no streak to protect and no feed to scroll.</p>
+  <p class="rubric sc" data-t>Daily Bread</p>
+  <h1 data-t>One reading a day</h1>
+  <p class="lede" data-t>A short passage, a few lines of thought, and a question. There is no streak to protect and no feed to scroll.</p>
   <div class="home">
     <TodayPanel />
     <div>
       <details class="daylist">
-        <summary>All thirty readings</summary>
+        <summary data-t>All thirty readings</summary>
         <ol>{all.map((e) => <li><a href={`/daily/${e.data.day}/`}>{e.data.reading_ref}</a></li>)}</ol>
       </details>
-      <div class="prose"><p>The readings repeat every thirty days. All the text is the Douay-Rheims translation.</p></div>
+      <div class="prose"><p data-t>The readings repeat every thirty days. All the text is the Douay-Rheims translation.</p></div>
     </div>
   </div>
 </Base>

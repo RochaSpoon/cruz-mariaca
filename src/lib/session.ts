@@ -1,5 +1,6 @@
 // Loaded only for visitors who already have a saved session.
 import { supabase } from './supabase';
+import { applyLang, getLang } from './lang';
 
 export async function currentSession() {
   const { data } = await supabase.auth.getSession();
@@ -21,8 +22,9 @@ export async function init() {
     const a = document.createElement('a');
     a.setAttribute('data-admin', '');
     a.href = '/admin/';
-    a.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24v5H4zm0 8h24v5H4zm0 8h24v4H4z" fill="currentColor"/></svg><span>Members</span>';
+    a.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h24v5H4zm0 8h24v5H4zm0 8h24v4H4z" fill="currentColor"/></svg><span data-t>Members</span>';
     list.appendChild(a);
+    applyLang(getLang());
   }
   // Record a visit at most once an hour.
   try {

@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import LessonPlayer from '../../../components/LessonPlayer.astro';
+import type { Lesson } from '../../../lib/lessons';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('lessonsEs')) as unknown as Lesson[];
+  const full = all.filter((l) => l.data.type === 'full');
+  return full.map((lesson) => ({ params: { slug: lesson.data.slug }, props: { lesson, full } }));
+}
+const { lesson, full } = Astro.props as { lesson: Lesson; full: Lesson[] };
+---
+<LessonPlayer lesson={lesson} full={full} lang="es" />

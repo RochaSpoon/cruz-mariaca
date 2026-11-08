@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import prayers from '../../data/prayers.json';
+---
+<Base title="Prayers in Latin" description="Common Catholic prayers in Latin, English and Spanish, copied from the Compendium of the Catechism.">
+  <article class="guide">
+    <p class="rubric sc"><a href="/liturgy/" style="color:inherit" data-l="en la">Latin Mass and tradition</a><a href="/liturgy/" style="color:inherit" data-l="es">Misa en latín y tradición</a></p>
+    <h1 data-l="en">Prayers in Latin</h1>
+    <h1 data-l="es">Oraciones en latín</h1>
+    <h1 data-l="la">Preces latinae</h1>
+    <p data-l="en la">Each prayer is shown in Latin, English and Spanish. The texts are copied from the Appendix of the Compendium of the Catechism of the Catholic Church (2005) on vatican.va. Accent marks in the Latin show where the stress falls. Where the Compendium prints two English versions, the American one is shown.</p>
+    <p data-l="es">Cada oración aparece en latín, inglés y español. Los textos están copiados del Apéndice del Compendio del Catecismo de la Iglesia Católica (2005) en vatican.va. Las tildes del latín indican dónde cae el acento. Donde el Compendio da dos versiones en inglés, se muestra la estadounidense.</p>
+    <ul class="toc">
+      {prayers.map((p) => <li><a href={`#${p.id}`}><span data-l="en">{p.title.en}</span><span data-l="es">{p.title.es}</span><span data-l="la">{p.title.la}</span></a></li>)}
+    </ul>
+    {prayers.map((p) => (
+      <section class="prayer" id={p.id}>
+        <h2><span data-l="en">{p.title.en}</span><span data-l="es">{p.title.es}</span><span data-l="la">{p.title.la}</span></h2>
+        <div class="cols">
+          <div class="col hi"><h3>Latina</h3><p lang="la">{p.la}</p></div>
+          <div class="col"><h3>English</h3><p lang="en">{p.en}</p></div>
+          <div class="col"><h3>Español</h3><p lang="es">{p.es}</p></div>
+        </div>
+      </section>
+    ))}
+    <p class="small" data-l="en la">Source: Compendium of the Catechism of the Catholic Church (2005), Appendix A, Common Prayers. The Compendium's Latin has a few misprints; the ones fixed here are "Víirgine" to "Virgine" and "sæ´cula" to "sæcula".</p>
+    <p class="small" data-l="es">Fuente: Compendio del Catecismo de la Iglesia Católica (2005), Apéndice A, Oraciones comunes. El latín del Compendio tiene algunas erratas; aquí se corrigieron «Víirgine» a «Virgine» y «sæ´cula» a «sæcula».</p>
+  </article>
+</Base>

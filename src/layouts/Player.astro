@@ -3,11 +3,11 @@ import '../styles/global.css';
 import '../styles/extra.css';
 import '../styles/app.css';
 import '../styles/duo.css';
-interface Props { title: string }
-const { title } = Astro.props;
+interface Props { title: string; lang?: string }
+const { title, lang = 'en' } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

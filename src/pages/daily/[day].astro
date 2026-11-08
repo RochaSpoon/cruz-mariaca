@@ -12,7 +12,7 @@ const d = e.data;
 ---
 <Base title={`Daily Bread: ${d.reading_ref}`} description={d.summary}>
   <article>
-    <p class="rubric sc"><a href="/daily/" style="color:inherit">Daily Bread</a>, reading {d.day} of 30</p>
+    <p class="rubric sc"><a href="/daily/" style="color:inherit" data-t>Daily Bread</a>, <span data-t>reading</span> {d.day} <span data-t>of</span> 30</p>
     <h1>{d.reading_ref}</h1>
     <p class="meta"><span>{d.minutes} minute{d.minutes === 1 ? '' : 's'}</span></p>
     <div class="reading">
@@ -20,16 +20,16 @@ const d = e.data;
       <p class="cite">{d.reading_ref} <span class="sc">Douay-Rheims</span></p>
     </div>
     <div class="prose">
-      <h3>A thought</h3>
+      <h3 data-t>A thought</h3>
       <p>{d.reflection}</p>
     </div>
     <div class="ask">
-      <p class="rubric sc">A question</p>
+      <p class="rubric sc" data-t>A question</p>
       <p>{d.question}</p>
     </div>
     <p><a href={d.deeper_href}>{d.deeper_label}</a></p>
     <MarkRead slug="daily-today" on="I did this today" off="Undo" done="Noted." />
-    <p class="finis">That is it for today.</p>
+    <p class="finis" data-t>That is it for today.</p>
     <SourceList sources={d.sources} />
   </article>
 </Base>

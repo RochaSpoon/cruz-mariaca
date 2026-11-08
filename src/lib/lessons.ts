@@ -1,5 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { marked } from 'marked';
+import { STR } from './strings';
+const T = (s: string, lang: 'en' | 'es' | 'la') => (lang === 'en' ? s : STR[s]?.[lang] ?? s);
 
 export type Lesson = CollectionEntry<'lessons'>;
 
@@ -7,6 +9,7 @@ export type Lesson = CollectionEntry<'lessons'>;
 export const UNITS: { name: string; blurb: string }[] = [
   { name: 'The Creed and Catholic Teaching', blurb: 'What the Church believes about God, Christ, the Church and Mary, and why.' },
   { name: 'The Sacraments and the Mass', blurb: 'What Catholics do, and why: the seven sacraments and the Mass.' },
+  { name: 'The Mass in Latin and Tradition', blurb: 'Latin, the older forms of the Roman Rite, and how to follow the Mass.' },
   { name: 'Prayer and the Spiritual Life', blurb: 'How to pray, and what to do when it feels like nothing is happening.' },
   { name: 'Foundations of Sin and Grace', blurb: 'What sin is, what grace does, and why hope is the point.' },
   { name: 'Virtues', blurb: 'The habits that make a good life possible.' },
@@ -78,12 +81,12 @@ function sections(body: string) {
 }
 
 const kindOf = (t: string) =>
-  /short version/i.test(t) ? 'big'
-  : /go deeper/i.test(t) ? 'sources'
-  : /fight|what to do|how to live|how to keep|the plan|how to forgive|how to respond|practical|how to go|if you.ve fallen|if you.re/i.test(t) ? 'actions'
-  : /stake/i.test(t) ? 'stakes'
-  : /hits hard|matters today|why this matters|why it matters/i.test(t) ? 'today'
-  : /scripture/i.test(t) ? 'scripture' : 'teach';
+  /short version|lo esencial|summa brevis/i.test(t) ? 'big'
+  : /go deeper|para profundizar|altius penetra/i.test(t) ? 'sources'
+  : /fight|what to do|how to live|how to keep|the plan|how to forgive|how to respond|practical|how to go|if you.ve fallen|if you.re|cómo vivirlo|cómo combatirlo|qué hacer|quomodo vivatur|quomodo pugnetur|quid agendum/i.test(t) ? 'actions'
+  : /stake|en juego|in discrimine/i.test(t) ? 'stakes'
+  : /hits hard|matters today|why this matters|why it matters|importa hoy|pesa hoy|hodie momentum|hodie graviter/i.test(t) ? 'today'
+  : /scripture|escritura|scriptura/i.test(t) ? 'scripture' : 'teach';
 
 // Small deterministic shuffle, so a lesson's quick checks are the same on every build.
 function rng(seed: string) { let h = 2166136261; for (const c of seed) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return () => { h += 0x6d2b79f5; let t = Math.imul(h ^ (h >>> 15), 1 | h); t ^= t + Math.imul(t ^ (t >>> 7), 61 | t); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
@@ -93,9 +96,9 @@ const firstSentence = (md: string) => {
   const t = md.replace(/\s+/g, ' ').trim().replace(ABBR, (m) => m.replace(/\s$/, '\u00a0'));
   return (t.split(/(?<=[.!?])\s/)[0] ?? t).replace(/\u00a0/g, ' ').replace(/[*_]/g, '');
 };
-const shortOf = (l: Lesson) => firstSentence(sections(l.body ?? '').find((s) => /short version/i.test(s.title))?.md ?? l.data.summary);
+const shortOf = (l: Lesson) => firstSentence(sections(l.body ?? '').find((s) => /short version|lo esencial|summa brevis/i.test(s.title))?.md ?? l.data.summary);
 
-export function buildCards(lesson: Lesson, others: Lesson[]): Card[] {
+export function buildCards(lesson: Lesson, others: Lesson[], lang: 'en' | 'es' | 'la' = 'en'): Card[] {
   const d = lesson.data; const body = lesson.body ?? '';
   const secs = sections(body);
   const words = body.split(/\s+/).length;
@@ -108,14 +111,14 @@ export function buildCards(lesson: Lesson, others: Lesson[]): Card[] {
   const check1: Card = (() => {
     const right = shortOf(lesson);
     const wrong = shuffle(pool, r).slice(0, 2).map((o) => shortOf(o));
-    return { kind: 'check', q: 'Which line comes from this lesson?', hint: 'It was near the start of the lesson.', xp: 5, options: shuffle([{ t: right, ok: true }, ...wrong.map((t) => ({ t, ok: false }))], r) };
+    return { kind: 'check', q: T('Which line comes from this lesson?', lang), hint: T('It was near the start of the lesson.', lang), xp: 5, options: shuffle([{ t: right, ok: true }, ...wrong.map((t) => ({ t, ok: false }))], r) };
   })();
   const isCCC = (s: string) => /^CCC/.test(s);
   const wantCCC = d.sources.some(isCCC);
   const own = new Set(d.sources);
   const rightSrc = d.sources.find((s) => (wantCCC ? isCCC(s) : !isCCC(s))) ?? d.sources[0];
   const wrongSrc = shuffle([...new Set(pool.flatMap((o) => o.data.sources).filter((s) => (wantCCC ? isCCC(s) : !isCCC(s)) && !own.has(s)))], r).slice(0, 3);
-  const check2: Card = { kind: 'check', q: wantCCC ? 'Which Catechism passage does this lesson cite?' : 'Which source does this lesson cite?', hint: 'You can find the sources at the end of the lesson.', xp: 5, options: shuffle([{ t: rightSrc, ok: true }, ...wrongSrc.map((t) => ({ t, ok: false }))], r) };
+  const check2: Card = { kind: 'check', q: T(wantCCC ? 'Which Catechism passage does this lesson cite?' : 'Which source does this lesson cite?', lang), hint: T('You can find the sources at the end of the lesson.', lang), xp: 5, options: shuffle([{ t: rightSrc, ok: true }, ...wrongSrc.map((t) => ({ t, ok: false }))], r) };
 
   let placed1 = false, placed2 = false;
   for (const s of secs) {
@@ -141,7 +144,7 @@ export function buildCards(lesson: Lesson, others: Lesson[]): Card[] {
       if (kind === 'sources') cards.push({ kind: 'sources', label: s.title, items });
       else for (let i = 0; i < items.length; i += 5) cards.push({ kind: kind === 'actions' ? 'actions' : 'list', label: s.title, items: items.slice(i, i + 5) } as Card);
     }
-    if (!placed1 && kind === 'teach' && /church teaches|what scripture|history|three different/i.test(s.title)) { cards.push(check1); placed1 = true; }
+    if (!placed1 && kind === 'teach' && /church teaches|what scripture|history|three different|enseña la iglesia|ecclesia doceat/i.test(s.title)) { cards.push(check1); placed1 = true; }
   }
   if (!placed1) cards.splice(Math.min(3, cards.length), 0, check1);
   if (!placed2) { const at = cards.findIndex((c) => c.kind === 'sources'); cards.splice(at < 0 ? cards.length : at, 0, check2); }

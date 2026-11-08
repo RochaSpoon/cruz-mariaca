@@ -87,4 +87,9 @@ const lessons = defineCollection({
   }),
 });
 
-export const collections = { myths, pages, daily, lessons };
+// Translated lessons. Each file has the same fields as an English lesson and the same slug, so a lesson can be found in any language.
+const translated = (dir: string) => defineCollection({ loader: glob({ pattern: '**/*.mdx', base: `./src/content/${dir}` }), schema: lessons.schema });
+const lessonsEs = translated('lessons-es');
+const lessonsLa = translated('lessons-la');
+
+export const collections = { myths, pages, daily, lessons, lessonsEs, lessonsLa };
