@@ -66,7 +66,7 @@ for (const s of specs) {
   sec(HEAD.deeper); for (const d of s.deeper) body.push(`- ${d}`); body.push('');
   const text = body.join('\n');
   if (text.includes('—')) throw new Error(s.slug + ': em dash');
-  const out = { ...fm, title: s.title, summary: s.summary, category: s.category ?? fm.category, sources: [...new Set([...(fm.sources ?? []), ...(s.sources ?? [])])] };
+  const out = { ...fm, title: s.title, summary: s.summary, category: s.category ?? fm.category, sources: [...new Set([...(fm.sources ?? []), ...(s.sources ?? [])])].map((x) => (lang === 'es' ? x.replace(/^CCC /, 'CCE ') : x)) };
   out.verify_flags = 0; out.reviewed = false; out.type = 'full';
   writeFileSync(`${outDir}/${s.slug}.mdx`, `---\n${YAML.stringify(out, { lineWidth: 0 })}---\n\n${text}`);
   written++;

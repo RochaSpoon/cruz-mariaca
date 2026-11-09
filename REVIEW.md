@@ -8,7 +8,7 @@ Douay-Rheims passages were compared with drbo.org. Catechism paragraphs, papal a
 
 ## Lessons
 
-360 lessons in `src/content/lessons`: 360 written in full, 0 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. No quotes or figures are flagged for verification.
+373 lessons in `src/content/lessons`: 373 written in full, 0 outlines with placeholders (outlines are never shown as playable). All are reviewed: false. No quotes or figures are flagged for verification.
 
 
 ## Daily Bread

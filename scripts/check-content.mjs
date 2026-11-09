@@ -25,7 +25,7 @@ for (const file of files) {
 
   for (const k of ['title', 'summary', 'reviewed', 'sources']) if (fm[k] === undefined) errors.push(`${rel}: frontmatter field "${k}" is required`);
   if (!Array.isArray(fm.sources) || fm.sources.length === 0) errors.push(`${rel}: sources[] is empty`);
-  const isLesson = rel.startsWith('lessons/');
+  const isLesson = /^lessons(-es|-la)?\//.test(rel);
   if (!isLesson && fm.authority_level !== undefined && !LEVELS.includes(fm.authority_level)) errors.push(`${rel}: authority_level must be one of ${LEVELS.join(', ')}`);
 
   // Quoted Scripture is not site copy, so it is left out of the style checks.

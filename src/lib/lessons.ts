@@ -113,7 +113,7 @@ export function buildCards(lesson: Lesson, others: Lesson[], lang: 'en' | 'es' |
     const wrong = shuffle(pool, r).slice(0, 2).map((o) => shortOf(o));
     return { kind: 'check', q: T('Which line comes from this lesson?', lang), hint: T('It was near the start of the lesson.', lang), xp: 5, options: shuffle([{ t: right, ok: true }, ...wrong.map((t) => ({ t, ok: false }))], r) };
   })();
-  const isCCC = (s: string) => /^CCC/.test(s);
+  const isCCC = (s: string) => /^CC[CE]/.test(s);
   const wantCCC = d.sources.some(isCCC);
   const own = new Set(d.sources);
   const rightSrc = d.sources.find((s) => (wantCCC ? isCCC(s) : !isCCC(s))) ?? d.sources[0];
