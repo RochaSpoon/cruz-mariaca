@@ -86,6 +86,7 @@ const trLangs = ((translated as Record<string, string[]>)[d.slug] ?? []).join(',
           <p class="xp-big" data-xpbig hidden></p>
           <p class="say" data-result data-t>Press Finish to save it.</p>
           <p class="say small" data-goal></p>
+          <p><button type="button" class="btn ghost" id="share" data-t>Share</button></p>
         </div>
       </section>
     </main>
@@ -210,6 +211,14 @@ const trLangs = ((translated as Record<string, string[]>)[d.slug] ?? []).join(',
         : 'Today’s goal is done. More lessons are on the path whenever you want them, and nothing is lost if you stop here.');
       paint();
     }
+
+    // Share the lesson link (phone share sheet if there is one, otherwise copy it).
+    const share = document.getElementById('share') as HTMLButtonElement | null;
+    share?.addEventListener('click', async () => {
+      const data = { title: document.title, url: location.href.split('#')[0] };
+      try { if (navigator.share) { await navigator.share(data); return; } } catch { /* cancelled */ }
+      try { await navigator.clipboard.writeText(data.url); share.textContent = T('Copied'); setTimeout(() => { share.textContent = T('Share'); }, 1800); } catch { /* ignore */ }
+    });
 
     // Start on the first screen; arrow keys and Continue work from here.
     deck.focus({ preventScroll: true }); paint();

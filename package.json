@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource/eb-garamond": "^5.0.0",
     "@supabase/supabase-js": "^2.118.0",
     "astro": "^5.0.0",

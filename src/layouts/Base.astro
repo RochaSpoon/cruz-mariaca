@@ -16,9 +16,19 @@ const cur = (href: string) => (href === '/' ? path === '/' : path.startsWith(hre
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{full}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#7b2038" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="canonical" href={new URL(path, Astro.site ?? 'https://catholic.cruzmariaca.com').href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cruz-Mariaca" />
+    <meta property="og:title" content={full} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={new URL(path, Astro.site ?? 'https://catholic.cruzmariaca.com').href} />
+    <meta property="og:image" content="https://catholic.cruzmariaca.com/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" />

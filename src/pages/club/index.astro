@@ -1,0 +1,96 @@
+---
+import Base from '../../layouts/Base.astro';
+const weeks = [
+  { slug: 'who-is-god', en: 'Who is God?', es: '¿Quién es Dios?',
+    q: { en: ['What picture of God did you grow up with? Where did it come from?', 'The lesson says God is one and is love. What changes if only one of those is true?', 'What question about God would you most like answered?'],
+         es: ['¿Con qué imagen de Dios creciste? ¿De dónde venía?', 'La lección dice que Dios es uno y que es amor. ¿Qué cambia si solo una de las dos cosas es verdad?', '¿Qué pregunta sobre Dios te gustaría más que te respondieran?'] } },
+  { slug: 'who-is-jesus', en: 'Who is Jesus?', es: '¿Quién es Jesús?',
+    q: { en: ['Why does it matter that Jesus is both fully God and fully man?', 'Which Gospel scene shows his humanity best? Which shows his divinity?', 'Jesus asked, "Who do you say that I am?" How would you answer today?'],
+         es: ['¿Por qué importa que Jesús sea plenamente Dios y plenamente hombre?', '¿Qué escena del Evangelio muestra mejor su humanidad? ¿Cuál muestra mejor su divinidad?', 'Jesús preguntó: «¿Quién dicen ustedes que soy yo?». ¿Cómo responderías hoy?'] } },
+  { slug: 'what-is-the-church', en: 'What is the Church?', es: '¿Qué es la Iglesia?',
+    q: { en: ['What does the word "church" mean to the people in this room?', 'How can the Church be holy and also include sinners?', 'What would make someone feel at home in this club?'],
+         es: ['¿Qué significa la palabra «Iglesia» para las personas de este grupo?', '¿Cómo puede la Iglesia ser santa y a la vez incluir pecadores?', '¿Qué haría que alguien se sintiera en casa en este club?'] } },
+  { slug: 'how-to-start-praying', en: 'How to start praying', es: 'Cómo empezar a rezar',
+    q: { en: ['What gets in the way of prayer for you?', 'Which way of praying have you tried, and what happened?', 'Pick one habit for the week and tell the group so they can ask you next time.'],
+         es: ['¿Qué te estorba para rezar?', '¿Qué forma de rezar has probado y qué pasó?', 'Elige un hábito para la semana y díselo al grupo para que te pregunten la próxima vez.'] } },
+  { slug: 'the-real-presence', en: 'The Real Presence', es: 'La presencia real',
+    q: { en: ['Why does the Church say "this is my body" cannot be read as only a symbol?', 'How would you explain the Church\'s teaching to a Protestant friend, and what would you ask them?', 'What would change about how you come to Mass if you believed this fully?'],
+         es: ['¿Por qué dice la Iglesia que «esto es mi cuerpo» no puede entenderse solo como un símbolo?', '¿Cómo explicarías la enseñanza de la Iglesia a un amigo protestante, y qué le preguntarías?', '¿Qué cambiaría en tu forma de venir a Misa si lo creyeras del todo?'] } },
+  { slug: 'the-mass-as-sacrifice', en: 'The Mass as sacrifice', es: 'La Misa como sacrificio',
+    q: { en: ['What is the difference between repeating a sacrifice and making it present?', 'What would you offer at Mass this week?', 'Which Protestant objection is the strongest, and how does the lesson answer it?'],
+         es: ['¿Qué diferencia hay entre repetir un sacrificio y hacerlo presente?', '¿Qué ofrecerías en la Misa esta semana?', '¿Cuál es la objeción protestante más fuerte, y cómo la responde la lección?'] } },
+  { slug: 'following-the-mass-in-latin', en: 'Following the Mass in Latin', es: 'Cómo seguir la Misa en latín', plan: true,
+    q: { en: ['What do you notice when you cannot follow every word? What helps you pay attention?', 'What do people who love Latin say they value, and what do people who prefer the local language say?', 'Go together to a Latin Mass or a Latin and English Mass if one is near you, and compare notes afterward.'],
+         es: ['¿Qué notas cuando no puedes seguir cada palabra? ¿Qué te ayuda a prestar atención?', '¿Qué valoran quienes aman el latín, y qué valoran quienes prefieren la lengua local?', 'Vayan juntos a una Misa en latín o en latín y español si hay una cerca, y comparen impresiones después.'] } },
+  { slug: 'confession', en: 'Confession', es: 'La Confesión',
+    q: { en: ['What makes Confession hard? What makes it easier?', 'Why does the Church say forgiveness comes through a priest?', 'How could the club help people who have been away from Confession for years?'],
+         es: ['¿Qué hace difícil la Confesión? ¿Qué la hace más fácil?', '¿Por qué dice la Iglesia que el perdón llega por medio de un sacerdote?', '¿Cómo podría ayudar el club a quienes llevan años sin confesarse?'] } },
+  { slug: 'faith-and-reason', en: 'Faith and reason', es: 'Fe y razón',
+    q: { en: ['Is there a conflict between faith and science in your classes? Where does it show up?', 'What does the Catechism claim, and what would count as evidence against it?', 'Which question from your classes would you like to bring to a priest or teacher?'],
+         es: ['¿Hay un conflicto entre la fe y la ciencia en tus clases? ¿Dónde aparece?', '¿Qué afirma el Catecismo, y qué contaría como evidencia en contra?', '¿Qué pregunta de tus clases te gustaría llevar a un sacerdote o a un profesor?'] } },
+  { slug: 'catholics-and-protestants-key-differences', en: 'Catholics and Protestants', es: 'Católicos y protestantes',
+    q: { en: ['Which differences are about authority, and which are about practice?', 'What do Catholics and Protestants agree on?', 'How can we talk about this with friends without turning it into a contest?'],
+         es: ['¿Qué diferencias son de autoridad y cuáles son de práctica?', '¿En qué coinciden católicos y protestantes?', '¿Cómo podemos hablar de esto con amigos sin convertirlo en una competencia?'] } },
+  { slug: 'why-catholics-pray-to-saints', en: 'Why Catholics pray to saints', es: 'Por qué los católicos rezan a los santos',
+    q: { en: ['What is the difference between asking a saint to pray for you and worshipping a saint?', 'Which saint do you feel close to, and why?', 'How would you answer a friend who says this takes away from Jesus?'],
+         es: ['¿Qué diferencia hay entre pedirle a un santo que rece por ti y adorarlo?', '¿De qué santo te sientes cercano, y por qué?', '¿Cómo responderías a un amigo que dice que esto le quita algo a Jesús?'] } },
+  { slug: 'discerning-your-vocation', en: 'Discerning your vocation', es: 'Discernir tu vocación',
+    q: { en: ['What does "vocation" mean beyond a career?', 'Who has helped you think about this, and who could?', 'What would you like the group to pray for you this term?'],
+         es: ['¿Qué significa «vocación» más allá de una carrera?', '¿Quién te ha ayudado a pensar en esto, y quién podría hacerlo?', '¿Qué te gustaría que el grupo rece por ti este periodo?'] } },
+];
+---
+<Base title="For clubs and groups" description="A twelve-week plan and discussion questions for a Catholic student club or parish group.">
+  <article class="guide">
+    <p class="rubric sc" data-l="en la">For clubs and groups</p>
+    <p class="rubric sc" data-l="es">Para clubes y grupos</p>
+    <h1 data-l="en la">Using this site in a Catholic student club</h1>
+    <h1 data-l="es">Cómo usar este sitio en un club católico de estudiantes</h1>
+    <p data-l="en la">This page is for a Catholic Student Association, a youth group or a parish class. It gives a twelve-week plan that uses the lessons already on the site, a way to run each meeting, and questions to get people talking. Nothing here replaces a priest, chaplain or catechist. Invite one to join if you can.</p>
+    <p data-l="es">Esta página es para una Asociación Católica de Estudiantes, un grupo juvenil o una clase parroquial. Trae un plan de doce semanas con las lecciones que ya están en el sitio, una forma de llevar cada reunión y preguntas para empezar a conversar. Nada de esto sustituye a un sacerdote, capellán o catequista. Invita a uno si puedes.</p>
+    <p class="no-print"><button type="button" class="btn ghost" onclick="window.print()"><span data-l="en la">Print this plan</span><span data-l="es">Imprimir este plan</span></button></p>
+
+    <h2 data-l="en la">How a meeting can run (30 to 45 minutes)</h2>
+    <h2 data-l="es">Cómo puede ser una reunión (30 a 45 minutos)</h2>
+    <ol>
+      <li data-l="en la"><b>Open (3 min).</b> The Sign of the Cross and the Our Father. The <a href="/liturgy/prayers/">prayers page</a> has both in Latin, English and Spanish.</li>
+      <li data-l="es"><b>Apertura (3 min).</b> La Señal de la Cruz y el Padrenuestro. La <a href="/liturgy/prayers/">página de oraciones</a> los tiene en latín, inglés y español.</li>
+      <li data-l="en la"><b>The lesson (10 min).</b> Everyone reads the week's lesson beforehand, or reads it together on phones. Each takes about three minutes.</li>
+      <li data-l="es"><b>La lección (10 min).</b> Todos leen la lección de la semana antes, o la leen juntos en el teléfono. Cada una toma unos tres minutos.</li>
+      <li data-l="en la"><b>Discussion (15 to 25 min).</b> Use the three questions below. Let people say they disagree. Ask where the lesson's sources say something different from what they heard elsewhere.</li>
+      <li data-l="es"><b>Conversación (15 a 25 min).</b> Usa las tres preguntas de abajo. Deja que la gente diga que no está de acuerdo. Pregunta dónde las fuentes de la lección dicen algo distinto de lo que oyeron en otra parte.</li>
+      <li data-l="en la"><b>Close (3 min).</b> One prayer request each, then a Hail Mary.</li>
+      <li data-l="es"><b>Cierre (3 min).</b> Una petición de oración por persona, y un Avemaría.</li>
+    </ol>
+
+    <h2 data-l="en la">Twelve weeks</h2>
+    <h2 data-l="es">Doce semanas</h2>
+    {weeks.map((w, i) => (
+      <section class="callout">
+        <h3 style="margin:0 0 .3rem"><span data-l="en la">Week {i + 1}: </span><span data-l="es">Semana {i + 1}: </span><a href={`/learn/${w.slug}/`}><span data-l="en la">{w.en}</span><span data-l="es">{w.es}</span></a></h3>
+        <ul>
+          {w.q.en.map((q, k) => <li><span data-l="en la">{q}</span><span data-l="es">{w.q.es[k]}</span></li>)}
+        </ul>
+      </section>
+    ))}
+    <p class="small" data-l="en la">The plan is a starting point. Swap weeks to fit your calendar. Some lessons on the site cover heavier subjects and are marked at their start. Preview them before using them with a group, and consider having a priest or counselor involved.</p>
+    <p class="small" data-l="es">El plan es un punto de partida. Cambia las semanas según tu calendario. Algunas lecciones del sitio tratan temas más pesados y lo indican al comienzo. Revísalas antes de usarlas con un grupo y considera contar con un sacerdote o un consejero.</p>
+
+    <h2 data-l="en la">Starting a club at your school</h2>
+    <h2 data-l="es">Cómo empezar un club en tu escuela</h2>
+    <ul>
+      <li data-l="en la">Ask your school office what a student club needs. Most schools want a faculty or staff sponsor and a short statement of purpose.</li>
+      <li data-l="es">Pregunta en la oficina de tu escuela qué necesita un club estudiantil. La mayoría pide un docente o miembro del personal como patrocinador y una breve declaración de propósito.</li>
+      <li data-l="en la">In the United States, the federal Equal Access Act (20 U.S.C. 4071 to 4074) says that a public secondary school that receives federal funds and lets at least one non-curriculum student group meet must give student religious groups equal access to meet. Rules at your school may add conditions, and I could not open the statute while writing this, so read it at <a href="https://www.govinfo.gov/link/uscode/20/4071">govinfo.gov</a> and ask your school.</li>
+      <li data-l="es">En Estados Unidos, la ley federal Equal Access Act (20 U.S.C. 4071 a 4074) dice que una escuela secundaria pública que recibe fondos federales y permite reunirse a al menos un grupo estudiantil ajeno al currículo debe dar igualdad de acceso a los grupos religiosos estudiantiles. Las reglas de tu escuela pueden añadir condiciones, y no pude abrir la ley al escribir esto, así que léela en <a href="https://www.govinfo.gov/link/uscode/20/4071">govinfo.gov</a> y consulta a tu escuela.</li>
+      <li data-l="en la">Talk to your parish priest or a campus ministry office. Many are glad to supply a chaplain, a place to meet for Mass or Confession, and a list of nearby Masses, including Latin ones.</li>
+      <li data-l="es">Habla con tu párroco o con la oficina de pastoral universitaria. Muchos están contentos de aportar un capellán, un lugar para la Misa o la Confesión, y una lista de Misas cercanas, incluidas las de latín.</li>
+      <li data-l="en la">Make it open. A club that welcomes non-Catholics, doubters and people who stopped going will have better conversations.</li>
+      <li data-l="es">Hazlo abierto. Un club que acoge a no católicos, a quienes dudan y a quienes dejaron de ir tendrá mejores conversaciones.</li>
+    </ul>
+
+    <h2 data-l="en la">What members see</h2>
+    <h2 data-l="es">Qué ve cada miembro</h2>
+    <p data-l="en la">Each person's progress, streak and points are saved on their own phone or computer. An account is optional and only keeps progress across devices. The club leader does not see anyone's progress. Pick the language with the EN, ES and LA buttons at the top.</p>
+    <p data-l="es">El progreso, la racha y los puntos de cada persona se guardan en su propio teléfono o computadora. La cuenta es opcional y solo conserva el progreso entre dispositivos. El líder del club no ve el progreso de nadie. Elige el idioma con los botones EN, ES y LA de arriba.</p>
+  </article>
+</Base>

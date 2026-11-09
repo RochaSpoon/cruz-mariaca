@@ -7,59 +7,59 @@ const titles = Object.fromEntries([
 ]);
 ---
 <Base title="Account" description="Optional account to keep track of what you have read." noindex>
-  <p class="rubric sc">Account</p>
-  <h1>Keep your place</h1>
+  <p class="rubric sc" data-t>Account</p>
+  <h1 data-t>Keep your place</h1>
 
-  <div id="loading" class="prose"><p>One moment.</p></div>
+  <div id="loading" class="prose"><p data-t>One moment.</p></div>
 
   <div id="signed-out" hidden>
     <div class="prose">
-      <p>You do not need an account to read anything here. If you want the site to remember what you have read, make one with a username, your name and a password.</p>
+      <p data-t>You do not need an account to read anything here. If you want the site to remember what you have read, make one with a username, your name and a password.</p>
     </div>
     <div class="notice">
-      <p><strong>Who can see this</strong></p>
-      <p>The person who runs this site can see your name, your username, which entries you mark as read, and when you last visited. No one else can. There are no ads and no third parties. The site cannot send you email, so a forgotten password has to be reset by hand.</p>
+      <p><strong data-t>Who can see this</strong></p>
+      <p data-t>The person who runs this site can see your name, your username, which entries you mark as read, and when you last visited. No one else can. There are no ads and no third parties. The site cannot send you email, so a forgotten password has to be reset by hand.</p>
     </div>
 
     <form id="signin" class="form" novalidate>
-      <h2>Sign in</h2>
-      <label for="si-user">Username</label>
+      <h2 data-t>Sign in</h2>
+      <label for="si-user" data-t>Username</label>
       <input id="si-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required />
-      <label for="si-pass">Password</label>
+      <label for="si-pass" data-t>Password</label>
       <input id="si-pass" name="password" type="password" autocomplete="current-password" required />
       <p class="form-error" role="alert" data-error></p>
-      <button class="button" type="submit">Sign in</button>
-      <p class="form-switch">New here? <a href="#create" data-show="signup">Create an account</a></p>
+      <button class="button" type="submit" data-t>Sign in</button>
+      <p class="form-switch"><span data-t>New here?</span> <a href="#create" data-show="signup" data-t>Create an account</a></p>
     </form>
 
     <form id="signup" class="form" hidden novalidate>
-      <h2>Create an account</h2>
-      <label for="su-name">Your name</label>
+      <h2 data-t>Create an account</h2>
+      <label for="su-name" data-t>Your name</label>
       <input id="su-name" name="full_name" autocomplete="name" required maxlength="80" />
-      <label for="su-user">Username</label>
+      <label for="su-user" data-t>Username</label>
       <input id="su-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" aria-describedby="su-user-help" />
-      <p id="su-user-help" class="help">3 to 24 letters, numbers or underscores.</p>
-      <label for="su-pass">Password</label>
+      <p id="su-user-help" class="help" data-t>3 to 24 letters, numbers or underscores.</p>
+      <label for="su-pass" data-t>Password</label>
       <input id="su-pass" name="password" type="password" autocomplete="new-password" required minlength="8" maxlength="72" aria-describedby="su-pass-help" />
-      <p id="su-pass-help" class="help">At least 8 characters. You stay signed in on this device until you sign out.</p>
+      <p id="su-pass-help" class="help" data-t>At least 8 characters. You stay signed in on this device until you sign out.</p>
       <div id="code-row" hidden>
-        <label for="su-code">Invitation word</label>
+        <label for="su-code" data-t>Invitation word</label>
         <input id="su-code" name="code" autocapitalize="none" spellcheck="false" />
       </div>
       <p class="form-error" role="alert" data-error></p>
-      <button class="button" type="submit">Create account</button>
-      <p class="form-switch">Already have one? <a href="#signin" data-show="signin">Sign in</a></p>
+      <button class="button" type="submit" data-t>Create account</button>
+      <p class="form-switch"><span data-t>Already have one?</span> <a href="#signin" data-show="signin" data-t>Sign in</a></p>
     </form>
   </div>
 
   <div id="signed-in" hidden>
     <div class="prose">
-      <p>Signed in as <strong id="who"></strong>.</p>
-      <h2>What you have read</h2>
+      <p><span data-t>Signed in as</span> <strong id="who"></strong>.</p>
+      <h2 data-t>What you have read</h2>
       <ul id="read-list"></ul>
-      <p id="read-empty" hidden>Nothing yet. Each entry has a button at the end to mark it as read.</p>
+      <p id="read-empty" hidden data-t>Nothing yet. Each entry has a button at the end to mark it as read.</p>
     </div>
-    <p><button id="signout" class="button" type="button">Sign out</button> <a id="admin-link" href="/admin/" hidden>Open the members page</a></p>
+    <p><button id="signout" class="button" type="button" data-t>Sign out</button> <a id="admin-link" href="/admin/" hidden data-t>Open the members page</a></p>
   </div>
   <script id="titles" type="application/json" set:html={JSON.stringify(titles)}></script>
 

@@ -286,3 +286,4 @@ html[lang="en"] li[data-l~="en"], html[lang="es"] li[data-l~="es"], html[lang="l
 .toc { display: flex; flex-wrap: wrap; gap: .4rem; margin: .8rem 0; padding: 0; list-style: none; }
 .toc a { display: inline-block; padding: .35rem .7rem; border: 2px solid var(--line); border-radius: 999px; font-weight: 800; font-size: .85rem; text-decoration: none; }
 @media print { .side, .tabbar, .mbar, .lang, .skip { display: none !important; } .shell { display: block; } .guide { max-width: none; } }
+@media print { .no-print { display: none !important; } .callout { break-inside: avoid; } }

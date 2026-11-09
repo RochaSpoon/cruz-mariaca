@@ -128,7 +128,7 @@ File: `src/content/pages/glossary.mdx`. reviewed: false. Label: none.
 
 File: `src/content/pages/mass.mdx`. reviewed: false. Label: discipline.
 
-- Sources not yet checked: 6 of 6
+- Sources not yet checked: 6 of 7
 - Douay-Rheims quotations typed from memory (compare with a source): none
 - [NEEDS SOURCE] markers: 0
 
